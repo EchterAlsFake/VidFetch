@@ -590,8 +590,7 @@ class Setup(QDialog):
 
 class EchterAlsFake(object):
 
-    def setup_lol(self):
-
+    def setup_lsd_theme(self):
 
         widget.ui.metadata_bitrate_label.setStyleSheet("color: #808000;")  # Olivgrün
         widget.ui.progressbar_metadata_label.setStyleSheet("color: #800080;")  # Lila
@@ -633,24 +632,83 @@ class EchterAlsFake(object):
         widget.ui.gridLayout_6.addWidget(widget.ui.output_video_button, 2, 2, 1, 1)
 
 
+    def setup_white_theme(self):
+        # Julius du Wixxer, mach White Mode aus!
+
+        light_palette = QPalette()
+        light_palette.setColor(QPalette.Window, QColor(239, 240, 241))
+        light_palette.setColor(QPalette.WindowText, Qt.black)
+        light_palette.setColor(QPalette.Base, QColor(255, 255, 255))
+        light_palette.setColor(QPalette.AlternateBase, QColor(245, 245, 245))
+        light_palette.setColor(QPalette.ToolTipBase, Qt.white)
+        light_palette.setColor(QPalette.ToolTipText, Qt.white)
+        light_palette.setColor(QPalette.Text, Qt.black)
+        light_palette.setColor(QPalette.Button, QColor(239, 240, 241))
+        light_palette.setColor(QPalette.ButtonText, Qt.black)
+        light_palette.setColor(QPalette.BrightText, Qt.red)
+        light_palette.setColor(QPalette.Link, QColor(0, 0, 255))
+        light_palette.setColor(QPalette.Highlight, QColor(41, 128, 185))
+        light_palette.setColor(QPalette.HighlightedText, Qt.white)
+        app.setPalette(light_palette)
+
+    def setup_black_theme(self):
+
+        dark_palette = QPalette()
+        dark_palette.setColor(QPalette.Window, QColor(53, 53, 53))
+        dark_palette.setColor(QPalette.WindowText, Qt.white)
+        dark_palette.setColor(QPalette.Base, QColor(25, 25, 25))
+        dark_palette.setColor(QPalette.AlternateBase, QColor(53, 53, 53))
+        dark_palette.setColor(QPalette.ToolTipBase, Qt.white)
+        dark_palette.setColor(QPalette.ToolTipText, Qt.white)
+        dark_palette.setColor(QPalette.Text, Qt.white)
+        dark_palette.setColor(QPalette.Button, QColor(53, 53, 53))
+        dark_palette.setColor(QPalette.ButtonText, Qt.white)
+        dark_palette.setColor(QPalette.BrightText, Qt.red)
+        dark_palette.setColor(QPalette.Link, QColor(42, 130, 218))
+        dark_palette.setColor(QPalette.Highlight, QColor(42, 130, 218))
+        dark_palette.setColor(QPalette.HighlightedText, Qt.black)
+        app.setPalette(dark_palette)
+        app.setStyle("Fusion")
+
+
+
+
 
 if __name__ == "__main__":
     conf = ConfigParser()
     conf.read('config.ini')
     app = QApplication(sys.argv)
+    widget = Widget()
 
-    if os.path.isfile("ffmpeg/ffmpeg-N-110759-gd815584755-linux64-gpl/bin/ffmpeg"):
-        w = Widget()
-        w.show()
+    if os.path.isfile("ffmpeg/ffmpeg-N-110759-gd815584755-linux64-gpl/bin/ffmpeg") or os.path.isfile("ffmpeg\\ffmpeg-master-latest-win64-gpl\\bin\\ffmpeg.exe"):
 
-    elif os.path.isfile("ffmpeg\\ffmpeg-master-latest-win64-gpl\\bin\\ffmpeg.exe"):
-        w = Widget()
-        w.show()
+        if conf['ui']['mode'] == 'EchterAlsFake':
+            widget = Widget()
+            EchterAlsFake().setup_lsd_theme()
+            widget.show()
+
+        if conf['ui']['mode'] == "dark" and conf['ui']['override_linux_dark_mode'] == "false":
+            sys.argv += ['-platform', 'windows:darkmode=2']
+            app.setStyle("Fusion")
+
+        if conf['ui']['mode'] == "white":
+            sys.argv += ['-platform', '-windows:darkmode=0']
+            app.setStyle("Fusion")
+            widget = Widget()
+            EchterAlsFake().setup_white_theme()
+            widget.show()
+
+        if conf['ui']['mode'] == "dark" and conf['ui']['override_linux_dark_mode'] == "true":
+            widget = Widget()
+            EchterAlsFake().setup_black_theme()
+            widget.show()
+
+
 
     else:
-        widget = Setup()
-        widget.show()
 
+        window = Setup()
+        window.show()
 
     sys.exit(app.exec())
 

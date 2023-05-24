@@ -576,8 +576,17 @@
          </item>
          <item row="0" column="1">
           <widget class="QProgressBar" name="progressbar_metadata">
+           <property name="styleSheet">
+            <string notr="true">QProgressBar {
+    background-color: #F0F0F0; /* Hellgrauer Hintergrund */
+}
+
+QProgressBar::chunk {
+    background-color: #00FF00; /* Grün als Vordergrundfarbe */
+}</string>
+           </property>
            <property name="value">
-            <number>0</number>
+            <number>20</number>
            </property>
           </widget>
          </item>
@@ -647,6 +656,9 @@
            <property name="cursor">
             <cursorShape>PointingHandCursor</cursorShape>
            </property>
+           <property name="styleSheet">
+            <string notr="true">color: rgb(97, 53, 131)</string>
+           </property>
            <property name="text">
             <string>EchterAlsFake</string>
            </property>
@@ -656,6 +668,12 @@
           <widget class="QRadioButton" name="radio_white_theme">
            <property name="cursor">
             <cursorShape>ForbiddenCursor</cursorShape>
+           </property>
+           <property name="toolTip">
+            <string>No please dont do shis </string>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: rgb(154, 153, 150)</string>
            </property>
            <property name="text">
             <string>White Theme</string>
@@ -676,6 +694,9 @@
            </property>
            <property name="toolTip">
             <string>If your Linux distro doesn't enable dark mode by default, you can go with that</string>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: rgb(224, 27, 36)</string>
            </property>
            <property name="text">
             <string>Override default linux dark mode</string>
