@@ -1,3 +1,5 @@
+import time
+
 print("Initializing...")
 import distro
 import os
@@ -8,9 +10,9 @@ import tarfile
 import wget
 import zipfile
 from configparser import ConfigParser
-from PySide6.QtCore import Qt, QTimer
+from PySide6.QtCore import Qt, QTimer, QThread, Signal
 from PySide6.QtGui import QPixmap, QPalette, QPainter, QColor, Qt
-from PySide6.QtWidgets import QApplication, QWidget, QMessageBox, QGraphicsScene, QLabel, QLineEdit, QPushButton, QDialogButtonBox, QDialog, QVBoxLayout
+from PySide6.QtWidgets import QApplication, QWidget, QMessageBox, QGraphicsScene, QLabel, QLineEdit, QPushButton, QDialogButtonBox, QDialog, QVBoxLayout, QProgressBar
 from colorama import *
 from ffmpeg_progress_yield import FfmpegProgress
 from pytube import YouTube
@@ -25,6 +27,10 @@ class Widget(QWidget):
     def __init__(self, parent=None):
         super().__init__(parent)
         # Variables needed later...
+
+        if not os.path.isfile("config.ini"):
+            self.config_file_setup()
+
         self.resolutions = ['144p', '240p', '360p', '480p', '720p', '1080p', '1440p', '2160p', '4320p']
         self.music_mode = ""
         self.video_mode = ""
@@ -38,13 +44,8 @@ class Widget(QWidget):
         self.x = Fore.LIGHTRED_EX + "[!]"
         self.platform = sys.platform
         self.distro = distro.name(pretty=True)
-        self.ffmpeg_popup()
 
-        # Setup UI, ffmpeg and configuration files
-        if sys.platform == "windows" or "win32":
-            self.add_to_path_windows()
 
-        self.check_ffmpeg_config()
         self.conf = ConfigParser()
         self.conf.read('config.ini')
         self.ui = Ui_Widget()
@@ -60,56 +61,6 @@ class Widget(QWidget):
         self.timer.timeout.connect(self.threads_radio_buttons)
         self.timer.start(1000)
 
-    # The following functions are used to set up the UI, ffmpeg and configuration files
-
-    def accept(self):
-        print("")
-
-    def rejected(self):
-        self.destroy()
-        exit()
-
-
-    def add_to_path_windows(self):
-
-        print(Fore.LIGHTGREEN_EX + "[+]" + Fore.LIGHTCYAN_EX + "Adding to PATH...")
-        file_path = "ffmpeg\\ffmpeg-master-latest-win64-gpl\\bin"
-        current_path = os.environ.get('PATH')
-        new_path = current_path + ';' + file_path
-        os.environ['PATH'] = new_path
-
-
-    def ffmpeg_popup(self):
-
-        QBtn = QDialogButtonBox.StandardButton.Ok | QDialogButtonBox.StandardButton.Cancel | QDialogButtonBox.StandardButton.Help
-
-        self.buttonBox = QDialogButtonBox(QBtn)
-        self.buttonBox.helpRequested.connect(self.ffmpeg_help)
-        self.buttonBox.accepted.connect(self.accept)
-        self.buttonBox.rejected.connect(self.rejected)
-
-        self.layout = QVBoxLayout()
-        message = QLabel("ffmpeg was not found on your system.  Do you want to automatically install it?")
-        self.buttonBox.show()
-
-
-    def ffmpeg_help(self):
-
-        msg_box = QMessageBox()
-        msg_box.setText("ffmpgeg is a program, which converts file formats and codecs.  It's needed to convert the video and audio files.  You can instal it by yourself, or press OK to install it automatically.")
-        msg_box.exec()
-
-    def check_ffmpeg_config(self):
-
-        if shutil.which("ffmpeg") is not None:
-            print(self.z + Fore.LIGHTMAGENTA_EX + "Found: ffmpeg")
-            print(self.z + Fore.LIGHTCYAN_EX + f"Running on: {self.distro}")
-
-        else:
-            self.ffmpeg_setup()
-
-        if not os.path.isfile("config.ini"):
-            self.config_file_setup()
 
     def config_file_setup(self):
 
@@ -120,7 +71,7 @@ class Widget(QWidget):
     
         [ui]
         mode = dark
-        ovveride_linux_dark_mode = false
+        override_linux_dark_mode = false
     
     
         [windows]
@@ -194,114 +145,6 @@ class Widget(QWidget):
         self.ui.groupbox_format.setDisabled(True)
         self.ui.group_box_music.setDisabled(True)
 
-    def ffmpeg_setup(self):
-
-        if self.platform == "windows" or "win32":
-
-                print(self.x + Fore.LIGHTCYAN_EX + "ffmpeg not found")
-                print(self.z + Fore.LIGHTYELLOW_EX + "Trying automatic installation")
-                wget.download("https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-win64-gpl.zip")
-                print(self.z + Fore.LIGHTCYAN_EX + "Extracting...")
-                with zipfile.ZipFile("ffmpeg-master-latest-win64-gpl.zip", "r") as zip_ref:
-                    zip_ref.extractall("ffmpeg")
-                    print(self.z + Fore.LIGHTMAGENTA_EX + "Extracted")
-                    file_path = "ffmpeg\\ffmpeg-master-latest-win64-gpl\\bin"
-                    current_path = os.environ.get('PATH')
-                    new_path = current_path + ";" + file_path
-                    os.environ['PATH'] = new_path
-                    if shutil.which("ffmpeg"):
-                        print(self.z + Fore.LIGHTMAGENTA_EX + "Successfully installed ffmpeg.  Please note, that the path variable is only valid until your restart your system.  ffmpeg will be added to your PATH everytime the program starts.")
-                        print(self.z + Fore.LIGHTCYAN_EX + "Testing...")
-                        print(self.z + Fore.LIGHTMAGENTA_EX + "Downloading test files...")
-                        wget.download("https://drive.google.com/uc?export=download&id=1u9aKCxjRYTVMxOu3gvGNznwrmjEVRbJx")
-                        command = 'ffmpeg -i ELEVEN.mp3 -vn -c:a aac -b:a 256k output.m4a'
-                        try:
-                            os.system(str(command))
-                            print(self.z + Fore.LIGHTYELLOW_EX + "Tests passed :)")
-                            os.remove("ELEVEN.mp3")
-                            os.remove("output.m4a")
-
-                        except Exception as e:
-                            print(f"Tests failed :( {str(e)}")
-
-                    else:
-                        print("""
-Unknown error...
-
-Please install ffmpeg manually:
-
-1) Download this file: https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-win64-gpl.zip
-2) Extract the file
-3) Copy the file to any random folder on your PC (like documents or appdata)
-4) Copy the folder location (example: C:\\Users\your_name\Documents\\ffmpeg-master-latest-win64-gpl\\bin)
-5) Now go to YouTube or ask ChatGPT how to add this directory to your PATH
-        """)
-
-
-        elif self.platform == "linux":
-
-            if shutil.which("ffmpeg") is not None:
-                print(Fore.LIGHTGREEN_EX + "[+]" + Fore.LIGHTCYAN_EX + "Found: ffmpeg")
-                print(Fore.LIGHTGREEN_EX + "[+]" + Fore.LIGHTMAGENTA_EX + f"Running on: {distro.name(pretty=True)}")
-
-            elif shutil.which("ffmpeg") is None:
-
-                print(Fore.LIGHTRED_EX + "[!]" + Fore.LIGHTBLUE_EX + "Could not find: ffmpeg")
-                _ = input("""
-Do you want to try an automatic installation of ffmpeg via your package manager? (ROOT)
-
-or 
-
-Do you want me to download an ffmpeg release and include it to the program?  (non ROOT)
-
-1) Package manager
-2) Download and include locally
-
-        """)
-                if _ == "1":
-
-                    if distro.name(pretty=True) == "Ubuntu":
-                        print(Fore.LIGHTGREEN_EX + "[+]" + Fore.LIGHTYELLOW_EX + "Detected: Ubuntu")
-                        print(
-                            Fore.LIGHTMAGENTA_EX + "Executing: sudo apt-get install ffmpeg, please enter your root password!")
-                        os.system("sudo apt-get install ffmpeg")
-
-                    elif distro.name(pretty=True) == "Debian":
-                        print(Fore.LIGHTGREEN_EX + "[+]" + Fore.LIGHTYELLOW_EX + "Detected: Debian")
-                        print(
-                            Fore.LIGHTMAGENTA_EX + "Executing: sudo apt-get install ffmpeg, please enter your root password!")
-                        os.system("sudo apt-get install ffmpeg")
-
-                    elif distro.name(pretty=True) == "Fedora":
-                        print(Fore.LIGHTGREEN_EX + "[+]" + Fore.LIGHTYELLOW_EX + "Detected: Fedora")
-                        print(Fore.LIGHTMAGENTA_EX + "Executing: sudo dnf install ffmpeg, please enter your root password!")
-                        os.system("sudo dnf install ffmpeg")
-
-                    elif distro.name(pretty=True) == "Arch":
-                        print(Fore.LIGHTGREEN_EX + "[+]" + Fore.LIGHTYELLOW_EX + "Detected: Arch")
-                        print(Fore.LIGHTMAGENTA_EX + "Executing: sudo pacman -S ffmpeg, please enter your root password!")
-                        os.system("sudo pacman -S ffmpeg")
-
-                    elif distro.name(pretty=True) == "openSUSE":
-                        print(Fore.LIGHTGREEN_EX + "[+]" + Fore.LIGHTYELLOW_EX + "Detected: openSUSE")
-                        print(
-                            Fore.LIGHTMAGENTA_EX + "Executing: sudo zypper install ffmpeg, please enter your root password!")
-                        os.system("sudo zypper install ffmpeg")
-
-                    elif distro.name(pretty=True) == "Manjaro":
-                        print(Fore.LIGHTGREEN_EX + "[+]" + Fore.LIGHTYELLOW_EX + "Detected: Manjaro")
-                        print(Fore.LIGHTMAGENTA_EX + "Executing: sudo pacman -S ffmpeg, please enter your root password!")
-                        os.system("sudo pacman -S ffmpeg")
-
-                elif _ == "2":
-                    wget.download(
-                        "https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-linux64-lgpl.tar.xz")
-                    file = tarfile.open("ffmpeg-master-latest-linux64-lgpl.tar.xz")
-                    file.extractall("ffmpeg")
-                    conf.set("ffmpeg", 'path', 'ffmpeg/bin/ffmpeg')
-                    with open("config.ini", "w") as config_file:
-                        conf.write(config_file)
-                        config_file.close()
 
     def show_error(self, e):
 
@@ -626,6 +469,125 @@ Do you want me to download an ffmpeg release and include it to the program?  (no
         os.remove(self.title + ".mp3")
 
 
+
+class DownloadThread_Windows(QThread):
+    progress = Signal(int)
+
+    def run_windows(self):
+
+        url = "https://github.com/BtbN/FFmpeg-Builds/releases/download/autobuild-2023-05-24-12-48/ffmpeg-N-110759-gd815584755-win64-gpl.zip"
+        respone = requests.get(url, stream=True)
+        total = int(respone.headers.get('content-length', 0))
+
+        downloaded = 0
+        with open("ffmpeg_archive.zip", "wb") as file:
+            for data in respone.iter_content(chunk_size=1024):
+                downloaded += len(data)
+                file.write(data)
+                self.progress.emit(downloaded * 100 / total)
+
+
+
+class DownloadThread_Linux(QThread):
+    progress = Signal(int)
+
+    def run(self):
+
+        url = "https://github.com/BtbN/FFmpeg-Builds/releases/download/autobuild-2023-05-24-12-48/ffmpeg-N-110759-gd815584755-linux64-gpl.tar.xz"
+        response = requests.get(url, stream=True)
+        total = int(response.headers.get('content-length', 0))
+
+        downloaded = 0
+        with open("ffmpeg_archive.tar.xz", "wb") as file:  # Replace with your file name and extension
+            for data in response.iter_content(chunk_size=1024):
+                downloaded += len(data)
+                file.write(data)
+                self.progress.emit(downloaded * 100 / total)
+
+
+
+class Setup(QDialog):
+
+    def __init__(self):
+        super().__init__()
+        self.ffmpeg_popup()
+
+    def ffmpeg_help(self):
+
+        msg_box = QMessageBox()
+        msg_box.setText("ffmpeg is needed to convert the video and mix them together. The automatic installation will download ffmpeg from GitHub and add it to path. ffmpeg is free and Open Source.")
+        msg_box.exec()
+
+    def rejected_X(self):
+
+        self.destroy()
+        print("No ffmpeg and setup was aborted. Program won't work until you install it by yourself, or enable the automatic installation again...")
+        exit(0)
+
+    def ffmpeg_popup(self):
+        Qbtn = QDialogButtonBox.StandardButton.Yes | QDialogButtonBox.StandardButton.Cancel | QDialogButtonBox.StandardButton.Help
+
+
+        self.buttonBox = QDialogButtonBox(Qbtn)
+        self.buttonBox.helpRequested.connect(self.ffmpeg_help)
+        self.buttonBox.accepted.connect(self.setup)
+        self.buttonBox.rejected.connect(self.rejected_X)
+        self.label = QLabel("ffmpeg was not found. Do you want to automatically install it?")
+        self.layout = QVBoxLayout()
+        self.layout.addWidget(self.label)
+        self.layout.addWidget(self.buttonBox)
+        self.setLayout(self.layout)
+
+    def setup(self):
+        # Thanks to ChatGPT for coding the Progress Bar.  I am just completely bad in anything that has to do with math and logic.
+
+
+
+        self.progressBar = QProgressBar()
+        self.layout.addWidget(self.progressBar)
+        self.startDownload()
+
+    def startDownload(self):
+        if sys.platform == "linux":
+
+            self.downloadThread = DownloadThread_Linux()
+            self.downloadThread.progress.connect(self.updateProgress)
+            self.downloadThread.start()
+
+        elif sys.platform == "win32":
+            self.downloadThread = DownloadThread_Windows()
+            self.downloadThread.progress.connect(self.updateProgress)
+            self.downloadThread.start()
+
+
+    def updateProgress(self, value):
+        self.progressBar.setValue(value)
+
+        if self.progressBar.value() == 100:
+            self.label.setText("Download Completed: Extracting and Installing...")
+            self.layout.addWidget(self.label)
+            time.sleep(2)
+            if sys.platform == "linux":
+                with tarfile.open("ffmpeg_archive.tar.xz", "r:xz") as tar:
+                    tar.extractall("ffmpeg")
+                    if os.path.isfile("ffmpeg/ffmpeg-N-110759-gd815584755-linux64-gpl/bin/ffmpeg"):
+                        os.remove("ffmpeg_archive.tar.xz")
+                        self.label2 = QLabel("Installation Finished!  Please restart the program :) ")
+                        self.layout.addWidget(self.label2)
+                        self.destroy()
+
+
+            elif sys.platform == "win32":
+                with zipfile.ZipFile("ffmpeg_archive.zip", "r") as zip:
+                    zip.extractall("ffmpeg")
+                    if os.path.isfile("ffmpeg\\bin\\ffmpeg.exe"):
+                        os.remove("ffmpeg_archive.zip")
+                        self.label2 = QLabel("Installation Finished!  Please restart the program :) ")
+                        self.layout.addWidget(self.label2)
+                        self.destroy()
+
+
+
 class EchterAlsFake(object):
 
     def setup_lol(self):
@@ -676,60 +638,20 @@ if __name__ == "__main__":
     conf = ConfigParser()
     conf.read('config.ini')
     app = QApplication(sys.argv)
-    widget = Widget()
 
-    if conf['ui']['mode'] == 'dark':
-        if sys.platform == "windows" or "win32":
-            sys.argv += ['-platform', 'windows:darkmode=2']
-            app.setStyle('Fusion')
+    if os.path.isfile("ffmpeg/ffmpeg-N-110759-gd815584755-linux64-gpl/bin/ffmpeg"):
+        w = Widget()
+        w.show()
 
-        elif sys.platform == "linux":
+    elif os.path.isfile("ffmpeg\\ffmpeg-master-latest-win64-gpl\\bin\\ffmpeg.exe"):
+        w = Widget()
+        w.show()
 
-            if conf['ui']['override_linux_dark_mode'] == 'true':
-                print(Fore.LIGHTYELLOW_EX + "Overriding Linux Dark Mode")
-                dark_palette = QPalette()
-                dark_palette.setColor(QPalette.Window, QColor(53, 53, 53))
-                dark_palette.setColor(QPalette.WindowText, Qt.white)
-                dark_palette.setColor(QPalette.Base, QColor(25, 25, 25))
-                dark_palette.setColor(QPalette.AlternateBase, QColor(53, 53, 53))
-                dark_palette.setColor(QPalette.ToolTipBase, Qt.white)
-                dark_palette.setColor(QPalette.ToolTipText, Qt.white)
-                dark_palette.setColor(QPalette.Text, Qt.white)
-                dark_palette.setColor(QPalette.Button, QColor(53, 53, 53))
-                dark_palette.setColor(QPalette.ButtonText, Qt.white)
-                dark_palette.setColor(QPalette.BrightText, Qt.red)
-                dark_palette.setColor(QPalette.Link, QColor(42, 130, 218))
-                dark_palette.setColor(QPalette.Highlight, QColor(42, 130, 218))
-                dark_palette.setColor(QPalette.HighlightedText, Qt.black)
-                app.setPalette(dark_palette)
-                app.setStyle("Fusion")
+    else:
+        widget = Setup()
+        widget.show()
 
-    elif conf['ui']['mode'] == 'white':
-        if sys.platform == "windows":
-            sys.argv += ['-platform', 'windows:darkmode=0']
-            app.setStyle('Fusion')
 
-        elif sys.platform == "linux":
-            light_palette = QPalette()
-            light_palette.setColor(QPalette.Window, QColor(239, 240, 241))
-            light_palette.setColor(QPalette.WindowText, Qt.black)
-            light_palette.setColor(QPalette.Base, QColor(255, 255, 255))
-            light_palette.setColor(QPalette.AlternateBase, QColor(245, 245, 245))
-            light_palette.setColor(QPalette.ToolTipBase, Qt.white)
-            light_palette.setColor(QPalette.ToolTipText, Qt.white)
-            light_palette.setColor(QPalette.Text, Qt.black)
-            light_palette.setColor(QPalette.Button, QColor(239, 240, 241))
-            light_palette.setColor(QPalette.ButtonText, Qt.black)
-            light_palette.setColor(QPalette.BrightText, Qt.red)
-            light_palette.setColor(QPalette.Link, QColor(0, 0, 255))
-            light_palette.setColor(QPalette.Highlight, QColor(41, 128, 185))
-            light_palette.setColor(QPalette.HighlightedText, Qt.white)
-            app.setPalette(light_palette)
-
-    elif conf['ui']['mode'] == 'EchterAlsFake':
-        EchterAlsFake().setup_lol()
-
-    widget.show()
     sys.exit(app.exec())
 
 
