@@ -10,12 +10,15 @@ import zipfile
 from configparser import ConfigParser
 from PySide6.QtCore import Qt, QTimer
 from PySide6.QtGui import QPixmap, QPalette, QPainter, QColor, Qt
-from PySide6.QtWidgets import QApplication, QWidget, QMessageBox, QGraphicsScene, QLabel, QLineEdit, QPushButton
+from PySide6.QtWidgets import QApplication, QWidget, QMessageBox, QGraphicsScene, QLabel, QLineEdit, QPushButton, QDialogButtonBox, QDialog, QVBoxLayout
 from colorama import *
 from ffmpeg_progress_yield import FfmpegProgress
 from pytube import YouTube
 from tqdm import tqdm
 from ui_form import Ui_Widget
+
+__version__ = "0.1"
+__author__ = "EchterAlsFake"
 
 
 class Widget(QWidget):
@@ -35,7 +38,7 @@ class Widget(QWidget):
         self.x = Fore.LIGHTRED_EX + "[!]"
         self.platform = sys.platform
         self.distro = distro.name(pretty=True)
-
+        self.ffmpeg_popup()
 
         # Setup UI, ffmpeg and configuration files
         if sys.platform == "windows" or "win32":
@@ -58,6 +61,15 @@ class Widget(QWidget):
         self.timer.start(1000)
 
     # The following functions are used to set up the UI, ffmpeg and configuration files
+
+    def accept(self):
+        print("")
+
+    def rejected(self):
+        self.destroy()
+        exit()
+
+
     def add_to_path_windows(self):
 
         print(Fore.LIGHTGREEN_EX + "[+]" + Fore.LIGHTCYAN_EX + "Adding to PATH...")
@@ -65,6 +77,27 @@ class Widget(QWidget):
         current_path = os.environ.get('PATH')
         new_path = current_path + ';' + file_path
         os.environ['PATH'] = new_path
+
+
+    def ffmpeg_popup(self):
+
+        QBtn = QDialogButtonBox.StandardButton.Ok | QDialogButtonBox.StandardButton.Cancel | QDialogButtonBox.StandardButton.Help
+
+        self.buttonBox = QDialogButtonBox(QBtn)
+        self.buttonBox.helpRequested.connect(self.ffmpeg_help)
+        self.buttonBox.accepted.connect(self.accept)
+        self.buttonBox.rejected.connect(self.rejected)
+
+        self.layout = QVBoxLayout()
+        message = QLabel("ffmpeg was not found on your system.  Do you want to automatically install it?")
+        self.buttonBox.show()
+
+
+    def ffmpeg_help(self):
+
+        msg_box = QMessageBox()
+        msg_box.setText("ffmpgeg is a program, which converts file formats and codecs.  It's needed to convert the video and audio files.  You can instal it by yourself, or press OK to install it automatically.")
+        msg_box.exec()
 
     def check_ffmpeg_config(self):
 
@@ -362,6 +395,7 @@ Do you want me to download an ffmpeg release and include it to the program?  (no
             msgBox2.exec()
 
             self.conf.set("ui", "mode", "white")
+            self.conf.set("ui", "override_linux_dark_mode", "false")
             with open("config.ini", "w") as config_file:
                 self.conf.write(config_file)
                 config_file.close()
@@ -385,6 +419,7 @@ Do you want me to download an ffmpeg release and include it to the program?  (no
         if self.ui.radio_dark_mode.isChecked():
 
             self.conf.set("ui", "mode", "dark")
+            self.conf.set("ui", "override_linux_dark_mode", "false")
             with open("config.ini", "w") as config_file:
                 self.conf.write(config_file)
                 config_file.close()
@@ -416,20 +451,47 @@ Do you want me to download an ffmpeg release and include it to the program?  (no
 
     def check_video(self): # Optimizd for automated using with the playlist function.
 
-        url = self.ui.video_url_lineedit.text()
+        if not self.ui.radio_video_mode.isChecked() and self.ui.radio_video_only.isChecked() and self.ui.radio_music_mode.isChecked() and self.ui.radio_interactive.isChecked():
+            msgBox = QMessageBox()
+            msgBox.setText("You have not selected an option for the Download Mode. ")
+            msgBox.exec()
+            self.disable_boxes()
 
-        try:
+        else:
 
-            YouTube(url).check_availability()
-            self.get_metadata(url)
+            url = self.ui.video_url_lineedit.text()
+
+            try:
+
+                YouTube(url).check_availability()
+                self.get_metadata(url)
 
 
-        except Exception as e:
-                print("Video unavailable...")
-                msgBox = QMessageBox()
-                msgBox.setText(str(f"The Video URL is not valid.  Debug information: {e}"))
-                msgBox.exec()
-                self.ui.video_url_lineedit.clear()
+            except Exception as e:
+                    print("Video unavailable...")
+                    msgBox = QMessageBox()
+                    msgBox.setText(str(f"The Video URL is not valid.  Debug information: {e}"))
+                    msgBox.exec()
+                    self.ui.video_url_lineedit.clear()
+
+
+    def set_thumbnail(self, thumbnail_url, thumbnail_output):
+
+        wget.download(thumbnail_url, out=thumbnail_output)
+        if os.path.isfile(thumbnail_output):
+            print(Fore.LIGHTGREEN_EX + "[+]" + Fore.LIGHTMAGENTA_EX + "Thumbnail: ✔")
+            scene = QGraphicsScene(self)
+            pixmap = QPixmap(thumbnail_output)
+            pixmapItem = scene.addPixmap(pixmap)
+            self.ui.video_graphics_view.setScene(scene)
+            self.ui.video_graphics_view.setRenderHint(QPainter.Antialiasing)
+            self.ui.video_graphics_view.setSceneRect(pixmapItem.boundingRect())
+            self.ui.video_graphics_view.fitInView(pixmapItem, Qt.KeepAspectRatio)
+            pixmapItem.show()
+
+        else:
+            print(Fore.LIGHTRED_EX + "[!]" + Fore.LIGHTMAGENTA_EX + "Thumbnail: Error")
+
 
     def get_metadata(self, url):
 
@@ -441,27 +503,13 @@ Do you want me to download an ffmpeg release and include it to the program?  (no
 
         try:
 
-            wget.download(thumbnail_url, out=thumbnail_output)
-            if os.path.isfile(thumbnail_output):
-                print(Fore.LIGHTGREEN_EX + "[+]" + Fore.LIGHTMAGENTA_EX + "Thumbnail: ✔")
-                scene = QGraphicsScene(self)
-                pixmap = QPixmap(thumbnail_output)
-                pixmapItem = scene.addPixmap(pixmap)
-                self.ui.video_graphics_view.setScene(scene)
-                self.ui.video_graphics_view.setRenderHint(QPainter.Antialiasing)
-                self.ui.video_graphics_view.setSceneRect(pixmapItem.boundingRect())
-                self.ui.video_graphics_view.fitInView(pixmapItem, Qt.KeepAspectRatio)
-                pixmapItem.show()
-
-            else:
-                print(Fore.LIGHTRED_EX + "[!]" + Fore.LIGHTMAGENTA_EX + "Thumbnail: Error")
+            self.set_thumbnail(thumbnail_url, thumbnail_output)
 
         except Exception as e:
             self.show_error(e)
 
 
         if self.video_mode or self.video_only:
-            print("Running Video mode")
             self.enable_checkboxes()
             resolutions = self.resolutions
             dont_know_how_to_name_that_variable_lol = len(resolutions) + 1
@@ -502,15 +550,21 @@ Do you want me to download an ffmpeg release and include it to the program?  (no
                     radioButton.setDisabled(True)
                     radioButton.setStyleSheet("color: grey;")
 
-        if self.music_mode:
+        elif self.music_mode:
             for resolution in self.resolutions:
                 if self.music_mode:
                     radioButton = getattr(self.ui, f"radio_{resolution}")
                     radioButton.setDisabled(True)
                     radioButton.setStyleSheet("color: grey;")
+                    bitrate = "not available"
+                    fps = "music can not have fps"
+                    file_size = "not available"
 
-        self.set_metadata(bitrate=bitrate_list[-1], fps=fps_list[-1], file_size=file_size_list[-1])
+        if self.video_mode or self.video_only:
+            self.set_metadata(bitrate=bitrate_list[-1], fps=fps_list[-1], file_size=file_size_list[-1])
 
+        elif self.music_mode:
+            self.set_metadata(bitrate, fps, file_size)
 
 
     def set_metadata(self, bitrate, fps, file_size):
