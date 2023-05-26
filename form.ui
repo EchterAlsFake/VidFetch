@@ -6,751 +6,27 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1782</width>
+    <width>1859</width>
     <height>719</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>VidFetch - 0.1</string>
   </property>
-  <layout class="QGridLayout" name="gridLayout_14">
-   <item row="0" column="0">
-    <widget class="QGroupBox" name="groupbox_urls">
-     <property name="title">
-      <string/>
-     </property>
-     <layout class="QGridLayout" name="gridLayout_10">
-      <item row="2" column="2">
-       <widget class="QPushButton" name="video_thumbnail_copy_button">
-        <property name="text">
-         <string>Copy</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="0">
-       <widget class="QLabel" name="video_thumbnail_label">
-        <property name="text">
-         <string>Thumbnail:</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="playlist_url_label">
-        <property name="text">
-         <string>Playlist URL:</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1">
-       <widget class="QLineEdit" name="playlist_url_lineedit">
-        <property name="styleSheet">
-         <string notr="true">QLineEdit: { border: 2px rgb(192, 97, 203) !mportant; }</string>
-        </property>
-        <property name="readOnly">
-         <bool>false</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="1">
-       <widget class="QLineEdit" name="video_url_lineedit">
-        <property name="styleSheet">
-         <string notr="true">QLineEdit: { border: 2px rgb(192, 97, 203); }</string>
-        </property>
-        <property name="readOnly">
-         <bool>false</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="0">
-       <widget class="QLabel" name="video_url_label">
-        <property name="text">
-         <string>Video URL:</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="1">
-       <widget class="QLineEdit" name="video_thumbnail_lineedit">
-        <property name="styleSheet">
-         <string notr="true">QLineEdit: { border: 2px solid gray; }</string>
-        </property>
-        <property name="readOnly">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="2">
-       <widget class="QPushButton" name="playlist_start_button">
-        <property name="styleSheet">
-         <string notr="true"/>
-        </property>
-        <property name="text">
-         <string>Downlaod</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="2">
-       <widget class="QPushButton" name="video_start_prep_button">
-        <property name="styleSheet">
-         <string notr="true"/>
-        </property>
-        <property name="text">
-         <string>Start Prep</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="3">
-       <widget class="QPushButton" name="video_download_start_button">
-        <property name="text">
-         <string>Download</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item row="0" column="1" rowspan="3">
-    <widget class="QGroupBox" name="groupBox_2">
-     <property name="title">
-      <string/>
-     </property>
-     <layout class="QGridLayout" name="gridLayout_12">
-      <item row="0" column="3">
-       <widget class="QGroupBox" name="groupbox_format">
-        <property name="title">
-         <string>Output Format</string>
-        </property>
-        <layout class="QGridLayout" name="gridLayout_3">
-         <item row="0" column="0">
-          <widget class="QRadioButton" name="radio_mov">
-           <property name="text">
-            <string>MOV Format</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="0">
-          <widget class="QRadioButton" name="radio_mp4">
-           <property name="text">
-            <string>MP4 Format</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="0">
-          <widget class="QRadioButton" name="radio_mkv">
-           <property name="text">
-            <string>MKV Format</string>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="0">
-          <widget class="QRadioButton" name="radio_avi">
-           <property name="text">
-            <string>AVI Format</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-      </item>
-      <item row="0" column="4">
-       <widget class="QGroupBox" name="group_box_music">
-        <property name="title">
-         <string>Music</string>
-        </property>
-        <layout class="QGridLayout" name="gridLayout_2">
-         <item row="2" column="0">
-          <widget class="QRadioButton" name="radio_opus">
-           <property name="text">
-            <string>OPUS Format</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="0">
-          <widget class="QRadioButton" name="radio_m4a">
-           <property name="text">
-            <string>M4A Format</string>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="0">
-          <widget class="QRadioButton" name="radio_wav">
-           <property name="text">
-            <string>WAV Format</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="0">
-          <widget class="QRadioButton" name="radio_mp3">
-           <property name="text">
-            <string>MP3 Format</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-      </item>
-      <item row="0" column="2">
-       <widget class="QGroupBox" name="groupbox_resolutions">
-        <property name="title">
-         <string>Resolutions</string>
-        </property>
-        <layout class="QGridLayout" name="gridLayout_8">
-         <item row="0" column="0">
-          <widget class="QRadioButton" name="radio_144p">
-           <property name="text">
-            <string>144p SD</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="1">
-          <widget class="QRadioButton" name="radio_1080p">
-           <property name="text">
-            <string>1080p F-HD</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="0">
-          <widget class="QRadioButton" name="radio_240p">
-           <property name="text">
-            <string>240p SD</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="1">
-          <widget class="QRadioButton" name="radio_1440p">
-           <property name="text">
-            <string>1440p 2K</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="0">
-          <widget class="QRadioButton" name="radio_360p">
-           <property name="text">
-            <string>360p SD</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="1">
-          <widget class="QRadioButton" name="radio_2160p">
-           <property name="text">
-            <string>2160p 4K</string>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="0">
-          <widget class="QRadioButton" name="radio_480p">
-           <property name="text">
-            <string>480p SD</string>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="1">
-          <widget class="QRadioButton" name="radio_4320p">
-           <property name="text">
-            <string>4320p 8K</string>
-           </property>
-          </widget>
-         </item>
-         <item row="4" column="0">
-          <widget class="QRadioButton" name="radio_720p">
-           <property name="text">
-            <string>720p HD</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-      </item>
-      <item row="0" column="1">
-       <widget class="QGroupBox" name="groupbox_video">
-        <property name="title">
-         <string>Video</string>
-        </property>
-        <layout class="QGridLayout" name="gridLayout_7">
-         <item row="0" column="0">
-          <widget class="QRadioButton" name="radio_interactive">
-           <property name="text">
-            <string>Interactive Mode</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="0">
-          <widget class="QRadioButton" name="radio_video_only">
-           <property name="text">
-            <string>Video Only</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="0">
-          <widget class="QRadioButton" name="radio_video_mode">
-           <property name="text">
-            <string>Video Mode</string>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="0">
-          <widget class="QRadioButton" name="radio_music_mode">
-           <property name="text">
-            <string>Music Mode</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item row="1" column="0">
-    <widget class="QGroupBox" name="groupbox_downloads">
-     <property name="title">
-      <string>Downloads </string>
-     </property>
-     <layout class="QGridLayout" name="gridLayout_11">
-      <item row="0" column="0">
-       <widget class="QLabel" name="video_remain_video_label">
-        <property name="text">
-         <string>Downloaded: / of / Videos</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="playlist_remain_vieos_label">
-        <property name="text">
-         <string>Downloaded: / of / Videos</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item row="2" column="0" rowspan="3">
-    <widget class="QGroupBox" name="groupbox_metadata">
-     <property name="title">
-      <string>Metadata:</string>
-     </property>
-     <layout class="QGridLayout" name="gridLayout_5">
-      <item row="1" column="3" rowspan="9">
-       <widget class="QGraphicsView" name="video_graphics_view"/>
-      </item>
-      <item row="6" column="0" colspan="3">
-       <layout class="QHBoxLayout" name="hLayout_filesize">
-        <item>
-         <widget class="QLabel" name="metadata_filesize_label">
-          <property name="text">
-           <string>File Size (MB):</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="metadata_filesize_lineedit">
-          <property name="readOnly">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item row="2" column="0" colspan="3">
-       <layout class="QHBoxLayout" name="hLayout_fps">
-        <item>
-         <widget class="QLabel" name="metadata_fps_label">
-          <property name="text">
-           <string>FPS:</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="metadata_fps_lineedit">
-          <property name="readOnly">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item row="8" column="0" colspan="3">
-       <layout class="QHBoxLayout" name="hLayout_views">
-        <item>
-         <widget class="QLabel" name="metadata_views_label">
-          <property name="text">
-           <string>Views:</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="metadata_views_lineedit">
-          <property name="readOnly">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item row="0" column="3">
-       <widget class="QLabel" name="metadata_thumbnail_label">
-        <property name="text">
-         <string>Thumbnail:</string>
-        </property>
-       </widget>
-      </item>
-      <item row="9" column="0" colspan="3">
-       <layout class="QHBoxLayout" name="hLayout_hdr">
-        <item>
-         <widget class="QLabel" name="metadata_hdr_label">
-          <property name="text">
-           <string>HDR:</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="metadata_hdr_lineedit">
-          <property name="readOnly">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item row="3" column="0" rowspan="2" colspan="3">
-       <layout class="QHBoxLayout" name="hLayout_resolution"/>
-      </item>
-      <item row="1" column="0" colspan="3">
-       <layout class="QHBoxLayout" name="hLayout_">
-        <item>
-         <widget class="QLabel" name="metadata_title_label">
-          <property name="text">
-           <string>Processing: </string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="metadata_title_lineedit">
-          <property name="text">
-           <string> -</string>
-          </property>
-          <property name="readOnly">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item row="5" column="0" colspan="3">
-       <layout class="QHBoxLayout" name="hLayout_bitrate">
-        <item>
-         <widget class="QLabel" name="metadata_bitrate_label">
-          <property name="text">
-           <string>Bitrate:´</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="metadata_bitrate_lineedit">
-          <property name="readOnly">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item row="7" column="0" colspan="3">
-       <layout class="QHBoxLayout" name="hLayout_length">
-        <item>
-         <widget class="QLabel" name="metadata_length_label">
-          <property name="text">
-           <string>Length:</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="metadata_length_lineedit">
-          <property name="readOnly">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item row="3" column="1">
-    <widget class="QGroupBox" name="groupBox_3">
-     <property name="title">
-      <string/>
-     </property>
-     <layout class="QGridLayout" name="gridLayout_13">
-      <item row="0" column="0">
-       <widget class="QGroupBox" name="groupbox_output">
-        <property name="title">
-         <string>Output stuff</string>
-        </property>
-        <layout class="QGridLayout" name="gridLayout_6">
-         <item row="0" column="0">
-          <widget class="QLabel" name="output_thumbnail_label">
-           <property name="text">
-            <string>Thumbnails:</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="1">
-          <widget class="QLineEdit" name="output_thumbnail_lineedit">
-           <property name="text">
-            <string>output/thumb/</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="2">
-          <widget class="QPushButton" name="output_thumbnail_button">
-           <property name="styleSheet">
-            <string notr="true"/>
-           </property>
-           <property name="text">
-            <string>Change</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="0">
-          <widget class="QLabel" name="output_music_label">
-           <property name="text">
-            <string>Music output:</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="1">
-          <widget class="QLineEdit" name="output_music_lineedit">
-           <property name="text">
-            <string>output/music/</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="2">
-          <widget class="QPushButton" name="output_music_button">
-           <property name="styleSheet">
-            <string notr="true"/>
-           </property>
-           <property name="text">
-            <string>Change</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="0">
-          <widget class="QLabel" name="output_video_label">
-           <property name="text">
-            <string>Video output:</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="1">
-          <widget class="QLineEdit" name="output_video_lineedit">
-           <property name="text">
-            <string>output/video/</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="2">
-          <widget class="QPushButton" name="output_video_button">
-           <property name="styleSheet">
-            <string notr="true"/>
-           </property>
-           <property name="text">
-            <string>Change</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-      </item>
-      <item row="0" column="1">
-       <widget class="QGroupBox" name="groupbox_progress_bars">
-        <property name="title">
-         <string>Progress Bars</string>
-        </property>
-        <layout class="QGridLayout" name="gridLayout">
-         <item row="0" column="0">
-          <widget class="QLabel" name="progressbar_metadata_label">
-           <property name="text">
-            <string>Metadata:</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="1">
-          <widget class="QProgressBar" name="progressbar_metadata">
-           <property name="styleSheet">
-            <string notr="true">QProgressBar {
-    background-color: #F0F0F0; /* Hellgrauer Hintergrund */
-}
-
-QProgressBar::chunk {
-    background-color: #00FF00; /* Grün als Vordergrundfarbe */
-}</string>
-           </property>
-           <property name="value">
-            <number>20</number>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="0">
-          <widget class="QLabel" name="progressbar_video_label">
-           <property name="text">
-            <string>Video Download:</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="1">
-          <widget class="QProgressBar" name="progressbar_video">
-           <property name="value">
-            <number>0</number>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="0">
-          <widget class="QLabel" name="progressbar_playlist_label">
-           <property name="text">
-            <string>Playlist Download:</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="1">
-          <widget class="QProgressBar" name="progressbar_playlist">
-           <property name="value">
-            <number>0</number>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="0">
-          <widget class="QLabel" name="progressbar_converting_label">
-           <property name="text">
-            <string>Converting:</string>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="1">
-          <widget class="QProgressBar" name="progressbar_converting">
-           <property name="value">
-            <number>0</number>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-      </item>
-      <item row="0" column="2">
-       <widget class="QGroupBox" name="groupbox_ui">
-        <property name="title">
-         <string>User Interface</string>
-        </property>
-        <layout class="QGridLayout" name="gridLayout_4">
-         <item row="2" column="0">
-          <widget class="QRadioButton" name="radio_dark_mode">
-           <property name="cursor">
-            <cursorShape>PointingHandCursor</cursorShape>
-           </property>
-           <property name="text">
-            <string>Dark Mode (default)</string>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="0">
-          <widget class="QRadioButton" name="radio_echteralsfake">
-           <property name="cursor">
-            <cursorShape>PointingHandCursor</cursorShape>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">color: rgb(97, 53, 131)</string>
-           </property>
-           <property name="text">
-            <string>EchterAlsFake</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="0">
-          <widget class="QRadioButton" name="radio_white_theme">
-           <property name="cursor">
-            <cursorShape>ForbiddenCursor</cursorShape>
-           </property>
-           <property name="toolTip">
-            <string>No please dont do shis </string>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">color: rgb(154, 153, 150)</string>
-           </property>
-           <property name="text">
-            <string>White Theme</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="0">
-          <widget class="QLabel" name="label_reset">
-           <property name="text">
-            <string>After changing this you need to restart</string>
-           </property>
-          </widget>
-         </item>
-         <item row="4" column="0">
-          <widget class="QCheckBox" name="checkbox_linux_override_dark">
-           <property name="cursor">
-            <cursorShape>PointingHandCursor</cursorShape>
-           </property>
-           <property name="toolTip">
-            <string>If your Linux distro doesn't enable dark mode by default, you can go with that</string>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">color: rgb(224, 27, 36)</string>
-           </property>
-           <property name="text">
-            <string>Override default linux dark mode</string>
-           </property>
-          </widget>
-         </item>
-         <item row="5" column="0">
-          <widget class="QPushButton" name="ui_theme_apply">
-           <property name="text">
-            <string>Apply</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item row="4" column="1" rowspan="2">
-    <widget class="QGroupBox" name="groupbox_info">
-     <property name="title">
-      <string/>
-     </property>
-     <layout class="QGridLayout" name="gridLayout_9">
-      <item row="0" column="0">
-       <widget class="QLabel" name="info_text_1">
-        <property name="toolTip">
-         <string>You found an Easter Egg :D</string>
-        </property>
-        <property name="text">
-         <string>* Program will ask you what resolution etc...  while downloading</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="info_text_2">
-        <property name="text">
-         <string>** Video is downloaded seperately with the Audio and then combined to one file.</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="0">
-       <widget class="QLabel" name="info_text_3">
-        <property name="text">
-         <string>*** Downloads video with the endpoint url. (No VPN, takes longer, but real-time progress bar)</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item row="5" column="0">
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(0, 0, 0)</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout_9">
+   <item row="4" column="0">
     <widget class="QTextBrowser" name="license_text">
+     <property name="styleSheet">
+      <string notr="true">QTextBrowser {
+    border: 2px solid #757575;
+    border-radius: 5px;
+    margin-top: 1ex; /* margin-top sorgt für einen Abstand zwischen dem Titel und dem Rand */
+}
+</string>
+     </property>
      <property name="html">
       <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -793,6 +69,2104 @@ li.checked::marker { content: &quot;\2612&quot;; }
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Thanks :) &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QGroupBox" name="groupbox_downloads">
+     <property name="styleSheet">
+      <string notr="true">QGroupBox {
+    border: 2px solid #757575;
+    border-radius: 5px;
+    margin-top: 1ex; /* margin-top sorgt für einen Abstand zwischen dem Titel und dem Rand */
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    left: 10px; /* left verschiebt den Titel etwas nach rechts, damit er nicht direkt am Rand anliegt */
+    padding: 0 3px 0 3px; /* padding gibt dem Titel etwas Platz rundherum */
+}
+</string>
+     </property>
+     <property name="title">
+      <string>Downloads </string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_11">
+      <item row="0" column="0">
+       <widget class="QLabel" name="video_remain_video_label">
+        <property name="styleSheet">
+         <string notr="true">color: white</string>
+        </property>
+        <property name="text">
+         <string>Video:  Downloaded: / of / Videos</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="playlist_remain_vieos_label">
+        <property name="styleSheet">
+         <string notr="true">color: white</string>
+        </property>
+        <property name="text">
+         <string>Playlist:  Downloaded: / of / Videos</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="0" column="1" rowspan="2">
+    <widget class="QGroupBox" name="groupBox_2">
+     <property name="title">
+      <string/>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_12">
+      <item row="0" column="2">
+       <widget class="QGroupBox" name="groupbox_resolutions">
+        <property name="styleSheet">
+         <string notr="true">QGroupBox {
+    border: 2px solid #757575;
+    border-radius: 5px;
+    margin-top: 1ex; /* margin-top sorgt für einen Abstand zwischen dem Titel und dem Rand */
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    left: 10px; /* left verschiebt den Titel etwas nach rechts, damit er nicht direkt am Rand anliegt */
+    padding: 0 3px 0 3px; /* padding gibt dem Titel etwas Platz rundherum */
+}
+</string>
+        </property>
+        <property name="title">
+         <string>Resolutions</string>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_8">
+         <item row="0" column="0">
+          <widget class="QRadioButton" name="radio_144p">
+           <property name="styleSheet">
+            <string notr="true">QRadioButton {
+	color: rgb(255, 0, 0) }
+
+
+QRadioButton::indicator::unchecked {
+	border: 1px solid white;
+	border-radius: 5px;
+}
+
+
+QRadioButton::indicator:checked {
+    border : 4px solid;
+	border-color: black;
+	border-radius: 6px;
+	background-color: rgb(0, 255, 183);
+
+}
+
+</string>
+           </property>
+           <property name="text">
+            <string>144p SD</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QRadioButton" name="radio_1080p">
+           <property name="styleSheet">
+            <string notr="true">QRadioButton {
+	color: rgb(0, 255, 250) }
+
+
+QRadioButton::indicator::unchecked {
+	border: 1px solid white;
+	border-radius: 5px;
+}
+
+
+QRadioButton::indicator:checked {
+    border : 4px solid;
+	border-color: black;
+	border-radius: 6px;
+	background-color: rgb(0, 255, 183);
+
+}
+
+</string>
+           </property>
+           <property name="text">
+            <string>1080p F-HD</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QRadioButton" name="radio_240p">
+           <property name="autoFillBackground">
+            <bool>false</bool>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QRadioButton {
+	color: rgb(255, 0, 0)  }
+
+
+QRadioButton::indicator::unchecked {
+	border: 1px solid white;
+	border-radius: 5px;
+}
+
+
+QRadioButton::indicator:checked {
+    border : 4px solid;
+	border-color: black;
+	border-radius: 6px;
+	background-color: rgb(0, 255, 183);
+
+}
+
+</string>
+           </property>
+           <property name="text">
+            <string>240p SD</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QRadioButton" name="radio_1440p">
+           <property name="styleSheet">
+            <string notr="true">QRadioButton {
+	color:  rgb(0, 255, 250)}
+
+QRadioButton::indicator::unchecked {
+	border: 1px solid white;
+	border-radius: 5px;
+}
+
+
+QRadioButton::indicator:checked {
+    border : 4px solid;
+	border-color: black;
+	border-radius: 6px;
+	background-color: rgb(0, 255, 183);
+
+}
+
+</string>
+           </property>
+           <property name="text">
+            <string>1440p 2K</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QRadioButton" name="radio_360p">
+           <property name="autoFillBackground">
+            <bool>false</bool>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QRadioButton {
+	color: rgb(255, 0, 0)  }
+
+
+QRadioButton::indicator::unchecked {
+	border: 1px solid white;
+	border-radius: 5px;
+}
+
+
+QRadioButton::indicator:checked {
+    border : 4px solid;
+	border-color: black;
+	border-radius: 6px;
+	background-color: rgb(0, 255, 183);
+
+}
+
+</string>
+           </property>
+           <property name="text">
+            <string>360p SD</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QRadioButton" name="radio_2160p">
+           <property name="styleSheet">
+            <string notr="true">QRadioButton {
+	color: rgb(255, 160, 0) }
+
+QRadioButton::indicator::unchecked {
+	border: 1px solid white;
+	border-radius: 5px;
+}
+
+
+QRadioButton::indicator:checked {
+    border : 4px solid;
+	border-color: black;
+	border-radius: 6px;
+	background-color: rgb(0, 255, 183);
+
+}
+
+</string>
+           </property>
+           <property name="text">
+            <string>2160p 4K</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <widget class="QRadioButton" name="radio_480p">
+           <property name="styleSheet">
+            <string notr="true">QRadioButton {
+	color: rgb(255, 0, 0) }
+
+
+QRadioButton::indicator::unchecked {
+	border: 1px solid white;
+	border-radius: 5px;
+}
+
+
+QRadioButton::indicator:checked {
+    border : 4px solid;
+	border-color: black;
+	border-radius: 6px;
+	background-color: rgb(0, 255, 183);
+
+}
+
+</string>
+           </property>
+           <property name="text">
+            <string>480p SD</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="1">
+          <widget class="QRadioButton" name="radio_4320p">
+           <property name="styleSheet">
+            <string notr="true">QRadioButton {
+	color: rgb(179, 0, 255) }
+
+QRadioButton::indicator::unchecked {
+	border: 1px solid white;
+	border-radius: 5px;
+}
+
+
+
+QRadioButton::indicator:checked {
+    border : 4px solid;
+	border-color: black;
+	border-radius: 6px;
+	background-color: rgb(0, 255, 183);
+
+}
+
+</string>
+           </property>
+           <property name="text">
+            <string>4320p 8K</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="0">
+          <widget class="QRadioButton" name="radio_720p">
+           <property name="styleSheet">
+            <string notr="true">QRadioButton {
+	color: rgb(169, 255, 0) }
+
+QRadioButton::indicator::unchecked {
+	border: 1px solid white;
+	border-radius: 5px;
+}
+
+
+
+QRadioButton::indicator:checked {
+    border : 4px solid;
+	border-color: black;
+	border-radius: 6px;
+	background-color: rgb(0, 255, 183);
+
+}
+
+</string>
+           </property>
+           <property name="text">
+            <string>720p HD</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item row="0" column="4">
+       <widget class="QGroupBox" name="group_box_music">
+        <property name="styleSheet">
+         <string notr="true">QGroupBox {
+    border: 2px solid #757575;
+    border-radius: 5px;
+    margin-top: 1ex; /* margin-top sorgt für einen Abstand zwischen dem Titel und dem Rand */
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    left: 10px; /* left verschiebt den Titel etwas nach rechts, damit er nicht direkt am Rand anliegt */
+    padding: 0 3px 0 3px; /* padding gibt dem Titel etwas Platz rundherum */
+}
+</string>
+        </property>
+        <property name="title">
+         <string>Music</string>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_2">
+         <item row="0" column="0">
+          <widget class="QRadioButton" name="radio_mp3">
+           <property name="styleSheet">
+            <string notr="true">QRadioButton {
+	color: rgb(0, 208, 255) }
+
+
+QRadioButton::indicator::unchecked {
+	border: 1px solid white;
+	border-radius: 5px;
+}
+
+
+QRadioButton::indicator:checked {
+    border : 4px solid;
+	border-color: black;
+	border-radius: 6px;
+	background-color: rgb(0, 255, 183);
+
+}
+
+</string>
+           </property>
+           <property name="text">
+            <string>MP3 Format</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <widget class="QRadioButton" name="radio_wav">
+           <property name="styleSheet">
+            <string notr="true">
+
+QRadioButton {
+	color: rgb(255, 255, 255) }
+
+
+QRadioButton::indicator::unchecked {
+	border: 1px solid white;
+	border-radius: 5px;
+}
+
+
+QRadioButton::indicator:checked {
+    border : 4px solid;
+	border-color: black;
+	border-radius: 6px;
+	background-color: rgb(0, 255, 183);
+
+}
+
+</string>
+           </property>
+           <property name="text">
+            <string>WAV Format</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QRadioButton" name="radio_m4a">
+           <property name="styleSheet">
+            <string notr="true">QRadioButton {
+	color: rgb(96, 0, 255) }
+
+
+QRadioButton::indicator::unchecked {
+	border: 1px solid white;
+	border-radius: 5px;
+}
+
+
+QRadioButton::indicator:checked {
+    border : 4px solid;
+	border-color: black;
+	border-radius: 6px;
+	background-color: rgb(0, 255, 183);
+
+}
+
+
+
+
+</string>
+           </property>
+           <property name="text">
+            <string>M4A Format</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QRadioButton" name="radio_opus">
+           <property name="styleSheet">
+            <string notr="true">
+
+QRadioButton {
+	color: rgb(255, 160, 0) }
+
+
+QRadioButton::indicator::unchecked {
+	border: 1px solid white;
+	border-radius: 5px;
+}
+
+
+QRadioButton::indicator:checked {
+    border : 4px solid;
+	border-color: black;
+	border-radius: 6px;
+	background-color: rgb(0, 255, 183);
+
+}
+
+</string>
+           </property>
+           <property name="text">
+            <string>OPUS Format</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item row="0" column="3">
+       <widget class="QGroupBox" name="groupbox_format">
+        <property name="styleSheet">
+         <string notr="true">QGroupBox {
+    border: 2px solid #757575;
+    border-radius: 5px;
+    margin-top: 1ex; /* margin-top sorgt für einen Abstand zwischen dem Titel und dem Rand */
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    left: 10px; /* left verschiebt den Titel etwas nach rechts, damit er nicht direkt am Rand anliegt */
+    padding: 0 3px 0 3px; /* padding gibt dem Titel etwas Platz rundherum */
+}
+</string>
+        </property>
+        <property name="title">
+         <string>Output Format</string>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_3">
+         <item row="0" column="0">
+          <widget class="QRadioButton" name="radio_mov">
+           <property name="styleSheet">
+            <string notr="true">QRadioButton {
+	color: rgb(179, 0, 255) }
+
+
+QRadioButton::indicator::unchecked {
+	border: 1px solid white;
+	border-radius: 5px;
+}
+
+
+QRadioButton::indicator:checked {
+    border : 4px solid;
+	border-color: black;
+	border-radius: 6px;
+	background-color: rgb(0, 255, 183);
+
+}
+
+
+</string>
+           </property>
+           <property name="text">
+            <string>MOV Format</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QRadioButton" name="radio_mp4">
+           <property name="styleSheet">
+            <string notr="true">QRadioButton {
+	color: rgb(0, 255, 84)}
+
+
+QRadioButton::indicator::unchecked {
+	border: 1px solid white;
+	border-radius: 5px;
+}
+
+
+QRadioButton::indicator:checked {
+    border : 4px solid;
+	border-color: black;
+	border-radius: 6px;
+	background-color: rgb(0, 255, 183);
+
+}
+
+
+</string>
+           </property>
+           <property name="text">
+            <string>MP4 Format</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QRadioButton" name="radio_mkv">
+           <property name="styleSheet">
+            <string notr="true">QRadioButton {
+color: rgb(255, 150, 0)
+
+}
+
+
+QRadioButton::indicator::unchecked {
+	border: 1px solid white;
+	border-radius: 5px;
+}
+
+QRadioButton::indicator:checked {
+    border : 4px solid;
+	border-color: black;
+	border-radius: 6px;
+	background-color: rgb(0, 255, 183);
+
+}
+
+
+</string>
+           </property>
+           <property name="text">
+            <string>MKV Format</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <widget class="QRadioButton" name="radio_avi">
+           <property name="styleSheet">
+            <string notr="true">QRadioButton {
+	color: rgb(255, 62, 0) }
+
+
+QRadioButton::indicator::unchecked {
+	border: 1px solid white;
+	border-radius: 5px;
+}
+
+
+QRadioButton::indicator:checked {
+    border : 4px solid;
+	border-color: black;
+	border-radius: 6px;
+	background-color: rgb(0, 255, 183);
+
+}
+
+
+</string>
+           </property>
+           <property name="text">
+            <string>AVI Format</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QGroupBox" name="groupbox_video">
+        <property name="styleSheet">
+         <string notr="true">QGroupBox {
+    border: 2px solid #757575;
+    border-radius: 5px;
+    margin-top: 1ex; /* margin-top sorgt für einen Abstand zwischen dem Titel und dem Rand */
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    left: 10px; /* left verschiebt den Titel etwas nach rechts, damit er nicht direkt am Rand anliegt */
+    padding: 0 3px 0 3px; /* padding gibt dem Titel etwas Platz rundherum */
+}
+</string>
+        </property>
+        <property name="title">
+         <string>Video</string>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_7">
+         <item row="0" column="0">
+          <widget class="QRadioButton" name="radio_interactive">
+           <property name="styleSheet">
+            <string notr="true">QRadioButton {
+	color: rgb(0, 255, 17) }
+
+QRadioButton::indicator::unchecked {
+	border: 1px solid white;
+	border-radius: 5px;
+}
+
+
+QRadioButton::indicator:checked {
+    border : 4px solid;
+	border-color: black;
+	border-radius: 6px;
+	background-color: rgb(0, 255, 183);
+
+}
+
+
+</string>
+           </property>
+           <property name="text">
+            <string>Interactive Mode</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QRadioButton" name="radio_video_only">
+           <property name="styleSheet">
+            <string notr="true">QRadioButton {
+	color: rgb(255, 150, 0) }
+
+QRadioButton::indicator::unchecked {
+	border: 1px solid white;
+	border-radius: 5px;
+}
+
+
+
+QRadioButton::indicator:checked {
+    border : 4px solid;
+	border-color: black;
+	border-radius: 6px;
+	background-color: rgb(0, 255, 183);
+
+}
+
+
+</string>
+           </property>
+           <property name="text">
+            <string>Video Only</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QRadioButton" name="radio_video_mode">
+           <property name="styleSheet">
+            <string notr="true">QRadioButton {
+	color: rgb(255, 255, 255)
+}
+
+QRadioButton::indicator::unchecked {
+	border: 1px solid white;
+	border-radius: 5px;
+}
+
+
+
+QRadioButton::indicator:checked {
+    border : 4px solid;
+	border-color: black;
+	border-radius: 6px;
+	background-color: rgb(0, 255, 183);
+
+}
+
+
+</string>
+           </property>
+           <property name="text">
+            <string>Video Mode</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <widget class="QRadioButton" name="radio_music_mode">
+           <property name="styleSheet">
+            <string notr="true">QRadioButton {
+	color: rgb(0, 255, 250)
+}
+
+QRadioButton::indicator::unchecked {
+	border: 1px solid white;
+	border-radius: 5px;
+}
+</string>
+           </property>
+           <property name="text">
+            <string>Music Mode</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="0" column="0">
+    <widget class="QGroupBox" name="groupbox_urls">
+     <property name="styleSheet">
+      <string notr="true">QGroupBox {
+    border: 2px solid #757575;
+    border-radius: 5px;
+    margin-top: 1ex; /* margin-top sorgt für einen Abstand zwischen dem Titel und dem Rand */
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    left: 10px; /* left verschiebt den Titel etwas nach rechts, damit er nicht direkt am Rand anliegt */
+    padding: 0 3px 0 3px; /* padding gibt dem Titel etwas Platz rundherum */
+}
+</string>
+     </property>
+     <property name="title">
+      <string/>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_10">
+      <item row="1" column="2">
+       <widget class="QPushButton" name="playlist_start_button">
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+    background-color: #5468ff;
+    border: none;
+    border-radius: 6px;
+    color: #fff;
+    font-family: &quot;JetBrains Mono&quot;, monospace;
+    font-size: 15px;
+    padding: 0px 16px 0px 16px;
+    height: 24px;
+}
+
+QPushButton:hover {
+    background-color: #3c4fe0;
+}
+
+QPushButton:pressed {
+    background-color: #3c4fe0;
+}
+</string>
+        </property>
+        <property name="text">
+         <string>Downlaod</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="playlist_url_lineedit">
+        <property name="styleSheet">
+         <string notr="true">QLineEdit {
+    border: 2px solid #757575;
+    border-radius: 5px;
+    padding: 0 8px;
+    background: rgb(94, 92, 100);  /* setzt den Hintergrund auf Schwarz */
+    color: #FFFFFF;  /* setzt die Textfarbe auf Weiß */
+    font-size: 16px;
+    height: 20px;
+}
+
+QLineEdit:focus {
+    border-color: #4a90d9;
+}
+
+QLineEdit:disabled {
+    background: #444444;  /* setzt den Hintergrund auf ein dunkles Grau, wenn das QLineEdit deaktiviert ist */
+    color: #aaaaaa;  /* setzt die Textfarbe auf ein helles Grau, wenn das QLineEdit deaktiviert ist */
+    border-color: #aaaaaa;
+}</string>
+        </property>
+        <property name="readOnly">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="2">
+       <widget class="QPushButton" name="video_thumbnail_copy_button">
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+    background-color: #5468ff;
+    border: none;
+    border-radius: 6px;
+    color: #fff;
+    font-family: &quot;JetBrains Mono&quot;, monospace;
+    font-size: 16px;
+    padding: 0px 16px 0px 16px;
+    height: 24px;
+}
+
+QPushButton:hover {
+    background-color: #3c4fe0;
+}
+
+QPushButton:pressed {
+    background-color: #3c4fe0;
+}
+</string>
+        </property>
+        <property name="text">
+         <string>Copy</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="playlist_url_label">
+        <property name="styleSheet">
+         <string notr="true">color: white</string>
+        </property>
+        <property name="text">
+         <string>Playlist URL:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="video_url_lineedit">
+        <property name="styleSheet">
+         <string notr="true">QLineEdit {
+    border: 2px solid #757575;
+    border-radius: 5px;
+    padding: 0 8px;
+    background: rgb(94, 92, 100);  /* setzt den Hintergrund auf Schwarz */
+    color: #FFFFFF;  /* setzt die Textfarbe auf Weiß */
+    font-size: 16px;
+    height: 20px;
+}
+
+QLineEdit:focus {
+    border-color: #4a90d9;
+}
+
+QLineEdit:disabled {
+    background: #444444;  /* setzt den Hintergrund auf ein dunkles Grau, wenn das QLineEdit deaktiviert ist */
+    color: #aaaaaa;  /* setzt die Textfarbe auf ein helles Grau, wenn das QLineEdit deaktiviert ist */
+    border-color: #aaaaaa;
+}</string>
+        </property>
+        <property name="readOnly">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="3">
+       <widget class="QPushButton" name="video_download_start_button">
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+    background-color: #5468ff;
+    border: none;
+    border-radius: 6px;
+    color: #fff;
+    font-family: &quot;JetBrains Mono&quot;, monospace;
+    font-size: 15
+px;
+    padding: 0px 16px 0px 16px;
+    height: 24px;
+}
+
+QPushButton:hover {
+    background-color: #3c4fe0;
+}
+
+QPushButton:pressed {
+    background-color: #3c4fe0;
+}
+</string>
+        </property>
+        <property name="text">
+         <string>Download</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="video_thumbnail_label">
+        <property name="styleSheet">
+         <string notr="true">color: white</string>
+        </property>
+        <property name="text">
+         <string>Thumbnail:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLineEdit" name="video_thumbnail_lineedit">
+        <property name="styleSheet">
+         <string notr="true">QLineEdit {
+    border: 2px solid #757575;
+    border-radius: 5px;
+    padding: 0 8px;
+    background: rgb(94, 92, 100);  /* setzt den Hintergrund auf Schwarz */
+    color: #FFFFFF;  /* setzt die Textfarbe auf Weiß */
+    font-size: 16px;
+    height: 20px;
+}
+
+QLineEdit:focus {
+    border-color: #4a90d9;
+}
+
+QLineEdit:disabled {
+    background: #444444;  /* setzt den Hintergrund auf ein dunkles Grau, wenn das QLineEdit deaktiviert ist */
+    color: #aaaaaa;  /* setzt die Textfarbe auf ein helles Grau, wenn das QLineEdit deaktiviert ist */
+    border-color: #aaaaaa;
+}</string>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2">
+       <widget class="QPushButton" name="video_start_prep_button">
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+    background-color: #5468ff;
+    border: none;
+    border-radius: 6px;
+    color: #fff;
+    font-family: &quot;JetBrains Mono&quot;, monospace;
+    font-size: 15px;
+    padding: 0px 16px 0px 16px;
+    height: 24px;
+}
+
+QPushButton:hover {
+    background-color: #3c4fe0;
+}
+
+QPushButton:pressed {
+    background-color: #3c4fe0;
+}
+</string>
+        </property>
+        <property name="text">
+         <string>Start Prep</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="video_url_label">
+        <property name="styleSheet">
+         <string notr="true">color: white</string>
+        </property>
+        <property name="text">
+         <string>Video URL:</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="2" column="0" rowspan="2">
+    <widget class="QGroupBox" name="groupbox_metadata">
+     <property name="styleSheet">
+      <string notr="true">QGroupBox {
+    border: 2px solid #757575;
+    border-radius: 5px;
+    margin-top: 1ex; /* margin-top sorgt für einen Abstand zwischen dem Titel und dem Rand */
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    left: 10px; /* left verschiebt den Titel etwas nach rechts, damit er nicht direkt am Rand anliegt */
+    padding: 0 3px 0 3px; /* padding gibt dem Titel etwas Platz rundherum */
+}
+</string>
+     </property>
+     <property name="title">
+      <string>Metadata:</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_5">
+      <item row="0" column="0" colspan="2">
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <widget class="QLabel" name="metadata_thumbnail_label">
+          <property name="styleSheet">
+           <string notr="true">QLabel {
+    color: white;
+    font-size: 16px;
+	margin-right: 28px;
+}
+
+QLabel#Title {
+    color: #212121;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+QLabel#Subtitle {
+    color: #757575;
+    font-size: 20px;
+}
+</string>
+          </property>
+          <property name="text">
+           <string>Thumbnail:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="lineEdit">
+          <property name="styleSheet">
+           <string notr="true">QLineEdit {
+    border: 2px solid #757575;
+    border-radius: 5px;
+    padding: 0 8px;
+    background: rgb(94, 92, 100);  /* setzt den Hintergrund auf Schwarz */
+    color: #FFFFFF;  /* setzt die Textfarbe auf Weiß */
+    font-size: 16px;
+    height: 20px;
+	margin-left: 0px;
+}
+
+
+QLineEdit:focus {
+    border-color: #4a90d9;
+}
+
+QLineEdit:disabled {
+    background: #444444;  /* setzt den Hintergrund auf ein dunkles Grau, wenn das QLineEdit deaktiviert ist */
+    color: #aaaaaa;  /* setzt die Textfarbe auf ein helles Grau, wenn das QLineEdit deaktiviert ist */
+    border-color: #aaaaaa;
+}</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="1" column="0">
+       <layout class="QHBoxLayout" name="hLayout_">
+        <item>
+         <widget class="QLabel" name="metadata_title_label">
+          <property name="styleSheet">
+           <string notr="true">QLabel {
+    color: white;
+    font-size: 16px;
+    padding: 5px;
+	margin-right: 13px;
+}
+
+QLabel#Title {
+    color: #212121;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+QLabel#Subtitle {
+    color: #757575;
+    font-size: 20px;
+}
+</string>
+          </property>
+          <property name="text">
+           <string>Processing: </string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="metadata_title_lineedit">
+          <property name="styleSheet">
+           <string notr="true">QLineEdit {
+    border: 2px solid #757575;
+    border-radius: 5px;
+    padding: 0 8px;
+    background: rgb(94, 92, 100);  /* setzt den Hintergrund auf Schwarz */
+    color: #FFFFFF;  /* setzt die Textfarbe auf Weiß */
+    font-size: 16px;
+    height: 20px;
+}
+
+QLineEdit:focus {
+    border-color: #4a90d9;
+}
+
+QLineEdit:disabled {
+    background: #444444;  /* setzt den Hintergrund auf ein dunkles Grau, wenn das QLineEdit deaktiviert ist */
+    color: #aaaaaa;  /* setzt die Textfarbe auf ein helles Grau, wenn das QLineEdit deaktiviert ist */
+    border-color: #aaaaaa;
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="2" column="0">
+       <layout class="QHBoxLayout" name="hLayout_fps">
+        <item>
+         <widget class="QLabel" name="metadata_fps_label">
+          <property name="styleSheet">
+           <string notr="true">QLabel {
+    color: white;
+    font-size: 16px;
+    padding: 5px;
+	margin-right: 69px;
+
+}
+
+QLabel#Title {
+    color: #212121;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+QLabel#Subtitle {
+    color: #757575;
+    font-size: 20px;
+}
+</string>
+          </property>
+          <property name="text">
+           <string>FPS:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="metadata_fps_lineedit">
+          <property name="styleSheet">
+           <string notr="true">QLineEdit {
+    border: 2px solid #757575;
+    border-radius: 5px;
+    padding: 0 8px;
+    background: rgb(94, 92, 100);  /* setzt den Hintergrund auf Schwarz */
+    color: #FFFFFF;  /* setzt die Textfarbe auf Weiß */
+    font-size: 16px;
+    height: 19px;
+}
+
+QLineEdit:focus {
+    border-color: #4a90d9;
+}
+
+QLineEdit:disabled {
+    background: #444444;  /* setzt den Hintergrund auf ein dunkles Grau, wenn das QLineEdit deaktiviert ist */
+    color: #aaaaaa;  /* setzt die Textfarbe auf ein helles Grau, wenn das QLineEdit deaktiviert ist */
+    border-color: #aaaaaa;
+}</string>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="3" column="0">
+       <layout class="QHBoxLayout" name="hLayout_resolution"/>
+      </item>
+      <item row="4" column="0">
+       <layout class="QHBoxLayout" name="hLayout_bitrate">
+        <item>
+         <widget class="QLabel" name="metadata_bitrate_label">
+          <property name="styleSheet">
+           <string notr="true">QLabel {
+    color: white;
+    font-size: 16px;
+    padding: 5px;
+	margin-right: 39px;
+}
+
+QLabel#Title {
+    color: #212121;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+QLabel#Subtitle {
+    color: #757575;
+    font-size: 20px;
+}
+</string>
+          </property>
+          <property name="text">
+           <string>Bitrate:´</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="metadata_bitrate_lineedit">
+          <property name="styleSheet">
+           <string notr="true">QLineEdit {
+    border: 2px solid #757575;
+    border-radius: 5px;
+    padding: 0 8px;
+    background: rgb(94, 92, 100);  /* setzt den Hintergrund auf Schwarz */
+    color: #FFFFFF;  /* setzt die Textfarbe auf Weiß */
+    font-size: 16px;
+    height: 20px;
+}
+
+QLineEdit:focus {
+    border-color: #4a90d9;
+}
+
+QLineEdit:disabled {
+    background: #444444;  /* setzt den Hintergrund auf ein dunkles Grau, wenn das QLineEdit deaktiviert ist */
+    color: #aaaaaa;  /* setzt die Textfarbe auf ein helles Grau, wenn das QLineEdit deaktiviert ist */
+    border-color: #aaaaaa;
+}</string>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="5" column="0">
+       <layout class="QHBoxLayout" name="hLayout_filesize">
+        <item>
+         <widget class="QLabel" name="metadata_filesize_label">
+          <property name="styleSheet">
+           <string notr="true">QLabel {
+    color: white;
+    font-size: 16px;
+    padding: 5px, 5px, 5px, 5px;
+	margin-right: 10px;
+}
+
+QLabel#Title {
+    color: #212121;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+QLabel#Subtitle {
+    color: #757575;
+    font-size: 20px;
+}
+</string>
+          </property>
+          <property name="text">
+           <string>File Size (MB):</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="metadata_filesize_lineedit">
+          <property name="styleSheet">
+           <string notr="true">QLineEdit {
+    border: 2px solid #757575;
+    border-radius: 5px;
+    padding: 0 8px;
+    background: rgb(94, 92, 100);  /* setzt den Hintergrund auf Schwarz */
+    color: #FFFFFF;  /* setzt die Textfarbe auf Weiß */
+    font-size: 16px;
+    height: 20px;
+}
+
+QLineEdit:focus {
+    border-color: #4a90d9;
+}
+
+QLineEdit:disabled {
+    background: #444444;  /* setzt den Hintergrund auf ein dunkles Grau, wenn das QLineEdit deaktiviert ist */
+    color: #aaaaaa;  /* setzt die Textfarbe auf ein helles Grau, wenn das QLineEdit deaktiviert ist */
+    border-color: #aaaaaa;
+}</string>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="6" column="0">
+       <layout class="QHBoxLayout" name="hLayout_length">
+        <item>
+         <widget class="QLabel" name="metadata_length_label">
+          <property name="styleSheet">
+           <string notr="true">QLabel {
+    color: white;
+    font-size: 16px;
+    padding: 5px;
+	margin-right: 45px;
+}
+
+
+QLabel#Title {
+    color: #212121;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+QLabel#Subtitle {
+    color: #757575;
+    font-size: 20px;
+}
+</string>
+          </property>
+          <property name="text">
+           <string>Length:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="metadata_length_lineedit">
+          <property name="styleSheet">
+           <string notr="true">QLineEdit {
+    border: 2px solid #757575;
+    border-radius: 5px;
+    padding: 0 8px;
+    background: rgb(94, 92, 100);  /* setzt den Hintergrund auf Schwarz */
+    color: #FFFFFF;  /* setzt die Textfarbe auf Weiß */
+    font-size: 16px;
+    height: 20px;
+}
+
+QLineEdit:focus {
+    border-color: #4a90d9;
+}
+
+QLineEdit:disabled {
+    background: #444444;  /* setzt den Hintergrund auf ein dunkles Grau, wenn das QLineEdit deaktiviert ist */
+    color: #aaaaaa;  /* setzt die Textfarbe auf ein helles Grau, wenn das QLineEdit deaktiviert ist */
+    border-color: #aaaaaa;
+}</string>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="7" column="0">
+       <layout class="QHBoxLayout" name="hLayout_views">
+        <item>
+         <widget class="QLabel" name="metadata_views_label">
+          <property name="styleSheet">
+           <string notr="true">QLabel {
+    color: white;
+    font-size: 16px;
+    padding: 5px;
+	margin-right: 50px;
+}
+
+QLabel#Title {
+    color: #212121;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+QLabel#Subtitle {
+    color: #757575;
+    font-size: 20px;
+}
+</string>
+          </property>
+          <property name="text">
+           <string>Views:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="metadata_views_lineedit">
+          <property name="styleSheet">
+           <string notr="true">QLineEdit {
+    border: 2px solid #757575;
+    border-radius: 5px;
+    padding: 0 8px;
+    background: rgb(94, 92, 100);  /* setzt den Hintergrund auf Schwarz */
+    color: #FFFFFF;  /* setzt die Textfarbe auf Weiß */
+    font-size: 16px;
+    height: 20px;
+}
+
+QLineEdit:focus {
+    border-color: #4a90d9;
+}
+
+QLineEdit:disabled {
+    background: #444444;  /* setzt den Hintergrund auf ein dunkles Grau, wenn das QLineEdit deaktiviert ist */
+    color: #aaaaaa;  /* setzt die Textfarbe auf ein helles Grau, wenn das QLineEdit deaktiviert ist */
+    border-color: #aaaaaa;
+}</string>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="8" column="0">
+       <layout class="QHBoxLayout" name="hLayout_hdr">
+        <item>
+         <widget class="QLabel" name="metadata_hdr_label">
+          <property name="styleSheet">
+           <string notr="true">QLabel {
+    color: white;
+    font-size: 16px;
+    padding: 5px;
+	margin-right: 60px;
+}
+
+
+QLabel#Title {
+    color: #212121;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+QLabel#Subtitle {
+    color: #757575;
+    font-size: 20px;
+}
+</string>
+          </property>
+          <property name="text">
+           <string>HDR:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="metadata_hdr_lineedit">
+          <property name="styleSheet">
+           <string notr="true">QLineEdit {
+    border: 2px solid #757575;
+    border-radius: 5px;
+    padding: 0 8px;
+    background: rgb(94, 92, 100);  /* setzt den Hintergrund auf Schwarz */
+    color: #FFFFFF;  /* setzt die Textfarbe auf Weiß */
+    font-size: 16px;
+    height: 20px;
+}
+
+QLineEdit:focus {
+    border-color: #4a90d9;
+}
+
+QLineEdit:disabled {
+    background: #444444;  /* setzt den Hintergrund auf ein dunkles Grau, wenn das QLineEdit deaktiviert ist */
+    color: #aaaaaa;  /* setzt die Textfarbe auf ein helles Grau, wenn das QLineEdit deaktiviert ist */
+    border-color: #aaaaaa;
+}</string>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="1" column="1" rowspan="8">
+       <widget class="QGraphicsView" name="video_graphics_view">
+        <property name="styleSheet">
+         <string notr="true">QGraphicsView {
+    border: 5px solid rgb(179, 0, 255);
+    border-radius: 5px;
+	background-color: rgb(94, 92, 100)
+}
+</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="3" column="1" rowspan="2">
+    <widget class="QGroupBox" name="groupbox_info">
+     <property name="styleSheet">
+      <string notr="true">QGroupBox {
+    border: 2px solid #757575;
+    border-radius: 5px;
+    margin-top: 1ex; /* margin-top sorgt für einen Abstand zwischen dem Titel und dem Rand */
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    left: 10px; /* left verschiebt den Titel etwas nach rechts, damit er nicht direkt am Rand anliegt */
+    padding: 0 3px 0 3px; /* padding gibt dem Titel etwas Platz rundherum */
+}
+</string>
+     </property>
+     <property name="title">
+      <string/>
+     </property>
+     <widget class="QLabel" name="info_text_1">
+      <property name="geometry">
+       <rect>
+        <x>12</x>
+        <y>15</y>
+        <width>433</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="toolTip">
+       <string>You found an Easter Egg :D</string>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: white</string>
+      </property>
+      <property name="text">
+       <string>* Program will ask you what resolution etc...  while downloading</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="info_text_2">
+      <property name="geometry">
+       <rect>
+        <x>12</x>
+        <y>80</y>
+        <width>549</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: white</string>
+      </property>
+      <property name="text">
+       <string>** Video is downloaded seperately with the Audio and then combined to one file.</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="info_text_3">
+      <property name="geometry">
+       <rect>
+        <x>12</x>
+        <y>146</y>
+        <width>634</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: white</string>
+      </property>
+      <property name="text">
+       <string>*** Downloads video with the endpoint url. (No VPN, takes longer, but real-time progress bar)</string>
+      </property>
+     </widget>
+    </widget>
+   </item>
+   <item row="2" column="1">
+    <widget class="QGroupBox" name="groupBox_3">
+     <property name="title">
+      <string/>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_13">
+      <item row="0" column="2">
+       <widget class="QGroupBox" name="groupbox_ui">
+        <property name="styleSheet">
+         <string notr="true">QGroupBox {
+    border: 2px solid #757575;
+    border-radius: 5px;
+    margin-top: 1ex; /* margin-top sorgt für einen Abstand zwischen dem Titel und dem Rand */
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    left: 10px; /* left verschiebt den Titel etwas nach rechts, damit er nicht direkt am Rand anliegt */
+    padding: 0 3px 0 3px; /* padding gibt dem Titel etwas Platz rundherum */
+}
+</string>
+        </property>
+        <property name="title">
+         <string>User Interface</string>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_4">
+         <item row="4" column="0">
+          <widget class="QPushButton" name="ui_theme_apply">
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+    background-color: #5468ff;
+    border: none;
+    border-radius: 6px;
+    color: #fff;
+    font-family: &quot;JetBrains Mono&quot;, monospace;
+    font-size: 15px;
+    padding: 0px 8px 0px 8px;
+    height: 30px;
+}
+
+QPushButton:hover {
+    background-color: #3c4fe0;
+}
+
+QPushButton:pressed {
+    background-color: #3c4fe0;
+}</string>
+           </property>
+           <property name="text">
+            <string>Apply</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <widget class="QRadioButton" name="radio_echteralsfake">
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QRadioButton {
+	color: rgb(164, 0, 255) }
+
+QRadioButton::indicator::unchecked {
+	border: 1px solid white;
+	border-radius: 5px;
+}
+
+QRadioButton::indicator:checked {
+    border : 4px solid;
+	border-color: black;
+	border-radius: 6px;
+	background-color: rgb(0, 255, 183);
+
+}
+
+</string>
+           </property>
+           <property name="text">
+            <string>EchterAlsFake (black and colorful)</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_reset">
+           <property name="styleSheet">
+            <string notr="true">color: white</string>
+           </property>
+           <property name="text">
+            <string>After changing this you need to restart</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QRadioButton" name="radio_dark_mode">
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QRadioButton {
+	color: rgb(255, 255, 255) }
+
+QRadioButton::indicator::unchecked {
+	border: 1px solid white;
+	border-radius: 5px;
+}
+
+QRadioButton::indicator:checked {
+    border : 4px solid;
+	border-color: black;
+	border-radius: 6px;
+	background-color: rgb(0, 255, 183);
+
+}
+
+</string>
+           </property>
+           <property name="text">
+            <string>Dark Mode (default)</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QRadioButton" name="radio_white_theme">
+           <property name="cursor">
+            <cursorShape>ForbiddenCursor</cursorShape>
+           </property>
+           <property name="toolTip">
+            <string>No please dont do shis </string>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QRadioButton {
+	color: rgb(229, 165, 10) }
+
+QRadioButton::indicator::unchecked {
+	border: 1px solid white;
+	border-radius: 5px;
+}
+
+QRadioButton::indicator:checked {
+    border : 4px solid;
+	border-color: black;
+	border-radius: 6px;
+	background-color: rgb(0, 255, 183);
+
+}
+
+</string>
+           </property>
+           <property name="text">
+            <string>White Theme</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QGroupBox" name="groupbox_progress_bars">
+        <property name="styleSheet">
+         <string notr="true">QGroupBox {
+    border: 2px solid #757575;
+    border-radius: 5px;
+    margin-top: 1ex; /* margin-top sorgt für einen Abstand zwischen dem Titel und dem Rand */
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    left: 10px; /* left verschiebt den Titel etwas nach rechts, damit er nicht direkt am Rand anliegt */
+    padding: 0 3px 0 3px; /* padding gibt dem Titel etwas Platz rundherum */
+}
+</string>
+        </property>
+        <property name="title">
+         <string>Progress Bars</string>
+        </property>
+        <layout class="QGridLayout" name="gridLayout">
+         <item row="2" column="1">
+          <widget class="QProgressBar" name="progressbar_playlist">
+           <property name="styleSheet">
+            <string notr="true">QProgressBar {
+    background-color: #F0F0F0; /* Hellgrauer Hintergrund */
+	text-align: center;
+	color: rgb(0, 255, 183)
+}
+
+QProgressBar::chunk {
+    background-color: rgb(198, 70, 0); /* Grün als Vordergrundfarbe */
+}</string>
+           </property>
+           <property name="value">
+            <number>100</number>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <widget class="QLabel" name="progressbar_converting_label">
+           <property name="styleSheet">
+            <string notr="true">color: white</string>
+           </property>
+           <property name="text">
+            <string>Converting:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="progressbar_video_label">
+           <property name="styleSheet">
+            <string notr="true">color: white
+</string>
+           </property>
+           <property name="text">
+            <string>Video Download:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0">
+          <widget class="QLabel" name="progressbar_metadata_label">
+           <property name="styleSheet">
+            <string notr="true">color: white</string>
+           </property>
+           <property name="text">
+            <string>Metadata:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="1">
+          <widget class="QProgressBar" name="progressbar_converting">
+           <property name="styleSheet">
+            <string notr="true">QProgressBar {
+    background-color: #F0F0F0; /* Hellgrauer Hintergrund */
+	text-align: center;
+	color: rgb(153, 193, 241)
+}
+
+QProgressBar::chunk {
+    background-color: rgb(192, 28, 40); /* Grün als Vordergrundfarbe */
+}</string>
+           </property>
+           <property name="minimum">
+            <number>0</number>
+           </property>
+           <property name="value">
+            <number>100</number>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="progressbar_playlist_label">
+           <property name="styleSheet">
+            <string notr="true">color: white</string>
+           </property>
+           <property name="text">
+            <string>Playlist Download:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QProgressBar" name="progressbar_video">
+           <property name="styleSheet">
+            <string notr="true">QProgressBar {
+    background-color: #F0F0F0; /* Hellgrauer Hintergrund */
+	text-align: center;
+	color: rgb(249, 240, 107)
+}
+
+QProgressBar::chunk {
+    background-color: rgb(97, 53, 131); /* Grün als Vordergrundfarbe */
+}</string>
+           </property>
+           <property name="value">
+            <number>100</number>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QProgressBar" name="progressbar_metadata">
+           <property name="styleSheet">
+            <string notr="true">QProgressBar {
+    background-color: #F0F0F0; /* Hellgrauer Hintergrund */
+	text-align: center;
+	color: rgb(230, 97, 0);
+	border: color grey;
+	border-width: 6;
+	border-radius: 12px;
+	color: black;
+	
+}
+
+QProgressBar::chunk {
+    background-color: rgb(26, 95, 180); /* Grün als Vordergrundfarbe */
+}cc</string>
+           </property>
+           <property name="value">
+            <number>100</number>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QGroupBox" name="groupbox_output">
+        <property name="styleSheet">
+         <string notr="true">QGroupBox {
+    border: 2px solid #757575;
+    border-radius: 5px;
+    margin-top: 1ex; /* margin-top sorgt für einen Abstand zwischen dem Titel und dem Rand */
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    left: 10px; /* left verschiebt den Titel etwas nach rechts, damit er nicht direkt am Rand anliegt */
+    padding: 0 3px 0 3px; /* padding gibt dem Titel etwas Platz rundherum */
+}
+</string>
+        </property>
+        <property name="title">
+         <string>Output stuff</string>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_6">
+         <item row="0" column="0">
+          <widget class="QLabel" name="output_thumbnail_label">
+           <property name="styleSheet">
+            <string notr="true">color: white</string>
+           </property>
+           <property name="text">
+            <string>Thumbnails:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QLineEdit" name="output_thumbnail_lineedit">
+           <property name="styleSheet">
+            <string notr="true">QLineEdit {
+    border: 2px solid #757575;
+    border-radius: 5px;
+    padding: 0 8px;
+    background: rgb(94, 92, 100);  /* setzt den Hintergrund auf Schwarz */
+    color: #FFFFFF;  /* setzt die Textfarbe auf Weiß */
+    font-size: 16px;
+    height: 20px;
+}
+
+QLineEdit:focus {
+    border-color: #4a90d9;
+}
+
+QLineEdit:disabled {
+    background: #444444;  /* setzt den Hintergrund auf ein dunkles Grau, wenn das QLineEdit deaktiviert ist */
+    color: #aaaaaa;  /* setzt die Textfarbe auf ein helles Grau, wenn das QLineEdit deaktiviert ist */
+    border-color: #aaaaaa;
+}</string>
+           </property>
+           <property name="text">
+            <string>output/thumb/</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="2">
+          <widget class="QPushButton" name="output_thumbnail_button">
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+    background-color: #5468ff;
+    border: none;
+    border-radius: 6px;
+    color: #fff;
+    font-family: &quot;JetBrains Mono&quot;, monospace;
+	font-size: 12px;
+    padding: 0px;
+	height: 24px;
+}
+
+QPushButton:hover {
+    background-color: #3c4fe0;
+}
+
+QPushButton:pressed {
+    background-color: #3c4fe0;
+}</string>
+           </property>
+           <property name="text">
+            <string>Change</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="output_music_label">
+           <property name="styleSheet">
+            <string notr="true">color: white</string>
+           </property>
+           <property name="text">
+            <string>Music output:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QLineEdit" name="output_music_lineedit">
+           <property name="styleSheet">
+            <string notr="true">QLineEdit {
+    border: 2px solid #757575;
+    border-radius: 5px;
+    padding: 0 8px;
+    background: rgb(94, 92, 100);  /* setzt den Hintergrund auf Schwarz */
+    color: #FFFFFF;  /* setzt die Textfarbe auf Weiß */
+    font-size: 16px;
+    height: 20px;
+}
+
+QLineEdit:focus {
+    border-color: #4a90d9;
+}
+
+QLineEdit:disabled {
+    background: #444444;  /* setzt den Hintergrund auf ein dunkles Grau, wenn das QLineEdit deaktiviert ist */
+    color: #aaaaaa;  /* setzt die Textfarbe auf ein helles Grau, wenn das QLineEdit deaktiviert ist */
+    border-color: #aaaaaa;
+}</string>
+           </property>
+           <property name="text">
+            <string>output/music/</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="2">
+          <widget class="QPushButton" name="output_music_button">
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+    background-color: #5468ff;
+    border: none;
+    border-radius: 6px;
+    color: #fff;
+    font-family: &quot;JetBrains Mono&quot;, monospace;
+	height: 24px;
+	font-size: 12px;
+}
+
+QPushButton:hover {
+    background-color: #3c4fe0;
+}
+
+QPushButton:pressed {
+    background-color: #3c4fe0;
+}</string>
+           </property>
+           <property name="text">
+            <string>Change</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="output_video_label">
+           <property name="styleSheet">
+            <string notr="true">color: white</string>
+           </property>
+           <property name="text">
+            <string>Video output:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QLineEdit" name="output_video_lineedit">
+           <property name="styleSheet">
+            <string notr="true">QLineEdit {
+    border: 2px solid #757575;
+    border-radius: 5px;
+    padding: 0 8px;
+    background: rgb(94, 92, 100);  /* setzt den Hintergrund auf Schwarz */
+    color: #FFFFFF;  /* setzt die Textfarbe auf Weiß */
+    font-size: 16px;
+    height: 20px;
+}
+
+QLineEdit:focus {
+    border-color: #4a90d9;
+}
+
+QLineEdit:disabled {
+    background: #444444;  /* setzt den Hintergrund auf ein dunkles Grau, wenn das QLineEdit deaktiviert ist */
+    color: #aaaaaa;  /* setzt die Textfarbe auf ein helles Grau, wenn das QLineEdit deaktiviert ist */
+    border-color: #aaaaaa;
+}</string>
+           </property>
+           <property name="text">
+            <string>output/video/</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="2">
+          <widget class="QPushButton" name="output_video_button">
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+    background-color: #5468ff;
+    border: none;
+    border-radius: 6px;
+    color: #fff;
+    font-family: &quot;JetBrains Mono&quot;, monospace;
+    font-size: 12px;
+    padding: 0px 16px 0px 16px;
+	height: 24px;
+}
+
+QPushButton:hover {
+    background-color: #3c4fe0;
+}
+
+QPushButton:pressed {
+    background-color: #3c4fe0;
+}
+</string>
+           </property>
+           <property name="text">
+            <string>Change</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
     </widget>
    </item>
   </layout>

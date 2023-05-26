@@ -40,6 +40,7 @@ class Widget(QWidget):
         self.video_codec = "libx264"
         self.video_format = ""
         self.title = ""
+        self.ffmpeg_path = ""
         self.z = Fore.LIGHTGREEN_EX + "[+]"
         self.x = Fore.LIGHTRED_EX + "[!]"
         self.platform = sys.platform
@@ -51,6 +52,7 @@ class Widget(QWidget):
         self.ui = Ui_Widget()
         self.ui.setupUi(self)
         self.set_ui_start()
+        self.set_ffmpeg_path()
 
         self.ui.ui_theme_apply.clicked.connect(self.apply_theme)
         self.ui.output_video_button.clicked.connect(self.output_path_update)
@@ -62,6 +64,16 @@ class Widget(QWidget):
         self.timer.start(1000)
 
 
+    def set_ffmpeg_path(self):
+
+        if os.path.exists("ffmpeg/ffmpeg-N-110759-gd815584755-linux64-gpl/bin/ffmpeg"):
+            self.ffmpeg_path = "ffmpeg/ffmpeg-N-110759-gd815584755-linux64-gpl/bin/ffmpeg"
+
+        elif os.path.exists("ffmpeg/ffmpeg-N-110759-gd815584755-win64-gpl/bin/ffmpeg.exe"):
+            self.ffmpeg_path = "ffmpeg/ffmpeg-N-110759-gd815584755-win64-gpl/bin/ffmpeg.exe"
+
+
+
     def config_file_setup(self):
 
         with open("config.ini", "w") as config_file:
@@ -70,7 +82,7 @@ class Widget(QWidget):
         path = 
     
         [ui]
-        mode = dark
+        mode = EchterAlsFake
         override_linux_dark_mode = false
     
     
@@ -119,9 +131,6 @@ class Widget(QWidget):
         if self.conf['ui']['mode'] == "dark":
             self.ui.radio_dark_mode.setChecked(True)
 
-        if self.conf['ui']['override_linux_dark_mode'] == "true":
-            self.ui.checkbox_linux_override_dark.setChecked(True)
-
         if self.conf['ui']['mode'] == 'white':
             self.ui.radio_white_theme.setChecked(True)
 
@@ -137,6 +146,7 @@ class Widget(QWidget):
         self.ui.groupbox_resolutions.setEnabled(True)
         self.ui.groupbox_format.setEnabled(True)
         self.ui.group_box_music.setEnabled(True)
+
 
     def disable_boxes(self):
 
@@ -587,49 +597,7 @@ class Setup(QDialog):
                         self.destroy()
 
 
-
-class EchterAlsFake(object):
-
-    def setup_lsd_theme(self):
-
-        widget.ui.metadata_bitrate_label.setStyleSheet("color: #808000;")  # Olivgrün
-        widget.ui.progressbar_metadata_label.setStyleSheet("color: #800080;")  # Lila
-        widget.ui.progressbar_video_label.setStyleSheet("color: #FF69B4;")  # Hot Pink
-        widget.ui.progressbar_playlist_label.setStyleSheet("color: #FF8C00;")  # Dunkles Orange
-        widget.ui.progressbar_converting_label.setStyleSheet("color: #7FFF00;")  # Chartreuse
-        widget.ui.metadata_bitrate_lineedit.setStyleSheet("background-color: #008B8B; color: #FFFFFF;")  # Dunkles Cyan
-        widget.ui.progressbar_metadata.setStyleSheet("QProgressBar {background-color: #DAA520; color: #FFFFFF;}")
-        widget.ui.progressbar_video.setStyleSheet("QProgressBar {background-color: #228B22; color: #FFFFFF;}")
-        widget.ui.progressbar_playlist.setStyleSheet("QProgressBar {background-color: #6A5ACD; color: #FFFFFF;}")
-        widget.ui.progressbar_converting.setStyleSheet("QProgressBar {background-color: #FF4500; color: #FFFFFF;}")
-        widget.ui.groupbox_metadata.setStyleSheet("border: 2px solid #D2691E;")  # Schokolade
-        widget.ui.groupbox_progress_bars.setStyleSheet("border: 2px solid #8B4513;")  # Sattelbraun
-        widget.ui.radio_opus.setStyleSheet("color: #0000CD;")  # Mittelblau
-        widget.ui.radio_m4a.setStyleSheet("color: #BA55D3;")  # Mittleres Orchidee
-        widget.ui.radio_wav.setStyleSheet("color: #A0522D;")  # Sienna
-        widget.ui.radio_mp3.setStyleSheet("color: #8A2BE2;")  # Blauviolett
-        widget.ui.ui_theme_apply.setStyleSheet("QPushButton {background-color: #CD5C5C; color: #FFFFFF;}")  # Indischrot
-        widget.ui.video_start_prep_button.setStyleSheet("QPushButton {background-color: #FFD700; color: #000000;}")  # Gold
-        widget.ui.playlist_start_button.setStyleSheet(
-            "QPushButton {background-color: #3CB371; color: #000000;}")  # Medium Sea Green
-        widget.ui.video_thumbnail_copy_button.setStyleSheet(
-            "QPushButton {background-color: #7B68EE; color: #000000;}")  # Mittel Schiefer blau
-        widget.ui.output_thumbnail_button.setStyleSheet(
-            "QPushButton {background-color: #C71585; color: #FFFFFF;}")  # Mittel Violettrot
-        widget.ui.output_music_button.setStyleSheet(u"background-color: #9A0EEA")
-        widget.ui.gridLayout_6.addWidget(widget.ui.output_music_button, 1, 2, 1, 1)
-        output_video_label = QLabel(widget.ui.groupbox_output)
-        output_video_label.setObjectName(u"output_video_label")
-        output_video_label.setStyleSheet(u"color: #B8860B")
-        widget.ui.gridLayout_6.addWidget(widget.ui.output_video_label, 2, 0, 1, 1)
-        widget.ui.output_video_lineedit = QLineEdit(widget.ui.groupbox_output)
-        widget.ui.output_video_lineedit.setObjectName(u"output_video_lineedit")
-        widget.ui.output_video_lineedit.setStyleSheet(u"background-color: #00FFFF")
-        widget.ui.gridLayout_6.addWidget(widget.ui.output_video_lineedit, 2, 1, 1, 1)
-        widget.ui.output_video_button = QPushButton(widget.ui.groupbox_output)
-        widget.ui.output_video_button.setObjectName(u"output_video_button")
-        widget.ui.output_video_button.setStyleSheet(u"background-color: #FF69B4")
-        widget.ui.gridLayout_6.addWidget(widget.ui.output_video_button, 2, 2, 1, 1)
+class WhiteTheme():
 
 
     def setup_white_theme(self):
@@ -651,27 +619,6 @@ class EchterAlsFake(object):
         light_palette.setColor(QPalette.HighlightedText, Qt.white)
         app.setPalette(light_palette)
 
-    def setup_black_theme(self):
-
-        dark_palette = QPalette()
-        dark_palette.setColor(QPalette.Window, QColor(53, 53, 53))
-        dark_palette.setColor(QPalette.WindowText, Qt.white)
-        dark_palette.setColor(QPalette.Base, QColor(25, 25, 25))
-        dark_palette.setColor(QPalette.AlternateBase, QColor(53, 53, 53))
-        dark_palette.setColor(QPalette.ToolTipBase, Qt.white)
-        dark_palette.setColor(QPalette.ToolTipText, Qt.white)
-        dark_palette.setColor(QPalette.Text, Qt.white)
-        dark_palette.setColor(QPalette.Button, QColor(53, 53, 53))
-        dark_palette.setColor(QPalette.ButtonText, Qt.white)
-        dark_palette.setColor(QPalette.BrightText, Qt.red)
-        dark_palette.setColor(QPalette.Link, QColor(42, 130, 218))
-        dark_palette.setColor(QPalette.Highlight, QColor(42, 130, 218))
-        dark_palette.setColor(QPalette.HighlightedText, Qt.black)
-        app.setPalette(dark_palette)
-        app.setStyle("Fusion")
-
-
-
 
 
 if __name__ == "__main__":
@@ -679,36 +626,8 @@ if __name__ == "__main__":
     conf.read('config.ini')
     app = QApplication(sys.argv)
     widget = Widget()
+    widget.show()
 
-    if os.path.isfile("ffmpeg/ffmpeg-N-110759-gd815584755-linux64-gpl/bin/ffmpeg") or os.path.isfile("ffmpeg\\ffmpeg-master-latest-win64-gpl\\bin\\ffmpeg.exe"):
-
-        if conf['ui']['mode'] == 'EchterAlsFake':
-            widget = Widget()
-            EchterAlsFake().setup_lsd_theme()
-            widget.show()
-
-        if conf['ui']['mode'] == "dark" and conf['ui']['override_linux_dark_mode'] == "false":
-            sys.argv += ['-platform', 'windows:darkmode=2']
-            app.setStyle("Fusion")
-
-        if conf['ui']['mode'] == "white":
-            sys.argv += ['-platform', '-windows:darkmode=0']
-            app.setStyle("Fusion")
-            widget = Widget()
-            EchterAlsFake().setup_white_theme()
-            widget.show()
-
-        if conf['ui']['mode'] == "dark" and conf['ui']['override_linux_dark_mode'] == "true":
-            widget = Widget()
-            EchterAlsFake().setup_black_theme()
-            widget.show()
-
-
-
-    else:
-
-        window = Setup()
-        window.show()
 
     sys.exit(app.exec())
 
