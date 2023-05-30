@@ -1,6 +1,5 @@
-import time
-
 print("Initializing...")
+import time
 import distro
 import os
 import requests
@@ -78,9 +77,6 @@ class Widget(QWidget):
 
         with open("config.ini", "w") as config_file:
             data = """
-        [ffmpeg]
-        path = 
-    
         [ui]
         mode = EchterAlsFake
         override_linux_dark_mode = false
@@ -137,10 +133,15 @@ class Widget(QWidget):
         if self.conf['ui']['mode'] == 'EchterAlsFake':
             self.ui.radio_echteralsfake.setChecked(True)
 
-        self.disable_boxes()
+        self.ui.progressbar_video.setValue(0)
+        self.ui.progressbar_metadata.setValue(0)
+        self.ui.progressbar_converting.setValue(0)
+        self.ui.progressbar_playlist.setValue(0)
+
+        self.disable_groups()
 
 
-    def enable_checkboxes(self):
+    def enable_groups(self):
 
         self.ui.video_download_start_button.setEnabled(True)
         self.ui.groupbox_resolutions.setEnabled(True)
@@ -148,7 +149,7 @@ class Widget(QWidget):
         self.ui.group_box_music.setEnabled(True)
 
 
-    def disable_boxes(self):
+    def disable_groups(self):
 
         self.ui.video_download_start_button.setDisabled(True)
         self.ui.groupbox_resolutions.setDisabled(True)
@@ -190,6 +191,12 @@ class Widget(QWidget):
 
                 self.show_applied()
 
+    def disable_resolutions(self):
+
+        for resolution in self.resolutions:
+            radioButton = getattr(self.ui, f"radio_{resolution}")
+            radioButton.setDisabled(True)
+
     def threads_radio_buttons(self):
 
         if self.ui.radio_interactive.isChecked():
@@ -207,7 +214,6 @@ class Widget(QWidget):
             for resolution in self.resolutions:
                 radioButton = getattr(self.ui, f"radio_{resolution}")
                 radioButton.setDisabled(True)
-                radioButton.setStyleSheet("color: grey;")
 
         if self.ui.radio_video_mode.isChecked():
             self.video_mode = True
