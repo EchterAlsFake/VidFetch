@@ -11,73 +11,273 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>VidFetch - 0.1</string>
+   <string>VidFetch 1.0 :: License LGPLv3     Source Code: https://github.com/VidFetch         Commercial Use is ALLOWED</string>
   </property>
   <property name="styleSheet">
    <string notr="true">background-color: rgb(0, 0, 0)</string>
   </property>
   <layout class="QGridLayout" name="gridLayout_9">
-   <item row="4" column="0">
-    <widget class="QTextBrowser" name="license_text">
-     <property name="styleSheet">
-      <string notr="true">QTextBrowser {
-    border: 2px solid #757575;
-    border-radius: 5px;
-    margin-top: 1ex; /* margin-top sorgt für einen Abstand zwischen dem Titel und dem Rand */
-}
-</string>
-     </property>
-     <property name="html">
-      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-hr { height: 1px; border-width: 0; }
-li.unchecked::marker { content: &quot;\2610&quot;; }
-li.checked::marker { content: &quot;\2612&quot;; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Ubuntu'; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Author:    EchterAlsFake&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Version:   0.1&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Website:  https://github.com/echteralsfake/VidFetch&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;License:   GPL 3&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;I am using Qt for the Graphical User Interface. I don't have a Qt License, so this Project is Open Source. &lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;You are free to modify, change and distribute the program.&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Usually I would license it under Creative Commons. &lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;It would be nice, if you could include the Source to this project in your project, but you don't have to.  I only ask you for that.&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Credits:&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Thanks to Tabnine. One of the best code complete plugins I know.  If you want, buy their subscription, it's fucking awesome.&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Thanks to ChatGPT. It helped a lot and I didn't understand shit when it comes to working with threads and progress bars. Without ChatGPT this project wouldn't be possible.&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Thanks to Pytube, they created the Python Library, which I am downloading the videos with. Creating all that by myself would take years.&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Thanks to ffmpeg for their great and open source video converting tool.&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Thanks to @slhck who created the pip package: &lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;ffmpeg-progress-yield  &lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt; It's the only way that I found, where I can create a progress bar for the converting process.  I searched like 6 hours and my mental health was at the end, but this guy just made my day :) &lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Thanks to all contributors, or the ones, that will be a contributor in the future :) &lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;You can support me here:  https://paypal.me/EchterAlsFake&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Thanks :) &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="0">
-    <widget class="QGroupBox" name="groupbox_downloads">
+   <item row="0" column="0">
+    <widget class="QGroupBox" name="groupbox_urls">
      <property name="styleSheet">
       <string notr="true">QGroupBox {
     border: 2px solid #757575;
     border-radius: 5px;
     margin-top: 1ex; /* margin-top sorgt für einen Abstand zwischen dem Titel und dem Rand */
+	border-color: rgb(255, 255, 255)}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    left: 10px; /* left verschiebt den Titel etwas nach rechts, damit er nicht direkt am Rand anliegt */
+    padding: 0 3px 0 3px; /* padding gibt dem Titel etwas Platz rundherum */
+}
+</string>
+     </property>
+     <property name="title">
+      <string/>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_10">
+      <item row="1" column="2">
+       <widget class="QPushButton" name="playlist_start_button">
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+    background-color: #5468ff;
+    border: none;
+    border-radius: 6px;
+    color: #fff;
+    font-family: &quot;JetBrains Mono&quot;, monospace;
+    font-size: 15px;
+    padding: 0px 16px 0px 16px;
+    height: 24px;
+}
+
+QPushButton:hover {
+    background-color: #3c4fe0;
+}
+
+QPushButton:pressed {
+    background-color: #3c4fe0;
+}
+</string>
+        </property>
+        <property name="text">
+         <string>Downlaod</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="playlist_url_lineedit">
+        <property name="styleSheet">
+         <string notr="true">QLineEdit {
+    border: 2px solid #757575;
+    border-radius: 5px;
+    padding: 0 8px;
+    background: rgb(94, 92, 100);  /* setzt den Hintergrund auf Schwarz */
+    color: #FFFFFF;  /* setzt die Textfarbe auf Weiß */
+    font-size: 16px;
+    height: 20px;
+	border-color: rgb(255, 128, 0) 
+}
+
+QLineEdit:focus {
+    border-color: #4a90d9;
+}
+
+QLineEdit:disabled {
+    background: #444444;  /* setzt den Hintergrund auf ein dunkles Grau, wenn das QLineEdit deaktiviert ist */
+    color: #aaaaaa;  /* setzt die Textfarbe auf ein helles Grau, wenn das QLineEdit deaktiviert ist */
+    border-color: #aaaaaa;
+}</string>
+        </property>
+        <property name="readOnly">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="2">
+       <widget class="QPushButton" name="video_thumbnail_copy_button">
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+    background-color: #5468ff;
+    border: none;
+    border-radius: 6px;
+    color: #fff;
+    font-family: &quot;JetBrains Mono&quot;, monospace;
+    font-size: 16px;
+    padding: 0px 16px 0px 16px;
+    height: 24px;
+}
+
+QPushButton:hover {
+    background-color: #3c4fe0;
+}
+
+QPushButton:pressed {
+    background-color: #3c4fe0;
+}
+</string>
+        </property>
+        <property name="text">
+         <string>Copy</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="playlist_url_label">
+        <property name="styleSheet">
+         <string notr="true">color: white</string>
+        </property>
+        <property name="text">
+         <string>Playlist URL:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="video_url_lineedit">
+        <property name="styleSheet">
+         <string notr="true">QLineEdit {
+    border: 2px solid #757575;
+    border-radius: 5px;
+    padding: 0 8px;
+    background: rgb(94, 92, 100);  /* setzt den Hintergrund auf Schwarz */
+    color: #FFFFFF;  /* setzt die Textfarbe auf Weiß */
+    font-size: 16px;
+    height: 20px;
+    border-color: rgb(19, 255, 0) 
+}
+
+QLineEdit:focus {
+    border-color: #4a90d9;
+}
+
+QLineEdit:disabled {
+    background: #444444;  /* setzt den Hintergrund auf ein dunkles Grau, wenn das QLineEdit deaktiviert ist */
+    color: #aaaaaa;  /* setzt die Textfarbe auf ein helles Grau, wenn das QLineEdit deaktiviert ist */
+    border-color: #aaaaaa;
+}</string>
+        </property>
+        <property name="readOnly">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="3">
+       <widget class="QPushButton" name="video_download_start_button">
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+    background-color: #5468ff;
+    border: none;
+    border-radius: 6px;
+    color: #fff;
+    font-family: &quot;JetBrains Mono&quot;, monospace;
+    font-size: 15
+px;
+    padding: 0px 16px 0px 16px;
+    height: 24px;
+}
+
+QPushButton:hover {
+    background-color: #3c4fe0;
+}
+
+QPushButton:pressed {
+    background-color: #3c4fe0;
+}
+</string>
+        </property>
+        <property name="text">
+         <string>Download</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="video_thumbnail_label">
+        <property name="styleSheet">
+         <string notr="true">color: white</string>
+        </property>
+        <property name="text">
+         <string>Thumbnail:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLineEdit" name="video_thumbnail_lineedit">
+        <property name="styleSheet">
+         <string notr="true">QLineEdit {
+    border: 2px solid #757575;
+    border-radius: 5px;
+    padding: 0 8px;
+    background: rgb(94, 92, 100);  /* setzt den Hintergrund auf Schwarz */
+    color: #FFFFFF;  /* setzt die Textfarbe auf Weiß */
+    font-size: 16px;
+    height: 20px;
+	border-color: rgb(74, 0, 255)
+}
+
+QLineEdit:focus {
+    border-color: #4a90d9;
+}
+
+QLineEdit:disabled {
+    background: #444444;  /* setzt den Hintergrund auf ein dunkles Grau, wenn das QLineEdit deaktiviert ist */
+    color: #aaaaaa;  /* setzt die Textfarbe auf ein helles Grau, wenn das QLineEdit deaktiviert ist */
+    border-color: #aaaaaa;
+}</string>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2">
+       <widget class="QPushButton" name="video_start_prep_button">
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+    background-color: #5468ff;
+    border: none;
+    border-radius: 6px;
+    color: #fff;
+    font-family: &quot;JetBrains Mono&quot;, monospace;
+    font-size: 15px;
+    padding: 0px 16px 0px 16px;
+    height: 24px;
+}
+
+QPushButton:hover {
+    background-color: #3c4fe0;
+}
+
+QPushButton:pressed {
+    background-color: #3c4fe0;
+}
+</string>
+        </property>
+        <property name="text">
+         <string>Start Prep</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="video_url_label">
+        <property name="styleSheet">
+         <string notr="true">color: white</string>
+        </property>
+        <property name="text">
+         <string>Video URL:</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="3" column="1" rowspan="2">
+    <widget class="QGroupBox" name="groupbox_info">
+     <property name="styleSheet">
+      <string notr="true">QGroupBox {
+    border: 2px solid #757575;
+    border-radius: 5px;
+    margin-top: 1ex; /* margin-top sorgt für einen Abstand zwischen dem Titel und dem Rand */
+	border-color: rgb(255, 255, 255)
 }
 
 QGroupBox::title {
@@ -88,28 +288,580 @@ QGroupBox::title {
 </string>
      </property>
      <property name="title">
-      <string>Downloads </string>
+      <string/>
      </property>
-     <layout class="QGridLayout" name="gridLayout_11">
-      <item row="0" column="0">
-       <widget class="QLabel" name="video_remain_video_label">
+     <widget class="QLabel" name="info_text_1">
+      <property name="geometry">
+       <rect>
+        <x>12</x>
+        <y>15</y>
+        <width>433</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="toolTip">
+       <string>You found an Easter Egg :D</string>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: white</string>
+      </property>
+      <property name="text">
+       <string>* Program will ask you what resolution etc...  while downloading</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="info_text_2">
+      <property name="geometry">
+       <rect>
+        <x>12</x>
+        <y>80</y>
+        <width>549</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: white</string>
+      </property>
+      <property name="text">
+       <string>** Video is downloaded seperately with the Audio and then combined to one file.</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="info_text_3">
+      <property name="geometry">
+       <rect>
+        <x>12</x>
+        <y>146</y>
+        <width>634</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: white</string>
+      </property>
+      <property name="text">
+       <string>*** Downloads video with the endpoint url. (No VPN, takes longer, but real-time progress bar)</string>
+      </property>
+     </widget>
+    </widget>
+   </item>
+   <item row="2" column="0" rowspan="2">
+    <widget class="QGroupBox" name="groupbox_metadata">
+     <property name="styleSheet">
+      <string notr="true">QGroupBox {
+    border: 2px solid #757575;
+    border-radius: 5px;
+    margin-top: 1ex; /* margin-top sorgt für einen Abstand zwischen dem Titel und dem Rand */
+	border-color: rgb(255, 255, 255)
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    left: 10px; /* left verschiebt den Titel etwas nach rechts, damit er nicht direkt am Rand anliegt */
+    padding: 0 3px 0 3px; /* padding gibt dem Titel etwas Platz rundherum */
+}
+</string>
+     </property>
+     <property name="title">
+      <string/>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_5">
+      <item row="3" column="0">
+       <layout class="QHBoxLayout" name="hLayout_resolution"/>
+      </item>
+      <item row="2" column="0">
+       <layout class="QHBoxLayout" name="hLayout_fps">
+        <item>
+         <widget class="QLabel" name="metadata_fps_label">
+          <property name="styleSheet">
+           <string notr="true">QLabel {
+    color: white;
+    font-size: 16px;
+    padding: 5px;
+	margin-right: 69px;
+
+}
+
+QLabel#Title {
+    color: #212121;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+QLabel#Subtitle {
+    color: #757575;
+    font-size: 20px;
+}
+</string>
+          </property>
+          <property name="text">
+           <string>FPS:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="metadata_fps_lineedit">
+          <property name="styleSheet">
+           <string notr="true">QLineEdit {
+    border: 2px solid #757575;
+    border-radius: 5px;
+    padding: 0 8px;
+    background: rgb(94, 92, 100);  /* setzt den Hintergrund auf Schwarz */
+    color: #FFFFFF;  /* setzt die Textfarbe auf Weiß */
+    font-size: 16px;
+    height: 19px;
+	border-color: rgb(0, 255, 221)
+}
+
+QLineEdit:focus {
+    border-color: #4a90d9;
+}
+
+QLineEdit:disabled {
+    background: #444444;  /* setzt den Hintergrund auf ein dunkles Grau, wenn das QLineEdit deaktiviert ist */
+    color: #aaaaaa;  /* setzt die Textfarbe auf ein helles Grau, wenn das QLineEdit deaktiviert ist */
+    border-color: #aaaaaa;
+}</string>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="0" column="0" colspan="2">
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <widget class="QLabel" name="metadata_thumbnail_label">
+          <property name="styleSheet">
+           <string notr="true">QLabel {
+    color: white;
+    font-size: 16px;
+	margin-right: 28px;
+}
+
+QLabel#Title {
+    color: #212121;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+QLabel#Subtitle {
+    color: #757575;
+    font-size: 20px;
+}
+</string>
+          </property>
+          <property name="text">
+           <string>Thumbnail:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="lineEdit">
+          <property name="styleSheet">
+           <string notr="true">QLineEdit {
+    border: 2px solid #757575;
+    border-radius: 5px;
+    padding: 0 8px;
+    background: rgb(94, 92, 100);  /* setzt den Hintergrund auf Schwarz */
+    color: #FFFFFF;  /* setzt die Textfarbe auf Weiß */
+    font-size: 16px;
+    height: 20px;
+	margin-left: 0px;
+	border-color: rgb(0, 255, 221)
+}
+
+
+QLineEdit:focus {
+    border-color: #4a90d9;
+}
+
+QLineEdit:disabled {
+    background: #444444;  /* setzt den Hintergrund auf ein dunkles Grau, wenn das QLineEdit deaktiviert ist */
+    color: #aaaaaa;  /* setzt die Textfarbe auf ein helles Grau, wenn das QLineEdit deaktiviert ist */
+    border-color: #aaaaaa;
+}</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="4" column="0">
+       <layout class="QHBoxLayout" name="hLayout_bitrate">
+        <item>
+         <widget class="QLabel" name="metadata_bitrate_label">
+          <property name="styleSheet">
+           <string notr="true">QLabel {
+    color: white;
+    font-size: 16px;
+    padding: 5px;
+	margin-right: 40px;
+}
+
+QLabel#Title {
+    color: #212121;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+QLabel#Subtitle {
+    color: #757575;
+    font-size: 20px;
+}
+</string>
+          </property>
+          <property name="text">
+           <string>Bitrate:´</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="metadata_bitrate_lineedit">
+          <property name="styleSheet">
+           <string notr="true">QLineEdit {
+    border: 2px solid #757575;
+    border-radius: 5px;
+    padding: 0 8px;
+    background: rgb(94, 92, 100);  /* setzt den Hintergrund auf Schwarz */
+    color: #FFFFFF;  /* setzt die Textfarbe auf Weiß */
+    font-size: 16px;
+    height: 20px;
+	border-color: rgb(0, 255, 221)
+}
+
+QLineEdit:focus {
+    border-color: #4a90d9;
+}
+
+QLineEdit:disabled {
+    background: #444444;  /* setzt den Hintergrund auf ein dunkles Grau, wenn das QLineEdit deaktiviert ist */
+    color: #aaaaaa;  /* setzt die Textfarbe auf ein helles Grau, wenn das QLineEdit deaktiviert ist */
+    border-color: #aaaaaa;
+}</string>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="1" column="0">
+       <layout class="QHBoxLayout" name="hLayout_">
+        <item>
+         <widget class="QLabel" name="metadata_title_label">
+          <property name="styleSheet">
+           <string notr="true">QLabel {
+    color: white;
+    font-size: 16px;
+    padding: 5px;
+	margin-right: 13px;
+}
+
+QLabel#Title {
+    color: #212121;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+QLabel#Subtitle {
+    color: #757575;
+    font-size: 20px;
+}
+</string>
+          </property>
+          <property name="text">
+           <string>Processing: </string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="metadata_title_lineedit">
+          <property name="styleSheet">
+           <string notr="true">QLineEdit {
+    border: 2px solid #757575;
+    border-radius: 5px;
+    padding: 0 8px;
+    background: rgb(94, 92, 100);  /* setzt den Hintergrund auf Schwarz */
+    color: #FFFFFF;  /* setzt die Textfarbe auf Weiß */
+    font-size: 16px;
+    height: 20px;
+	border-color: rgb(0, 255, 221)
+}
+
+QLineEdit:focus {
+    border-color: #4a90d9;
+}
+
+QLineEdit:disabled {
+    background: #444444;  /* setzt den Hintergrund auf ein dunkles Grau, wenn das QLineEdit deaktiviert ist */
+    color: #aaaaaa;  /* setzt die Textfarbe auf ein helles Grau, wenn das QLineEdit deaktiviert ist */
+    border-color: #aaaaaa;
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="8" column="0">
+       <layout class="QHBoxLayout" name="hLayout_hdr">
+        <item>
+         <widget class="QLabel" name="metadata_hdr_label">
+          <property name="styleSheet">
+           <string notr="true">QLabel {
+    color: white;
+    font-size: 16px;
+    padding: 5px;
+	margin-right: 60px;
+}
+
+
+QLabel#Title {
+    color: #212121;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+QLabel#Subtitle {
+    color: #757575;
+    font-size: 20px;
+}
+</string>
+          </property>
+          <property name="text">
+           <string>HDR:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="metadata_hdr_lineedit">
+          <property name="styleSheet">
+           <string notr="true">QLineEdit {
+    border: 2px solid #757575;
+    border-radius: 5px;
+    padding: 0 8px;
+    background: rgb(94, 92, 100);  /* setzt den Hintergrund auf Schwarz */
+    color: #FFFFFF;  /* setzt die Textfarbe auf Weiß */
+    font-size: 16px;
+    height: 20px;
+	border-color: rgb(0, 255, 221)
+}
+
+QLineEdit:focus {
+    border-color: #4a90d9;
+}
+
+QLineEdit:disabled {
+    background: #444444;  /* setzt den Hintergrund auf ein dunkles Grau, wenn das QLineEdit deaktiviert ist */
+    color: #aaaaaa;  /* setzt die Textfarbe auf ein helles Grau, wenn das QLineEdit deaktiviert ist */
+    border-color: #aaaaaa;
+}</string>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="7" column="0">
+       <layout class="QHBoxLayout" name="hLayout_views">
+        <item>
+         <widget class="QLabel" name="metadata_views_label">
+          <property name="styleSheet">
+           <string notr="true">QLabel {
+    color: white;
+    font-size: 16px;
+    padding: 5px;
+	margin-right: 50px;
+}
+
+QLabel#Title {
+    color: #212121;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+QLabel#Subtitle {
+    color: #757575;
+    font-size: 20px;
+}
+</string>
+          </property>
+          <property name="text">
+           <string>Views:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="metadata_views_lineedit">
+          <property name="styleSheet">
+           <string notr="true">QLineEdit {
+    border: 2px solid #757575;
+    border-radius: 5px;
+    padding: 0 8px;
+    background: rgb(94, 92, 100);  /* setzt den Hintergrund auf Schwarz */
+    color: #FFFFFF;  /* setzt die Textfarbe auf Weiß */
+    font-size: 16px;
+    height: 20px;
+	border-color: rgb(0, 255, 221)
+}
+
+QLineEdit:focus {
+    border-color: #4a90d9;
+}
+
+QLineEdit:disabled {
+    background: #444444;  /* setzt den Hintergrund auf ein dunkles Grau, wenn das QLineEdit deaktiviert ist */
+    color: #aaaaaa;  /* setzt die Textfarbe auf ein helles Grau, wenn das QLineEdit deaktiviert ist */
+    border-color: #aaaaaa;
+}</string>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="1" column="1" rowspan="8">
+       <widget class="QGraphicsView" name="video_graphics_view">
         <property name="styleSheet">
-         <string notr="true">color: white</string>
-        </property>
-        <property name="text">
-         <string>Video:  Downloaded: / of / Videos</string>
+         <string notr="true">QGraphicsView {
+    border: 5px solid rgb(179, 0, 255);
+    border-radius: 5px;
+	background-color: rgb(94, 92, 100)
+}
+</string>
         </property>
        </widget>
       </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="playlist_remain_vieos_label">
-        <property name="styleSheet">
-         <string notr="true">color: white</string>
-        </property>
-        <property name="text">
-         <string>Playlist:  Downloaded: / of / Videos</string>
-        </property>
-       </widget>
+      <item row="5" column="0">
+       <layout class="QHBoxLayout" name="hLayout_filesize">
+        <item>
+         <widget class="QLabel" name="metadata_filesize_label">
+          <property name="styleSheet">
+           <string notr="true">QLabel {
+    color: white;
+    font-size: 16px;
+    padding: 5px, 5px, 5px, 5px;
+	margin-right: 10px;
+}
+
+QLabel#Title {
+    color: #212121;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+QLabel#Subtitle {
+    color: #757575;
+    font-size: 20px;
+}
+</string>
+          </property>
+          <property name="text">
+           <string>File Size (MB):</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="metadata_filesize_lineedit">
+          <property name="styleSheet">
+           <string notr="true">QLineEdit {
+    border: 2px solid #757575;
+    border-radius: 5px;
+    padding: 0 8px;
+    background: rgb(94, 92, 100);  /* setzt den Hintergrund auf Schwarz */
+    color: #FFFFFF;  /* setzt die Textfarbe auf Weiß */
+    font-size: 16px;
+    height: 20px;
+	border-color: rgb(0, 255, 221)
+}
+
+QLineEdit:focus {
+    border-color: #4a90d9;
+}
+
+QLineEdit:disabled {
+    background: #444444;  /* setzt den Hintergrund auf ein dunkles Grau, wenn das QLineEdit deaktiviert ist */
+    color: #aaaaaa;  /* setzt die Textfarbe auf ein helles Grau, wenn das QLineEdit deaktiviert ist */
+    border-color: #aaaaaa;
+}</string>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="6" column="0">
+       <layout class="QHBoxLayout" name="hLayout_length">
+        <item>
+         <widget class="QLabel" name="metadata_length_label">
+          <property name="styleSheet">
+           <string notr="true">QLabel {
+    color: white;
+    font-size: 16px;
+    padding: 5px;
+	margin-right: 45px;
+}
+
+
+QLabel#Title {
+    color: #212121;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+QLabel#Subtitle {
+    color: #757575;
+    font-size: 20px;
+}
+</string>
+          </property>
+          <property name="text">
+           <string>Length:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="metadata_length_lineedit">
+          <property name="styleSheet">
+           <string notr="true">QLineEdit {
+    border: 2px solid #757575;
+    border-radius: 5px;
+    padding: 0 8px;
+    background: rgb(94, 92, 100);  /* setzt den Hintergrund auf Schwarz */
+    color: #FFFFFF;  /* setzt die Textfarbe auf Weiß */
+    font-size: 16px;
+    height: 20px;
+	border-color: rgb(0, 255, 221)
+}
+
+QLineEdit:focus {
+    border-color: #4a90d9;
+}
+
+QLineEdit:disabled {
+    background: #444444;  /* setzt den Hintergrund auf ein dunkles Grau, wenn das QLineEdit deaktiviert ist */
+    color: #aaaaaa;  /* setzt die Textfarbe auf ein helles Grau, wenn das QLineEdit deaktiviert ist */
+    border-color: #aaaaaa;
+}</string>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </item>
      </layout>
     </widget>
@@ -127,6 +879,7 @@ QGroupBox::title {
     border: 2px solid #757575;
     border-radius: 5px;
     margin-top: 1ex; /* margin-top sorgt für einen Abstand zwischen dem Titel und dem Rand */
+	border-color: rgb(255, 255, 255)
 }
 
 QGroupBox::title {
@@ -137,7 +890,7 @@ QGroupBox::title {
 </string>
         </property>
         <property name="title">
-         <string>Resolutions</string>
+         <string/>
         </property>
         <layout class="QGridLayout" name="gridLayout_8">
          <item row="0" column="0">
@@ -406,7 +1159,9 @@ QRadioButton::indicator:checked {
     border: 2px solid #757575;
     border-radius: 5px;
     margin-top: 1ex; /* margin-top sorgt für einen Abstand zwischen dem Titel und dem Rand */
+	border-color: rgb(255, 255, 255)
 }
+
 
 QGroupBox::title {
     subcontrol-origin: margin;
@@ -416,7 +1171,7 @@ QGroupBox::title {
 </string>
         </property>
         <property name="title">
-         <string>Music</string>
+         <string/>
         </property>
         <layout class="QGridLayout" name="gridLayout_2">
          <item row="0" column="0">
@@ -548,6 +1303,7 @@ QRadioButton::indicator:checked {
     border: 2px solid #757575;
     border-radius: 5px;
     margin-top: 1ex; /* margin-top sorgt für einen Abstand zwischen dem Titel und dem Rand */
+	border-color: rgb(255, 255, 255)
 }
 
 QGroupBox::title {
@@ -558,7 +1314,7 @@ QGroupBox::title {
 </string>
         </property>
         <property name="title">
-         <string>Output Format</string>
+         <string/>
         </property>
         <layout class="QGridLayout" name="gridLayout_3">
          <item row="0" column="0">
@@ -688,6 +1444,7 @@ QRadioButton::indicator:checked {
     border: 2px solid #757575;
     border-radius: 5px;
     margin-top: 1ex; /* margin-top sorgt für einen Abstand zwischen dem Titel und dem Rand */
+	border-color: rgb(246, 245, 244)
 }
 
 QGroupBox::title {
@@ -698,7 +1455,7 @@ QGroupBox::title {
 </string>
         </property>
         <property name="title">
-         <string>Video</string>
+         <string/>
         </property>
         <layout class="QGridLayout" name="gridLayout_7">
          <item row="0" column="0">
@@ -812,13 +1569,14 @@ QRadioButton::indicator::unchecked {
      </layout>
     </widget>
    </item>
-   <item row="0" column="0">
-    <widget class="QGroupBox" name="groupbox_urls">
+   <item row="1" column="0">
+    <widget class="QGroupBox" name="groupbox_downloads">
      <property name="styleSheet">
       <string notr="true">QGroupBox {
     border: 2px solid #757575;
     border-radius: 5px;
     margin-top: 1ex; /* margin-top sorgt für einen Abstand zwischen dem Titel und dem Rand */
+	border-color: rgb(255, 255, 255)
 }
 
 QGroupBox::title {
@@ -831,821 +1589,28 @@ QGroupBox::title {
      <property name="title">
       <string/>
      </property>
-     <layout class="QGridLayout" name="gridLayout_10">
-      <item row="1" column="2">
-       <widget class="QPushButton" name="playlist_start_button">
-        <property name="styleSheet">
-         <string notr="true">QPushButton {
-    background-color: #5468ff;
-    border: none;
-    border-radius: 6px;
-    color: #fff;
-    font-family: &quot;JetBrains Mono&quot;, monospace;
-    font-size: 15px;
-    padding: 0px 16px 0px 16px;
-    height: 24px;
-}
-
-QPushButton:hover {
-    background-color: #3c4fe0;
-}
-
-QPushButton:pressed {
-    background-color: #3c4fe0;
-}
-</string>
-        </property>
-        <property name="text">
-         <string>Downlaod</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1">
-       <widget class="QLineEdit" name="playlist_url_lineedit">
-        <property name="styleSheet">
-         <string notr="true">QLineEdit {
-    border: 2px solid #757575;
-    border-radius: 5px;
-    padding: 0 8px;
-    background: rgb(94, 92, 100);  /* setzt den Hintergrund auf Schwarz */
-    color: #FFFFFF;  /* setzt die Textfarbe auf Weiß */
-    font-size: 16px;
-    height: 20px;
-}
-
-QLineEdit:focus {
-    border-color: #4a90d9;
-}
-
-QLineEdit:disabled {
-    background: #444444;  /* setzt den Hintergrund auf ein dunkles Grau, wenn das QLineEdit deaktiviert ist */
-    color: #aaaaaa;  /* setzt die Textfarbe auf ein helles Grau, wenn das QLineEdit deaktiviert ist */
-    border-color: #aaaaaa;
-}</string>
-        </property>
-        <property name="readOnly">
-         <bool>false</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="2">
-       <widget class="QPushButton" name="video_thumbnail_copy_button">
-        <property name="styleSheet">
-         <string notr="true">QPushButton {
-    background-color: #5468ff;
-    border: none;
-    border-radius: 6px;
-    color: #fff;
-    font-family: &quot;JetBrains Mono&quot;, monospace;
-    font-size: 16px;
-    padding: 0px 16px 0px 16px;
-    height: 24px;
-}
-
-QPushButton:hover {
-    background-color: #3c4fe0;
-}
-
-QPushButton:pressed {
-    background-color: #3c4fe0;
-}
-</string>
-        </property>
-        <property name="text">
-         <string>Copy</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="playlist_url_label">
-        <property name="styleSheet">
-         <string notr="true">color: white</string>
-        </property>
-        <property name="text">
-         <string>Playlist URL:</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="1">
-       <widget class="QLineEdit" name="video_url_lineedit">
-        <property name="styleSheet">
-         <string notr="true">QLineEdit {
-    border: 2px solid #757575;
-    border-radius: 5px;
-    padding: 0 8px;
-    background: rgb(94, 92, 100);  /* setzt den Hintergrund auf Schwarz */
-    color: #FFFFFF;  /* setzt die Textfarbe auf Weiß */
-    font-size: 16px;
-    height: 20px;
-}
-
-QLineEdit:focus {
-    border-color: #4a90d9;
-}
-
-QLineEdit:disabled {
-    background: #444444;  /* setzt den Hintergrund auf ein dunkles Grau, wenn das QLineEdit deaktiviert ist */
-    color: #aaaaaa;  /* setzt die Textfarbe auf ein helles Grau, wenn das QLineEdit deaktiviert ist */
-    border-color: #aaaaaa;
-}</string>
-        </property>
-        <property name="readOnly">
-         <bool>false</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="3">
-       <widget class="QPushButton" name="video_download_start_button">
-        <property name="styleSheet">
-         <string notr="true">QPushButton {
-    background-color: #5468ff;
-    border: none;
-    border-radius: 6px;
-    color: #fff;
-    font-family: &quot;JetBrains Mono&quot;, monospace;
-    font-size: 15
-px;
-    padding: 0px 16px 0px 16px;
-    height: 24px;
-}
-
-QPushButton:hover {
-    background-color: #3c4fe0;
-}
-
-QPushButton:pressed {
-    background-color: #3c4fe0;
-}
-</string>
-        </property>
-        <property name="text">
-         <string>Download</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="0">
-       <widget class="QLabel" name="video_thumbnail_label">
-        <property name="styleSheet">
-         <string notr="true">color: white</string>
-        </property>
-        <property name="text">
-         <string>Thumbnail:</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="1">
-       <widget class="QLineEdit" name="video_thumbnail_lineedit">
-        <property name="styleSheet">
-         <string notr="true">QLineEdit {
-    border: 2px solid #757575;
-    border-radius: 5px;
-    padding: 0 8px;
-    background: rgb(94, 92, 100);  /* setzt den Hintergrund auf Schwarz */
-    color: #FFFFFF;  /* setzt die Textfarbe auf Weiß */
-    font-size: 16px;
-    height: 20px;
-}
-
-QLineEdit:focus {
-    border-color: #4a90d9;
-}
-
-QLineEdit:disabled {
-    background: #444444;  /* setzt den Hintergrund auf ein dunkles Grau, wenn das QLineEdit deaktiviert ist */
-    color: #aaaaaa;  /* setzt die Textfarbe auf ein helles Grau, wenn das QLineEdit deaktiviert ist */
-    border-color: #aaaaaa;
-}</string>
-        </property>
-        <property name="readOnly">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="2">
-       <widget class="QPushButton" name="video_start_prep_button">
-        <property name="styleSheet">
-         <string notr="true">QPushButton {
-    background-color: #5468ff;
-    border: none;
-    border-radius: 6px;
-    color: #fff;
-    font-family: &quot;JetBrains Mono&quot;, monospace;
-    font-size: 15px;
-    padding: 0px 16px 0px 16px;
-    height: 24px;
-}
-
-QPushButton:hover {
-    background-color: #3c4fe0;
-}
-
-QPushButton:pressed {
-    background-color: #3c4fe0;
-}
-</string>
-        </property>
-        <property name="text">
-         <string>Start Prep</string>
-        </property>
-       </widget>
-      </item>
+     <layout class="QGridLayout" name="gridLayout_11">
       <item row="0" column="0">
-       <widget class="QLabel" name="video_url_label">
+       <widget class="QLabel" name="video_remain_video_label">
         <property name="styleSheet">
          <string notr="true">color: white</string>
         </property>
         <property name="text">
-         <string>Video URL:</string>
+         <string>Video:  Downloaded: / of / Videos</string>
         </property>
        </widget>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item row="2" column="0" rowspan="2">
-    <widget class="QGroupBox" name="groupbox_metadata">
-     <property name="styleSheet">
-      <string notr="true">QGroupBox {
-    border: 2px solid #757575;
-    border-radius: 5px;
-    margin-top: 1ex; /* margin-top sorgt für einen Abstand zwischen dem Titel und dem Rand */
-}
-
-QGroupBox::title {
-    subcontrol-origin: margin;
-    left: 10px; /* left verschiebt den Titel etwas nach rechts, damit er nicht direkt am Rand anliegt */
-    padding: 0 3px 0 3px; /* padding gibt dem Titel etwas Platz rundherum */
-}
-</string>
-     </property>
-     <property name="title">
-      <string>Metadata:</string>
-     </property>
-     <layout class="QGridLayout" name="gridLayout_5">
-      <item row="0" column="0" colspan="2">
-       <layout class="QHBoxLayout" name="horizontalLayout">
-        <item>
-         <widget class="QLabel" name="metadata_thumbnail_label">
-          <property name="styleSheet">
-           <string notr="true">QLabel {
-    color: white;
-    font-size: 16px;
-	margin-right: 28px;
-}
-
-QLabel#Title {
-    color: #212121;
-    font-size: 24px;
-    font-weight: bold;
-}
-
-QLabel#Subtitle {
-    color: #757575;
-    font-size: 20px;
-}
-</string>
-          </property>
-          <property name="text">
-           <string>Thumbnail:</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="lineEdit">
-          <property name="styleSheet">
-           <string notr="true">QLineEdit {
-    border: 2px solid #757575;
-    border-radius: 5px;
-    padding: 0 8px;
-    background: rgb(94, 92, 100);  /* setzt den Hintergrund auf Schwarz */
-    color: #FFFFFF;  /* setzt die Textfarbe auf Weiß */
-    font-size: 16px;
-    height: 20px;
-	margin-left: 0px;
-}
-
-
-QLineEdit:focus {
-    border-color: #4a90d9;
-}
-
-QLineEdit:disabled {
-    background: #444444;  /* setzt den Hintergrund auf ein dunkles Grau, wenn das QLineEdit deaktiviert ist */
-    color: #aaaaaa;  /* setzt die Textfarbe auf ein helles Grau, wenn das QLineEdit deaktiviert ist */
-    border-color: #aaaaaa;
-}</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
       </item>
       <item row="1" column="0">
-       <layout class="QHBoxLayout" name="hLayout_">
-        <item>
-         <widget class="QLabel" name="metadata_title_label">
-          <property name="styleSheet">
-           <string notr="true">QLabel {
-    color: white;
-    font-size: 16px;
-    padding: 5px;
-	margin-right: 13px;
-}
-
-QLabel#Title {
-    color: #212121;
-    font-size: 24px;
-    font-weight: bold;
-}
-
-QLabel#Subtitle {
-    color: #757575;
-    font-size: 20px;
-}
-</string>
-          </property>
-          <property name="text">
-           <string>Processing: </string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="metadata_title_lineedit">
-          <property name="styleSheet">
-           <string notr="true">QLineEdit {
-    border: 2px solid #757575;
-    border-radius: 5px;
-    padding: 0 8px;
-    background: rgb(94, 92, 100);  /* setzt den Hintergrund auf Schwarz */
-    color: #FFFFFF;  /* setzt die Textfarbe auf Weiß */
-    font-size: 16px;
-    height: 20px;
-}
-
-QLineEdit:focus {
-    border-color: #4a90d9;
-}
-
-QLineEdit:disabled {
-    background: #444444;  /* setzt den Hintergrund auf ein dunkles Grau, wenn das QLineEdit deaktiviert ist */
-    color: #aaaaaa;  /* setzt die Textfarbe auf ein helles Grau, wenn das QLineEdit deaktiviert ist */
-    border-color: #aaaaaa;
-}</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-          <property name="readOnly">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item row="2" column="0">
-       <layout class="QHBoxLayout" name="hLayout_fps">
-        <item>
-         <widget class="QLabel" name="metadata_fps_label">
-          <property name="styleSheet">
-           <string notr="true">QLabel {
-    color: white;
-    font-size: 16px;
-    padding: 5px;
-	margin-right: 69px;
-
-}
-
-QLabel#Title {
-    color: #212121;
-    font-size: 24px;
-    font-weight: bold;
-}
-
-QLabel#Subtitle {
-    color: #757575;
-    font-size: 20px;
-}
-</string>
-          </property>
-          <property name="text">
-           <string>FPS:</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="metadata_fps_lineedit">
-          <property name="styleSheet">
-           <string notr="true">QLineEdit {
-    border: 2px solid #757575;
-    border-radius: 5px;
-    padding: 0 8px;
-    background: rgb(94, 92, 100);  /* setzt den Hintergrund auf Schwarz */
-    color: #FFFFFF;  /* setzt die Textfarbe auf Weiß */
-    font-size: 16px;
-    height: 19px;
-}
-
-QLineEdit:focus {
-    border-color: #4a90d9;
-}
-
-QLineEdit:disabled {
-    background: #444444;  /* setzt den Hintergrund auf ein dunkles Grau, wenn das QLineEdit deaktiviert ist */
-    color: #aaaaaa;  /* setzt die Textfarbe auf ein helles Grau, wenn das QLineEdit deaktiviert ist */
-    border-color: #aaaaaa;
-}</string>
-          </property>
-          <property name="readOnly">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item row="3" column="0">
-       <layout class="QHBoxLayout" name="hLayout_resolution"/>
-      </item>
-      <item row="4" column="0">
-       <layout class="QHBoxLayout" name="hLayout_bitrate">
-        <item>
-         <widget class="QLabel" name="metadata_bitrate_label">
-          <property name="styleSheet">
-           <string notr="true">QLabel {
-    color: white;
-    font-size: 16px;
-    padding: 5px;
-	margin-right: 39px;
-}
-
-QLabel#Title {
-    color: #212121;
-    font-size: 24px;
-    font-weight: bold;
-}
-
-QLabel#Subtitle {
-    color: #757575;
-    font-size: 20px;
-}
-</string>
-          </property>
-          <property name="text">
-           <string>Bitrate:´</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="metadata_bitrate_lineedit">
-          <property name="styleSheet">
-           <string notr="true">QLineEdit {
-    border: 2px solid #757575;
-    border-radius: 5px;
-    padding: 0 8px;
-    background: rgb(94, 92, 100);  /* setzt den Hintergrund auf Schwarz */
-    color: #FFFFFF;  /* setzt die Textfarbe auf Weiß */
-    font-size: 16px;
-    height: 20px;
-}
-
-QLineEdit:focus {
-    border-color: #4a90d9;
-}
-
-QLineEdit:disabled {
-    background: #444444;  /* setzt den Hintergrund auf ein dunkles Grau, wenn das QLineEdit deaktiviert ist */
-    color: #aaaaaa;  /* setzt die Textfarbe auf ein helles Grau, wenn das QLineEdit deaktiviert ist */
-    border-color: #aaaaaa;
-}</string>
-          </property>
-          <property name="readOnly">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item row="5" column="0">
-       <layout class="QHBoxLayout" name="hLayout_filesize">
-        <item>
-         <widget class="QLabel" name="metadata_filesize_label">
-          <property name="styleSheet">
-           <string notr="true">QLabel {
-    color: white;
-    font-size: 16px;
-    padding: 5px, 5px, 5px, 5px;
-	margin-right: 10px;
-}
-
-QLabel#Title {
-    color: #212121;
-    font-size: 24px;
-    font-weight: bold;
-}
-
-QLabel#Subtitle {
-    color: #757575;
-    font-size: 20px;
-}
-</string>
-          </property>
-          <property name="text">
-           <string>File Size (MB):</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="metadata_filesize_lineedit">
-          <property name="styleSheet">
-           <string notr="true">QLineEdit {
-    border: 2px solid #757575;
-    border-radius: 5px;
-    padding: 0 8px;
-    background: rgb(94, 92, 100);  /* setzt den Hintergrund auf Schwarz */
-    color: #FFFFFF;  /* setzt die Textfarbe auf Weiß */
-    font-size: 16px;
-    height: 20px;
-}
-
-QLineEdit:focus {
-    border-color: #4a90d9;
-}
-
-QLineEdit:disabled {
-    background: #444444;  /* setzt den Hintergrund auf ein dunkles Grau, wenn das QLineEdit deaktiviert ist */
-    color: #aaaaaa;  /* setzt die Textfarbe auf ein helles Grau, wenn das QLineEdit deaktiviert ist */
-    border-color: #aaaaaa;
-}</string>
-          </property>
-          <property name="readOnly">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item row="6" column="0">
-       <layout class="QHBoxLayout" name="hLayout_length">
-        <item>
-         <widget class="QLabel" name="metadata_length_label">
-          <property name="styleSheet">
-           <string notr="true">QLabel {
-    color: white;
-    font-size: 16px;
-    padding: 5px;
-	margin-right: 45px;
-}
-
-
-QLabel#Title {
-    color: #212121;
-    font-size: 24px;
-    font-weight: bold;
-}
-
-QLabel#Subtitle {
-    color: #757575;
-    font-size: 20px;
-}
-</string>
-          </property>
-          <property name="text">
-           <string>Length:</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="metadata_length_lineedit">
-          <property name="styleSheet">
-           <string notr="true">QLineEdit {
-    border: 2px solid #757575;
-    border-radius: 5px;
-    padding: 0 8px;
-    background: rgb(94, 92, 100);  /* setzt den Hintergrund auf Schwarz */
-    color: #FFFFFF;  /* setzt die Textfarbe auf Weiß */
-    font-size: 16px;
-    height: 20px;
-}
-
-QLineEdit:focus {
-    border-color: #4a90d9;
-}
-
-QLineEdit:disabled {
-    background: #444444;  /* setzt den Hintergrund auf ein dunkles Grau, wenn das QLineEdit deaktiviert ist */
-    color: #aaaaaa;  /* setzt die Textfarbe auf ein helles Grau, wenn das QLineEdit deaktiviert ist */
-    border-color: #aaaaaa;
-}</string>
-          </property>
-          <property name="readOnly">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item row="7" column="0">
-       <layout class="QHBoxLayout" name="hLayout_views">
-        <item>
-         <widget class="QLabel" name="metadata_views_label">
-          <property name="styleSheet">
-           <string notr="true">QLabel {
-    color: white;
-    font-size: 16px;
-    padding: 5px;
-	margin-right: 50px;
-}
-
-QLabel#Title {
-    color: #212121;
-    font-size: 24px;
-    font-weight: bold;
-}
-
-QLabel#Subtitle {
-    color: #757575;
-    font-size: 20px;
-}
-</string>
-          </property>
-          <property name="text">
-           <string>Views:</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="metadata_views_lineedit">
-          <property name="styleSheet">
-           <string notr="true">QLineEdit {
-    border: 2px solid #757575;
-    border-radius: 5px;
-    padding: 0 8px;
-    background: rgb(94, 92, 100);  /* setzt den Hintergrund auf Schwarz */
-    color: #FFFFFF;  /* setzt die Textfarbe auf Weiß */
-    font-size: 16px;
-    height: 20px;
-}
-
-QLineEdit:focus {
-    border-color: #4a90d9;
-}
-
-QLineEdit:disabled {
-    background: #444444;  /* setzt den Hintergrund auf ein dunkles Grau, wenn das QLineEdit deaktiviert ist */
-    color: #aaaaaa;  /* setzt die Textfarbe auf ein helles Grau, wenn das QLineEdit deaktiviert ist */
-    border-color: #aaaaaa;
-}</string>
-          </property>
-          <property name="readOnly">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item row="8" column="0">
-       <layout class="QHBoxLayout" name="hLayout_hdr">
-        <item>
-         <widget class="QLabel" name="metadata_hdr_label">
-          <property name="styleSheet">
-           <string notr="true">QLabel {
-    color: white;
-    font-size: 16px;
-    padding: 5px;
-	margin-right: 60px;
-}
-
-
-QLabel#Title {
-    color: #212121;
-    font-size: 24px;
-    font-weight: bold;
-}
-
-QLabel#Subtitle {
-    color: #757575;
-    font-size: 20px;
-}
-</string>
-          </property>
-          <property name="text">
-           <string>HDR:</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="metadata_hdr_lineedit">
-          <property name="styleSheet">
-           <string notr="true">QLineEdit {
-    border: 2px solid #757575;
-    border-radius: 5px;
-    padding: 0 8px;
-    background: rgb(94, 92, 100);  /* setzt den Hintergrund auf Schwarz */
-    color: #FFFFFF;  /* setzt die Textfarbe auf Weiß */
-    font-size: 16px;
-    height: 20px;
-}
-
-QLineEdit:focus {
-    border-color: #4a90d9;
-}
-
-QLineEdit:disabled {
-    background: #444444;  /* setzt den Hintergrund auf ein dunkles Grau, wenn das QLineEdit deaktiviert ist */
-    color: #aaaaaa;  /* setzt die Textfarbe auf ein helles Grau, wenn das QLineEdit deaktiviert ist */
-    border-color: #aaaaaa;
-}</string>
-          </property>
-          <property name="readOnly">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item row="1" column="1" rowspan="8">
-       <widget class="QGraphicsView" name="video_graphics_view">
+       <widget class="QLabel" name="playlist_remain_vieos_label">
         <property name="styleSheet">
-         <string notr="true">QGraphicsView {
-    border: 5px solid rgb(179, 0, 255);
-    border-radius: 5px;
-	background-color: rgb(94, 92, 100)
-}
-</string>
+         <string notr="true">color: white</string>
+        </property>
+        <property name="text">
+         <string>Playlist:  Downloaded: / of / Videos</string>
         </property>
        </widget>
       </item>
      </layout>
-    </widget>
-   </item>
-   <item row="3" column="1" rowspan="2">
-    <widget class="QGroupBox" name="groupbox_info">
-     <property name="styleSheet">
-      <string notr="true">QGroupBox {
-    border: 2px solid #757575;
-    border-radius: 5px;
-    margin-top: 1ex; /* margin-top sorgt für einen Abstand zwischen dem Titel und dem Rand */
-}
-
-QGroupBox::title {
-    subcontrol-origin: margin;
-    left: 10px; /* left verschiebt den Titel etwas nach rechts, damit er nicht direkt am Rand anliegt */
-    padding: 0 3px 0 3px; /* padding gibt dem Titel etwas Platz rundherum */
-}
-</string>
-     </property>
-     <property name="title">
-      <string/>
-     </property>
-     <widget class="QLabel" name="info_text_1">
-      <property name="geometry">
-       <rect>
-        <x>12</x>
-        <y>15</y>
-        <width>433</width>
-        <height>17</height>
-       </rect>
-      </property>
-      <property name="toolTip">
-       <string>You found an Easter Egg :D</string>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">color: white</string>
-      </property>
-      <property name="text">
-       <string>* Program will ask you what resolution etc...  while downloading</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="info_text_2">
-      <property name="geometry">
-       <rect>
-        <x>12</x>
-        <y>80</y>
-        <width>549</width>
-        <height>17</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">color: white</string>
-      </property>
-      <property name="text">
-       <string>** Video is downloaded seperately with the Audio and then combined to one file.</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="info_text_3">
-      <property name="geometry">
-       <rect>
-        <x>12</x>
-        <y>146</y>
-        <width>634</width>
-        <height>17</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">color: white</string>
-      </property>
-      <property name="text">
-       <string>*** Downloads video with the endpoint url. (No VPN, takes longer, but real-time progress bar)</string>
-      </property>
-     </widget>
     </widget>
    </item>
    <item row="2" column="1">
@@ -1654,156 +1619,6 @@ QGroupBox::title {
       <string/>
      </property>
      <layout class="QGridLayout" name="gridLayout_13">
-      <item row="0" column="2">
-       <widget class="QGroupBox" name="groupbox_ui">
-        <property name="styleSheet">
-         <string notr="true">QGroupBox {
-    border: 2px solid #757575;
-    border-radius: 5px;
-    margin-top: 1ex; /* margin-top sorgt für einen Abstand zwischen dem Titel und dem Rand */
-}
-
-QGroupBox::title {
-    subcontrol-origin: margin;
-    left: 10px; /* left verschiebt den Titel etwas nach rechts, damit er nicht direkt am Rand anliegt */
-    padding: 0 3px 0 3px; /* padding gibt dem Titel etwas Platz rundherum */
-}
-</string>
-        </property>
-        <property name="title">
-         <string>User Interface</string>
-        </property>
-        <layout class="QGridLayout" name="gridLayout_4">
-         <item row="4" column="0">
-          <widget class="QPushButton" name="ui_theme_apply">
-           <property name="styleSheet">
-            <string notr="true">QPushButton {
-    background-color: #5468ff;
-    border: none;
-    border-radius: 6px;
-    color: #fff;
-    font-family: &quot;JetBrains Mono&quot;, monospace;
-    font-size: 15px;
-    padding: 0px 8px 0px 8px;
-    height: 30px;
-}
-
-QPushButton:hover {
-    background-color: #3c4fe0;
-}
-
-QPushButton:pressed {
-    background-color: #3c4fe0;
-}</string>
-           </property>
-           <property name="text">
-            <string>Apply</string>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="0">
-          <widget class="QRadioButton" name="radio_echteralsfake">
-           <property name="cursor">
-            <cursorShape>PointingHandCursor</cursorShape>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QRadioButton {
-	color: rgb(164, 0, 255) }
-
-QRadioButton::indicator::unchecked {
-	border: 1px solid white;
-	border-radius: 5px;
-}
-
-QRadioButton::indicator:checked {
-    border : 4px solid;
-	border-color: black;
-	border-radius: 6px;
-	background-color: rgb(0, 255, 183);
-
-}
-
-</string>
-           </property>
-           <property name="text">
-            <string>EchterAlsFake (black and colorful)</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="0">
-          <widget class="QLabel" name="label_reset">
-           <property name="styleSheet">
-            <string notr="true">color: white</string>
-           </property>
-           <property name="text">
-            <string>After changing this you need to restart</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="0">
-          <widget class="QRadioButton" name="radio_dark_mode">
-           <property name="cursor">
-            <cursorShape>PointingHandCursor</cursorShape>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QRadioButton {
-	color: rgb(255, 255, 255) }
-
-QRadioButton::indicator::unchecked {
-	border: 1px solid white;
-	border-radius: 5px;
-}
-
-QRadioButton::indicator:checked {
-    border : 4px solid;
-	border-color: black;
-	border-radius: 6px;
-	background-color: rgb(0, 255, 183);
-
-}
-
-</string>
-           </property>
-           <property name="text">
-            <string>Dark Mode (default)</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="0">
-          <widget class="QRadioButton" name="radio_white_theme">
-           <property name="cursor">
-            <cursorShape>ForbiddenCursor</cursorShape>
-           </property>
-           <property name="toolTip">
-            <string>No please dont do shis </string>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QRadioButton {
-	color: rgb(229, 165, 10) }
-
-QRadioButton::indicator::unchecked {
-	border: 1px solid white;
-	border-radius: 5px;
-}
-
-QRadioButton::indicator:checked {
-    border : 4px solid;
-	border-color: black;
-	border-radius: 6px;
-	background-color: rgb(0, 255, 183);
-
-}
-
-</string>
-           </property>
-           <property name="text">
-            <string>White Theme</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-      </item>
       <item row="0" column="1">
        <widget class="QGroupBox" name="groupbox_progress_bars">
         <property name="styleSheet">
@@ -1811,6 +1626,7 @@ QRadioButton::indicator:checked {
     border: 2px solid #757575;
     border-radius: 5px;
     margin-top: 1ex; /* margin-top sorgt für einen Abstand zwischen dem Titel und dem Rand */
+	border-color: rgb(255, 255, 255)
 }
 
 QGroupBox::title {
@@ -1821,7 +1637,7 @@ QGroupBox::title {
 </string>
         </property>
         <property name="title">
-         <string>Progress Bars</string>
+         <string/>
         </property>
         <layout class="QGridLayout" name="gridLayout">
          <item row="2" column="1">
@@ -1830,7 +1646,8 @@ QGroupBox::title {
             <string notr="true">QProgressBar {
     background-color: #F0F0F0; /* Hellgrauer Hintergrund */
 	text-align: center;
-	color: rgb(0, 255, 183)
+	color: rgb(0, 255, 183);
+	border-radius: 12px;
 }
 
 QProgressBar::chunk {
@@ -1879,7 +1696,8 @@ QProgressBar::chunk {
             <string notr="true">QProgressBar {
     background-color: #F0F0F0; /* Hellgrauer Hintergrund */
 	text-align: center;
-	color: rgb(153, 193, 241)
+	color: rgb(153, 193, 241);
+	border-radius: 12px;
 }
 
 QProgressBar::chunk {
@@ -1910,7 +1728,8 @@ QProgressBar::chunk {
             <string notr="true">QProgressBar {
     background-color: #F0F0F0; /* Hellgrauer Hintergrund */
 	text-align: center;
-	color: rgb(249, 240, 107)
+	color: rgb(249, 240, 107);
+	border-radius: 12px;
 }
 
 QProgressBar::chunk {
@@ -1955,6 +1774,7 @@ QProgressBar::chunk {
     border: 2px solid #757575;
     border-radius: 5px;
     margin-top: 1ex; /* margin-top sorgt für einen Abstand zwischen dem Titel und dem Rand */
+	border-color: rgb(255, 255, 255)
 }
 
 QGroupBox::title {
@@ -1965,7 +1785,7 @@ QGroupBox::title {
 </string>
         </property>
         <property name="title">
-         <string>Output stuff</string>
+         <string/>
         </property>
         <layout class="QGridLayout" name="gridLayout_6">
          <item row="0" column="0">
@@ -2147,6 +1967,7 @@ QLineEdit:disabled {
     font-size: 12px;
     padding: 0px 16px 0px 16px;
 	height: 24px;
+	border-color: rgb(0, 255, 221);
 }
 
 QPushButton:hover {
@@ -2167,6 +1988,58 @@ QPushButton:pressed {
        </widget>
       </item>
      </layout>
+    </widget>
+   </item>
+   <item row="4" column="0">
+    <widget class="QTextBrowser" name="license_text">
+     <property name="styleSheet">
+      <string notr="true">QTextBrowser {
+    border: 2px solid #757575;
+    border-radius: 5px;
+    margin-top: 1ex; /* margin-top sorgt für einen Abstand zwischen dem Titel und dem Rand */
+	border-color: rgb(255, 255, 255)
+}
+</string>
+     </property>
+     <property name="html">
+      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Noto Sans, '; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:11pt; color:#ffffff;&quot;&gt;Author:    EchterAlsFake&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:11pt; color:#ffffff;&quot;&gt;Version:   0.1&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:11pt; color:#ffffff;&quot;&gt;Website:  https://github.com/echteralsfake/VidFetch&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:11pt; color:#ffffff;&quot;&gt;License:   LGPLv3&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Ubuntu'; font-size:11pt; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:11pt; color:#ffffff;&quot;&gt;I am using Qt for the Graphical User Interface. I don't have a Qt License, so this Project is Open Source. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Ubuntu'; font-size:11pt; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:11pt; color:#ffffff;&quot;&gt;You are free to modify, change and distribute the program.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Ubuntu'; font-size:11pt; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:11pt; color:#ffffff;&quot;&gt;Usually I would license it under Creative Commons. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:11pt; color:#ffffff;&quot;&gt;It would be nice, if you could include the Source to this project in your project, but you don't have to.  I only ask you for that.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Ubuntu'; font-size:11pt; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:11pt; color:#ffffff;&quot;&gt;Credits:&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Ubuntu'; font-size:11pt; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:11pt; color:#ffffff;&quot;&gt;Thanks to Tabnine. One of the best code complete plugins I know.  If you want, buy their subscription, it's fucking awesome.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Ubuntu'; font-size:11pt; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:11pt; color:#ffffff;&quot;&gt;Thanks to ChatGPT. It helped a lot and I didn't understand shit when it comes to working with threads and progress bars. Without ChatGPT this project wouldn't be possible.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Ubuntu'; font-size:11pt; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:11pt; color:#ffffff;&quot;&gt;Thanks to Pytube, they created the Python Library, which I am downloading the videos with. Creating all that by myself would take years.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Ubuntu'; font-size:11pt; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:11pt; color:#ffffff;&quot;&gt;Thanks to ffmpeg for their great and open source video converting tool.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Ubuntu'; font-size:11pt; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:11pt; color:#ffffff;&quot;&gt;Thanks to @slhck who created the pip package: &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Ubuntu'; font-size:11pt; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:11pt; color:#ffffff;&quot;&gt;ffmpeg-progress-yield  &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Ubuntu'; font-size:11pt; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:11pt; color:#ffffff;&quot;&gt; It's the only way that I found, where I can create a progress bar for the converting process.  I searched like 6 hours and my mental health was at the end, but this guy just made my day :) &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Ubuntu'; font-size:11pt; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Ubuntu'; font-size:11pt; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:11pt; color:#ffffff;&quot;&gt;Thanks to all contributors, or the ones, that will be a contributor in the future :) &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:11pt; color:#ffffff;&quot;&gt;&lt;br /&gt;You can support me here:  https://paypal.me/EchterAlsFake&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Ubuntu'; font-size:11pt; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:11pt; color:#ffffff;&quot;&gt;Thanks :) &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
     </widget>
    </item>
   </layout>
