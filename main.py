@@ -20,6 +20,8 @@ from ui_form import Ui_Widget
 
 __version__ = "0.1"
 __author__ = "EchterAlsFake"
+__license__ = "LGPLv3"
+__date__ = "2023"
 
 class VidFetch_Core():
 
@@ -72,9 +74,10 @@ class Widget(QWidget):
         self.ui = Ui_Widget()
         self.ui.setupUi(self)
         self.resolutions = ['144p', '240p', '360p', '480p', '720p', '1080p', '1440p', '2160p', '4320p']
-        self.disable_resolutions(["144p", "240p", "360p"])
-        time.sleep(5)
-        self.enable_resolutions()
+        self.video_output = self.ui.output_video_lineedit.text()
+        self.music_output = self.ui.output_music_lineedit.text()
+        self.thumb_output = self.ui.output_thumbnail_lineedit.text()
+
 
 
     def disable_resolutions(self, available_resolutions):
@@ -88,6 +91,88 @@ class Widget(QWidget):
             radioButton = getattr(self.ui, f"radio_{resolution}")
             radioButton.setEnabled(True)
             radioButton.setStyleSheet("")
+
+    def qmsg(self, text):
+
+        qmessage_box = QMessageBox()
+        qmessage_box.setText(text)
+        qmessage_box.exec()
+
+
+    def start(self, url):
+
+            if VidFetch_Core().check_video(url)[0]:
+
+                y = VidFetch_Core().check_video(url)[1]
+
+
+                if self.ui.radio_music_mode.isChecked():
+
+                    mode = "music"
+                    output_path = self.music_output
+                    quality = False
+
+
+                elif self.ui.radio_video_mode.isChecked():
+
+                    mode = "video"
+                    output_path = self.video_output
+                    quality = VidFetch_Core().get_highest_resolution(y)
+
+                elif self.ui.radio_video_only.isChecked():
+
+                    mode = "video_only"
+                    output_path = self.video_output
+                    quality = VidFetch_Core().get_highest_resolution()
+
+
+                else:
+
+                    self.qmsg(text="Please choose a download mode, before pressing the start button.")
+
+                try:
+
+                    VidFetch_Core().check_path(output_path)
+
+                except PermissionError:
+                    self.qmsg(text="Sorry, it seems like you don't have permissions to write to that path. Try "
+                                   "executing the Application as root, even though, that this is NOT recommended")
+
+                try:
+
+                    title = y[1].title
+                    title = VidFetch_Core().stripping(title)
+
+                except Exception as e:
+                    self.qmsg(text=e)
+
+
+            else:
+
+                self.qmsg(text="Error with the URL. Please check for updates and make sure the URL you've entered is "
+                               "correct.")
+
+
+    def download(self, mode, output, resolution, quality, youtube_object, title):
+
+
+        if mode == "music":
+
+            stream = youtube_object.streams.filter(only_audio=True).first()
+
+        elif mode == "video_only":
+
+            stream = youtube_object.streams.filter(only_video=True, resolution=resolution).first()
+
+        
+
+
+
+
+
+
+
+
 
 
 if __name__ == "__main__":
