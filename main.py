@@ -12,10 +12,7 @@ from configparser import ConfigParser
 from PySide6.QtCore import Qt, QTimer, QThread, Signal
 from PySide6.QtGui import QPixmap, QPalette, QPainter, QColor, Qt
 from PySide6.QtWidgets import QApplication, QWidget, QMessageBox, QGraphicsScene, QLabel, QLineEdit, QPushButton, QDialogButtonBox, QDialog, QVBoxLayout, QProgressBar, QRadioButton
-from colorama import *
-from ffmpeg_progress_yield import FfmpegProgress
-from pytube import YouTube
-from tqdm import tqdm
+from pytube import YouTube, exceptions, Playlist
 from ui_form import Ui_Widget
 
 __version__ = "0.1"
@@ -35,34 +32,23 @@ class VidFetch_Core():
 
     def check_path(self, path):
 
-        return bool(os.path.exists(path))
+        return path if os.path.exists(path) else False
 
-
-    def check_video(self, url):
-
-        try:
-            y = YouTube(url).check_availability()
-            return True, y
-
-        except Exception as e:
-            return False, e
-
-    def get_highest_resolution(self, youtube_object): # YouTube object must be an object from Pytube
+    def get_highest_resolution(self, youtube_object):  # YouTube object must be an object from Pytube
 
         resolutions = ["144p", "240p", "360p", "480p", "720p", "1080p", "1440p", "2160p", "3840p"]
         y = youtube_object
-        data = y.streams.all() # I know this is deprecated, but it's the only way to get a list of resolutions.
+        data = y.streams.all()  # I know this is deprecated, but it's the only way to get a list of resolutions.
         valid_resolutions = []
 
         for resolution in resolutions:
 
-            valid_resolutions.extend(
-                data_frames for data_frames in data if resolution in data_frames
-            )
+            for stream in data:
 
-        return False if valid_resolutions is None else valid_resolutions
+                if stream.resolution == resolution:
+                    valid_resolutions.append(resolution)
 
-
+        return valid_resolutions
 
 
 
@@ -77,20 +63,19 @@ class Widget(QWidget):
         self.video_output = self.ui.output_video_lineedit.text()
         self.music_output = self.ui.output_music_lineedit.text()
         self.thumb_output = self.ui.output_thumbnail_lineedit.text()
+        self.disable_resolutions()
+        self.ui.video_start_prep_button.clicked.connect(self.start)
 
 
-
-    def disable_resolutions(self, available_resolutions):
-        for resolution in available_resolutions:
-            radioButton = getattr(self.ui, f"radio_{resolution}")
-            radioButton.setDisabled(True)
-            radioButton.setStyleSheet("QRadioButton::indicator:disabled { color: gray; }")
-
-    def enable_resolutions(self):
+    def disable_resolutions(self):
         for resolution in self.resolutions:
             radioButton = getattr(self.ui, f"radio_{resolution}")
+            radioButton.setDisabled(True)
+
+    def enable_resolutions(self, available_resolutions):
+        for resolution in available_resolutions:
+            radioButton = getattr(self.ui, f"radio_{resolution}")
             radioButton.setEnabled(True)
-            radioButton.setStyleSheet("")
 
     def qmsg(self, text):
 
@@ -98,77 +83,31 @@ class Widget(QWidget):
         qmessage_box.setText(text)
         qmessage_box.exec()
 
+    def check_video(self, url):
 
-    def start(self, url):
+        try:
 
-            if VidFetch_Core().check_video(url)[0]:
+            return YouTube(url)
 
-                y = VidFetch_Core().check_video(url)[1]
-
-
-                if self.ui.radio_music_mode.isChecked():
-
-                    mode = "music"
-                    output_path = self.music_output
-                    quality = False
-
-
-                elif self.ui.radio_video_mode.isChecked():
-
-                    mode = "video"
-                    output_path = self.video_output
-                    quality = VidFetch_Core().get_highest_resolution(y)
-
-                elif self.ui.radio_video_only.isChecked():
-
-                    mode = "video_only"
-                    output_path = self.video_output
-                    quality = VidFetch_Core().get_highest_resolution()
-
-
-                else:
-
-                    self.qmsg(text="Please choose a download mode, before pressing the start button.")
-
-                try:
-
-                    VidFetch_Core().check_path(output_path)
-
-                except PermissionError:
-                    self.qmsg(text="Sorry, it seems like you don't have permissions to write to that path. Try "
-                                   "executing the Application as root, even though, that this is NOT recommended")
-
-                try:
-
-                    title = y[1].title
-                    title = VidFetch_Core().stripping(title)
-
-                except Exception as e:
-                    self.qmsg(text=e)
-
-
-            else:
-
-                self.qmsg(text="Error with the URL. Please check for updates and make sure the URL you've entered is "
-                               "correct.")
-
-
-    def download(self, mode, output, resolution, quality, youtube_object, title):
-
-
-        if mode == "music":
-
-            stream = youtube_object.streams.filter(only_audio=True).first()
-
-        elif mode == "video_only":
-
-            stream = youtube_object.streams.filter(only_video=True, resolution=resolution).first()
-
-        
+        except Exception as e:
+            self.qmsg(f"Error with the video.  If you are sure, that the URL is correct, then report it on GitHub. Thanks :) {str(e)}")
+            return False
 
 
 
 
+    def start(self):
+
+        url = self.ui.video_url_lineedit.text()
+
+        try:
+            y = self.check_video(url)
+            available_resolutions = VidFetch_Core().get_highest_resolution(y)
+            self.enable_resolutions(available_resolutions)
+
+        except Exception as e:
+
+            self.qmsg(e)
 
 
 
