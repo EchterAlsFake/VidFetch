@@ -1,20 +1,40 @@
 import os
+import sys
+import wget
+
 from pytube import YouTube
 from tqdm import tqdm
 
 resolutions = ["144p", "240p", "360p", "480p", "720p", "1080p", "1440p", "2160p", "3840p"]
 
+def setup_ffmpeg():
+    if not os.path.isfile("../ffmpeg") and not os.path.isfile("../ffmpeg.exe"):
+
+        if os.path.isfile("../ffmpeg.exe"):
+            print("ffmpeg.exe found")
+
+        elif os.path.isfile("../ffmpeg"):
+            print("ffmpeg found")
+
+        print(f"Downloading ffmpeg...")
+
+        if sys.platform == "linux":
+            wget.download("https://drive.google.com/uc?export=download&id=1TjnA9oISF58DWWZ0zss22uJuQYi3ltLU", out="../ffmpeg")
+
+        elif sys.platform == "win":
+            wget.download("https://drive.google.com/uc?export=download&id=1hls6bh_TFux8Agk5y9VkaEJ3LlXcNTIq", out="../ffmpeg.exe")
+
 
 def setup_config_file(force=False):
     data = """
 [VidFetch]
-quality = best
-
+output_path = ./
 
 
 
 
 """
+
 
 class TqdmToLogger(tqdm):
     def __init__(self, *args, **kwargs):
@@ -25,6 +45,14 @@ class TqdmToLogger(tqdm):
         self.n = total_size - bytes_remaining
         self.last_print_n = self.n
         self.refresh()
+
+
+def strip_title(title):
+    disallowed_characters = ["/", "\\", ":", "*", "?", "\"", "<", ">", "|", "'", '"', "[", "]"]
+    for disallowed_character in disallowed_characters:
+        title = title.replace(disallowed_character, "")
+
+    return title
 
 
 def custom_progress_bar(stream, chunk, bytes_remaining):
