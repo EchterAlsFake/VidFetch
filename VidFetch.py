@@ -15,10 +15,13 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 """
+import time
+
 from PySide6 import QtCore
 from PySide6.QtWidgets import (QApplication, QWidget, QButtonGroup, QMessageBox, QPushButton, QRadioButton, QVBoxLayout,
-                               QDialog, QTreeWidgetItem)
-from PySide6.QtCore import QThread, Signal
+                               QDialog, QTreeWidgetItem, QMainWindow, QLabel, QProgressBar)
+from PySide6.QtCore import QThread, Signal, Qt, QTimer
+from PySide6.QtGui import QPixmap
 from shared_functions.functions import *
 from configparser import ConfigParser
 from ffmpeg_progress_yield import FfmpegProgress
@@ -92,8 +95,67 @@ def choose_resolution(resolutions):
 
 
 
+class Setup(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle("FFMPEG Setup")
+
+        main_layout = QVBoxLayout()
+        pixmap = QPixmap("graphics/VidFetch.jpg")
+
+        self.text_label = QLabel(self)
+        self.text_label.setText("Checking for ffmpeg...")
+        self.image_label = QLabel(self)
+        self.image_label.setPixmap(pixmap.scaled(1591, 401, Qt.KeepAspectRatio))
+        main_layout.addWidget(self.image_label)
+
+        self.progressbar = QProgressBar(self)
+        main_layout.addWidget(self.text_label)
+        main_layout.addWidget(self.progressbar)
+
+        central_widget = QWidget(self)
+        central_widget.setLayout(main_layout)
+        self.setCentralWidget(central_widget)
+        self.setup_ffmpeg()
+
+    def setup_ffmpeg(self):
+        if not os.path.exists("ffmpeg") and not os.path.exists("ffmpeg.exe"):
+            self.text_label.setText("ffmpeg is not installed. Downloading...")
+
+            if sys.platform == "linux":
+                url = "https://drive.google.com/uc?export=download&id=1TjnA9oISF58DWWZ0zss22uJuQYi3ltLU"
+                path = "ffmpeg"
+
+            elif sys.platform == "win":
+                url = "https://drive.google.com/uc?export=download&id=1hls6bh_TFux8Agk5y9VkaEJ3LlXcNTIq"
+                path = "ffmpeg.exe"
+
+            self.thread = DownloadThread(url, path)
+            self.thread.progress_signal.connect(self.update_progress_bar)
+            self.thread.completed_signal.connect(self.on_completed)
+            self.thread.start()
+
+        else:
+            QTimer.singleShot(0, self.close)
+
+    def on_completed(self):
+        self.close()
+
+    def update_progress_bar(self, progress):
+        """
+        Updates the progress bar with the given progress.
+        """
+        self.progressbar.setValue(progress)
+
+    def closeEvent(self, event):
+        self.widget = VidFetch()
+        self.widget.show()
+        event.accept()
+
+
 class DownloadThread(QThread):
     progress_signal = Signal(int)  # Signal to update progress bar
+    completed_signal = Signal()
 
     def __init__(self, url, destination):
         super().__init__()
@@ -117,8 +179,11 @@ class DownloadThread(QThread):
                     progress = (downloaded_size / total_size) * 100
                     self.progress_signal.emit(int(progress))
 
+            self.completed_signal.emit()
+
 class FFMPEG_thread(QThread):
     progress_signal = Signal(int)  # Signal to update the progress bar
+    completed_signal = Signal()
 
     def __init__(self, cmd):
         super().__init__()
@@ -129,6 +194,8 @@ class FFMPEG_thread(QThread):
         ff = FfmpegProgress(self.cmd)
         for progress in ff.run_command_with_progress():
             self.progress_signal.emit(int(round(progress)))
+            if progress == 100:
+                self.completed_signal.emit()
 
 
 class DownloadThread_pytube(QThread):
@@ -177,7 +244,6 @@ class VidFetch(QWidget):
         self.ui = Ui_VidFetch()
         self.ui.setupUi(self)
         #setup_config_file()
-        self.setup_ffmpeg()
         self.conf = ConfigParser()
         self.conf.read("config.ini")
 
@@ -269,29 +335,6 @@ class VidFetch(QWidget):
 
         self.output_path = self.conf["VidFetch"]["output_path"]
 
-    def setup_ffmpeg(self):
-        if not os.path.exists("ffmpeg") and not os.path.exists("ffmpeg.exe"):
-            ui_popup("ffmpeg was not found.  It will be downloaded now.  Please wait...")
-            url = ""
-            path = ""
-            if sys.platform == "linux":
-                url = "https://drive.google.com/uc?export=download&id=1TjnA9oISF58DWWZ0zss22uJuQYi3ltLU"
-                path = "ffmpeg"
-
-            elif sys.platform == "win":
-                url = "https://drive.google.com/uc?export=download&id=1hls6bh_TFux8Agk5y9VkaEJ3LlXcNTIq"
-                path = "ffmpeg.exe"
-
-            self.thread = DownloadThread(url, path)
-            self.thread.progress_signal.connect(self.update_progress_bar)
-            self.thread.start()
-
-    def update_progress_bar(self, progress):
-        """
-        Updates the progress bar with the given progress.
-        """
-        self.ui.progressbar_download.setValue(progress)
-
     def start_video(self):
         url = self.ui.lineedit_video_url.text()
         self.start_video_connection(url)
@@ -312,7 +355,7 @@ class VidFetch(QWidget):
 
     def start_video_connection(self, url):
         try:
-            if url == "str":
+            if type(url) == str:
                 y = YouTube(url)
 
             else:
@@ -322,6 +365,7 @@ class VidFetch(QWidget):
             ui_popup("Invalid URL / Video not available!")
 
         else:
+            print(y)
             self.title = strip_title(y.title)
             output_path = self.output_path
 
@@ -338,9 +382,6 @@ class VidFetch(QWidget):
             self.random_int = random.randint(0, 1000000000)
             self.download(y, output_path=output_path, mode=self.mode, resolution=quality)
 
-
-
-
     def download(self, y, output_path, mode, resolution):
         self.download_thread = DownloadThread_pytube(y=y, output_path=output_path, mode=mode, quality=resolution, random_int=self.random_int)
         self.download_thread.progress_signal.connect(self.ui.progressbar_download.setValue)
@@ -351,13 +392,13 @@ class VidFetch(QWidget):
 
         if self.codec == 1:
             codec = "libmp3lame"
+            extension = ".mp3"
 
         elif self.codec == 2:
             codec = "aac"
-
+            extension = ".aac"
 
         if self.mode == 2:
-
             command = [
                 f'{self.ffmpeg_path}',
                 '-i', f'{self.random_int}.mp4',
@@ -365,15 +406,20 @@ class VidFetch(QWidget):
                 '-c:v', 'copy',
                 '-c:a', f'{codec}',
                 '-strict', 'experimental',
-                f'{self.output_path + self.title + ".mp4"}'
-            ]
+                f'{self.output_path + self.title + ".mp4"}']
 
-            self.concat_thread = FFMPEG_thread(cmd=command)
-            print("Defined thread")
-            self.ui.progressbar_converting.setMaximum(100)
-            self.concat_thread.progress_signal.connect(self.ui.progressbar_converting.setValue)
-            self.concat_thread.start()
-            print("Started thread")
+        elif self.mode == 1:
+            command = [
+                f'{self.ffmpeg_path}',
+                '-i', f'{self.random_int}.mp3',
+                '-c:a', f'{codec}',
+                '-strict', 'experimental',
+                f'{self.output_path + self.title + extension}']
+
+        self.concat_thread = FFMPEG_thread(cmd=command)
+        self.ui.progressbar_converting.setMaximum(100)
+        self.concat_thread.progress_signal.connect(self.ui.progressbar_converting.setValue)
+        self.concat_thread.start()
 
     def download_tree(self):
         for i in range(self.ui.tree_widget.topLevelItemCount()):
@@ -387,8 +433,8 @@ class VidFetch(QWidget):
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     try:
-        widget = VidFetch()
-        widget.show()
+        widget_2 = Setup()
+        widget_2.show()
 
     except Exception as e:
         ui_popup(str(e))
