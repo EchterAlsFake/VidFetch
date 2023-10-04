@@ -197,16 +197,45 @@ QTreeWidget::header {
     </layout>
    </item>
    <item row="1" column="0">
-    <widget class="QTreeWidget" name="tree_widget">
-     <property name="styleSheet">
-      <string notr="true"/>
-     </property>
-     <column>
-      <property name="text">
-       <string notr="true">1</string>
-      </property>
-     </column>
-    </widget>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="QTreeWidget" name="tree_widget">
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <column>
+        <property name="text">
+         <string notr="true">1</string>
+        </property>
+       </column>
+      </widget>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QPushButton" name="button_download_tree_widget">
+         <property name="text">
+          <string>Download selected</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="download_select_all">
+         <property name="text">
+          <string>Select all</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="download_unselect_all">
+         <property name="text">
+          <string>Unselect all</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
    </item>
    <item row="2" column="0">
     <widget class="QGroupBox" name="groupbox_settings">

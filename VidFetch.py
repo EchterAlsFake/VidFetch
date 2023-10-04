@@ -15,8 +15,9 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 """
-
-from PySide6.QtWidgets import QApplication, QWidget, QButtonGroup, QMessageBox, QPushButton, QRadioButton, QVBoxLayout, QDialog
+from PySide6 import QtCore
+from PySide6.QtWidgets import (QApplication, QWidget, QButtonGroup, QMessageBox, QPushButton, QRadioButton, QVBoxLayout,
+                               QDialog, QTreeWidgetItem)
 from PySide6.QtCore import QThread, Signal
 from shared_functions.functions import *
 from configparser import ConfigParser
@@ -35,6 +36,20 @@ def ui_popup(text):
     qmessage_box.setText(text)
     qmessage_box.setIcon(QMessageBox.Information)
     qmessage_box.exec()
+
+
+def add_to_tree_widget(iterator, tree_widget):
+    tree_widget.clear()
+    try:
+        for i, video in enumerate(iterator, start=1):
+            item = QTreeWidgetItem(tree_widget)
+            item.setText(0, f"{i}) {video.title}")
+            item.setData(0, QtCore.Qt.UserRole, video)
+            item.setCheckState(0, QtCore.Qt.Unchecked)  # Adds a checkbox
+
+
+    except Exception as e:
+        ui_popup(f"An error happened. ERROR: {e}")
 
 
 def choose_resolution(resolutions):
@@ -71,7 +86,7 @@ def choose_resolution(resolutions):
             self.accept()
 
     dialog = ResolutionDialog(resolutions)
-    dialog.exec_()
+    dialog.exec()
 
     return dialog.chosen_resolution
 
@@ -174,6 +189,8 @@ class VidFetch(QWidget):
         self.codec = 1
         self.output_path = None
         self.ffmpeg_path = None
+        self.title = None
+        self.random_int = None
 
         self.load_user_settings()
         self.button_connections()
@@ -200,7 +217,24 @@ class VidFetch(QWidget):
 
     def button_connections(self):
         self.ui.button_start_video.clicked.connect(self.start_video)
+        self.ui.button_start_playlist.clicked.connect(self.start_playlist)
+        self.ui.button_download_tree_widget.clicked.connect(self.download_tree)
+        self.ui.download_select_all.clicked.connect(self.select_all_items)
+        self.ui.download_unselect_all.clicked.connect(self.unselect_all_items)
 
+    def unselect_all_items(self):
+        root = self.ui.tree_widget.invisibleRootItem()
+        item_count = root.childCount()
+        for i in range(item_count):
+            item = root.child(i)
+            item.setCheckState(0, QtCore.Qt.Unchecked)
+
+    def select_all_items(self):
+        root = self.ui.tree_widget.invisibleRootItem()
+        item_count = root.childCount()
+        for i in range(item_count):
+            item = root.child(i)
+            item.setCheckState(0, QtCore.Qt.Checked)
 
     def load_user_settings(self):
         if self.conf["VidFetch"]["default_mode"] == "music":
@@ -235,8 +269,6 @@ class VidFetch(QWidget):
 
         self.output_path = self.conf["VidFetch"]["output_path"]
 
-
-
     def setup_ffmpeg(self):
         if not os.path.exists("ffmpeg") and not os.path.exists("ffmpeg.exe"):
             ui_popup("ffmpeg was not found.  It will be downloaded now.  Please wait...")
@@ -264,10 +296,27 @@ class VidFetch(QWidget):
         url = self.ui.lineedit_video_url.text()
         self.start_video_connection(url)
 
-    def start_video_connection(self, url):
+    def start_playlist(self):
+        url = self.ui.lineedit_playlist_url.text()
 
         try:
-            y = YouTube(url)
+            p = Playlist(url)
+
+        except exceptions.RegexMatchError:
+            ui_popup("Invalid Playlist URL!")
+
+        else:
+
+            videos = p.videos
+            add_to_tree_widget(videos, self.ui.tree_widget)
+
+    def start_video_connection(self, url):
+        try:
+            if url == "str":
+                y = YouTube(url)
+
+            else:
+                y = url
 
         except exceptions.RegexMatchError or exceptions.VideoUnavailable:
             ui_popup("Invalid URL / Video not available!")
@@ -325,6 +374,14 @@ class VidFetch(QWidget):
             self.concat_thread.progress_signal.connect(self.ui.progressbar_converting.setValue)
             self.concat_thread.start()
             print("Started thread")
+
+    def download_tree(self):
+        for i in range(self.ui.tree_widget.topLevelItemCount()):
+            item = self.ui.tree_widget.topLevelItem(i)
+            checkState = item.checkState(0)
+            if checkState == QtCore.Qt.Checked:
+                video = item.data(0, QtCore.Qt.UserRole)
+                self.start_video_connection(video)
 
 
 if __name__ == "__main__":

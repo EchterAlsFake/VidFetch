@@ -16,9 +16,9 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QFormLayout, QGridLayout, QGroupBox,
-    QHeaderView, QLabel, QLineEdit, QProgressBar,
-    QPushButton, QRadioButton, QSizePolicy, QTreeWidget,
-    QTreeWidgetItem, QWidget)
+    QHBoxLayout, QHeaderView, QLabel, QLineEdit,
+    QProgressBar, QPushButton, QRadioButton, QSizePolicy,
+    QTreeWidget, QTreeWidgetItem, QVBoxLayout, QWidget)
 
 class Ui_VidFetch(object):
     def setupUi(self, VidFetch):
@@ -189,14 +189,39 @@ class Ui_VidFetch(object):
 
         self.gridLayout_4.addLayout(self.gridLayout, 0, 0, 1, 1)
 
+        self.verticalLayout = QVBoxLayout()
+        self.verticalLayout.setObjectName(u"verticalLayout")
         self.tree_widget = QTreeWidget(VidFetch)
         __qtreewidgetitem = QTreeWidgetItem()
         __qtreewidgetitem.setText(0, u"1");
         self.tree_widget.setHeaderItem(__qtreewidgetitem)
         self.tree_widget.setObjectName(u"tree_widget")
-        self.tree_widget.setStyleSheet(u"background-image: url(\"graphics/VidFetch.jpg\");")
+        self.tree_widget.setStyleSheet(u"")
 
-        self.gridLayout_4.addWidget(self.tree_widget, 1, 0, 1, 1)
+        self.verticalLayout.addWidget(self.tree_widget)
+
+        self.horizontalLayout = QHBoxLayout()
+        self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.button_download_tree_widget = QPushButton(VidFetch)
+        self.button_download_tree_widget.setObjectName(u"button_download_tree_widget")
+
+        self.horizontalLayout.addWidget(self.button_download_tree_widget)
+
+        self.download_select_all = QPushButton(VidFetch)
+        self.download_select_all.setObjectName(u"download_select_all")
+
+        self.horizontalLayout.addWidget(self.download_select_all)
+
+        self.download_unselect_all = QPushButton(VidFetch)
+        self.download_unselect_all.setObjectName(u"download_unselect_all")
+
+        self.horizontalLayout.addWidget(self.download_unselect_all)
+
+
+        self.verticalLayout.addLayout(self.horizontalLayout)
+
+
+        self.gridLayout_4.addLayout(self.verticalLayout, 1, 0, 1, 1)
 
         self.groupbox_settings = QGroupBox(VidFetch)
         self.groupbox_settings.setObjectName(u"groupbox_settings")
@@ -321,6 +346,7 @@ class Ui_VidFetch(object):
     def retranslateUi(self, VidFetch):
         VidFetch.setWindowTitle(QCoreApplication.translate("VidFetch", u"VidFetch v1.0  (GPLv3)", None))
         self.button_start_file.setText(QCoreApplication.translate("VidFetch", u"Start", None))
+        self.label_file.setStyleSheet("")
         self.label_file.setText(QCoreApplication.translate("VidFetch", u"File:", None))
         self.label_video.setText(QCoreApplication.translate("VidFetch", u"Video:", None))
         self.lineedit_video_url.setPlaceholderText(QCoreApplication.translate("VidFetch", u"Enter YouTube video URL", None))
@@ -329,6 +355,9 @@ class Ui_VidFetch(object):
         self.lineedit_playlist_url.setPlaceholderText(QCoreApplication.translate("VidFetch", u"Enter YouTube Playlist URL", None))
         self.label_playlist.setText(QCoreApplication.translate("VidFetch", u"Playlist:", None))
         self.button_start_video.setText(QCoreApplication.translate("VidFetch", u"Start", None))
+        self.button_download_tree_widget.setText(QCoreApplication.translate("VidFetch", u"Download selected", None))
+        self.download_select_all.setText(QCoreApplication.translate("VidFetch", u"Select all", None))
+        self.download_unselect_all.setText(QCoreApplication.translate("VidFetch", u"Unselect all", None))
         self.groupbox_settings.setTitle(QCoreApplication.translate("VidFetch", u"Settings:", None))
         self.radio_quality_ask.setText(QCoreApplication.translate("VidFetch", u"Ask everytime", None))
         self.radio_quality_highest.setText(QCoreApplication.translate("VidFetch", u"Highest available", None))
