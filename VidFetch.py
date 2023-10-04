@@ -34,6 +34,7 @@ from ui_files.VidFetch import Ui_VidFetch
 import requests
 import random
 
+
 def ui_popup(text):
     qmessage_box = QMessageBox()
     qmessage_box.setText(text)
@@ -41,7 +42,7 @@ def ui_popup(text):
     qmessage_box.exec()
 
 
-def add_to_tree_widget(iterator, tree_widget):
+def add_to_tree_widget(iterator, tree_widget, progressbar):
     tree_widget.clear()
     try:
         for i, video in enumerate(iterator, start=1):
@@ -49,6 +50,7 @@ def add_to_tree_widget(iterator, tree_widget):
             item.setText(0, f"{i}) {video.title}")
             item.setData(0, QtCore.Qt.UserRole, video)
             item.setCheckState(0, QtCore.Qt.Unchecked)  # Adds a checkbox
+            progressbar.setValue(i)
 
 
     except Exception as e:
@@ -92,7 +94,6 @@ def choose_resolution(resolutions):
     dialog.exec()
 
     return dialog.chosen_resolution
-
 
 
 class Setup(QMainWindow):
@@ -210,6 +211,7 @@ class DownloadThread_pytube(QThread):
         self.quality = quality
         self.output_path = output_path
         self.random_int = random_int
+        self.title = y.title
 
     def run(self):
         print("Run")
@@ -220,7 +222,7 @@ class DownloadThread_pytube(QThread):
 
         if self.mode == 1:
             print("Downlading Audio")
-            self.y.streams.get_audio_only().first().download(filename=self.output_path)
+            self.y.streams.get_audio_only().download(filename=self.output_path + self.title + ".mp3")
 
         elif self.mode == 2:
             print("Downloading video")
@@ -237,6 +239,7 @@ class DownloadThread_pytube(QThread):
         self.progress_signal.emit(percentage)
         if bytes_remaining == 0:
             self.completed_signal.emit()
+
 
 class VidFetch(QWidget):
     def __init__(self, parent=None):
@@ -287,6 +290,7 @@ class VidFetch(QWidget):
         self.ui.button_download_tree_widget.clicked.connect(self.download_tree)
         self.ui.download_select_all.clicked.connect(self.select_all_items)
         self.ui.download_unselect_all.clicked.connect(self.unselect_all_items)
+        self.ui.button_settings_save.clicked.connect(self.settings)
 
     def unselect_all_items(self):
         root = self.ui.tree_widget.invisibleRootItem()
@@ -334,6 +338,7 @@ class VidFetch(QWidget):
             self.ffmpeg_path = "ffmpeg.exe"
 
         self.output_path = self.conf["VidFetch"]["output_path"]
+        self.ui.lineedit_output_path.setText(self.output_path)
 
     def start_video(self):
         url = self.ui.lineedit_video_url.text()
@@ -351,7 +356,11 @@ class VidFetch(QWidget):
         else:
 
             videos = p.videos
-            add_to_tree_widget(videos, self.ui.tree_widget)
+            total = len(videos)
+
+            self.ui.progressbar_processing.setMaximum(total)
+
+            add_to_tree_widget(videos, self.ui.tree_widget, progressbar=self.ui.progressbar_processing)
 
     def start_video_connection(self, url):
         try:
@@ -371,16 +380,27 @@ class VidFetch(QWidget):
 
             if not str(output_path).endswith(os.sep):
                 output_path += os.sep
+            if self.mode == 1:
+                quality = "doesn't matter lol"
 
-            if self.quality == 1:
-                quality = get_highest_resolution(y)
+            else:
+                if self.quality == 1:
+                    quality = get_highest_resolution(y)
 
-            elif self.quality == 2:
-                available_resolutions = get_available_resolutions(y)
-                quality = choose_resolution(available_resolutions)
+                elif self.quality == 2:
+                    available_resolutions = get_available_resolutions(y)
+                    quality = choose_resolution(available_resolutions)
 
             self.random_int = random.randint(0, 1000000000)
             self.download(y, output_path=output_path, mode=self.mode, resolution=quality)
+
+    def clean_up(self):
+        try:
+            os.remove(f"{self.random_int}.mp4")
+            os.remove(f"{self.random_int}.mp3")
+
+        except FileNotFoundError:
+            pass
 
     def download(self, y, output_path, mode, resolution):
         self.download_thread = DownloadThread_pytube(y=y, output_path=output_path, mode=mode, quality=resolution, random_int=self.random_int)
@@ -411,7 +431,7 @@ class VidFetch(QWidget):
         elif self.mode == 1:
             command = [
                 f'{self.ffmpeg_path}',
-                '-i', f'{self.random_int}.mp3',
+                '-i', f'{self.output_path}{self.title}.mp3',
                 '-c:a', f'{codec}',
                 '-strict', 'experimental',
                 f'{self.output_path + self.title + extension}']
@@ -419,6 +439,7 @@ class VidFetch(QWidget):
         self.concat_thread = FFMPEG_thread(cmd=command)
         self.ui.progressbar_converting.setMaximum(100)
         self.concat_thread.progress_signal.connect(self.ui.progressbar_converting.setValue)
+        self.concat_thread.completed_signal.connect(self.clean_up)
         self.concat_thread.start()
 
     def download_tree(self):
@@ -428,6 +449,31 @@ class VidFetch(QWidget):
             if checkState == QtCore.Qt.Checked:
                 video = item.data(0, QtCore.Qt.UserRole)
                 self.start_video_connection(video)
+
+    def settings(self):
+        if self.ui.radio_mode_music.isChecked():
+            self.conf.set("VidFetch", "default_mode", "music")
+
+        elif self.ui.radio_mode_video.isChecked():
+            self.conf.set("VidFetch", "default_mode", "video")
+
+        if self.ui.radio_quality_highest.isChecked():
+            self.conf.set("VidFetch", "default_quality", "highest")
+
+        elif self.ui.radio_quality_ask.isChecked():
+            self.conf.set("VidFetch", "default_quality", "ask")
+
+        if self.ui.radio_codec_mp3.isChecked():
+            self.conf.set("VidFetch", "default_codec", "mp3")
+
+        elif self.ui.radio_codec_aac.isChecked():
+            self.conf.set("VidFetch", "default_codec", "aac")
+
+        self.conf.set("VidFetch", "output_path", self.ui.lineedit_output_path.text())
+
+        with open("config.ini", "w") as configfile:
+            self.conf.write(configfile)
+            ui_popup("Settings applied. Please restart for changes to take effect!")
 
 
 if __name__ == "__main__":

@@ -3,3 +3,4 @@ hue_shift
 tqdm
 wget
 PySide6
+requests
