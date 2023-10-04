@@ -8,7 +8,7 @@ from tqdm import tqdm
 resolutions = ["144p", "240p", "360p", "480p", "720p", "1080p", "1440p", "2160p", "3840p"]
 
 def setup_ffmpeg():
-    if not os.path.isfile("../ffmpeg") and not os.path.isfile("../ffmpeg.exe"):
+    if not os.path.isfile("../ffmpeg") or not os.path.isfile("../ffmpeg.exe"):
 
         if os.path.isfile("../ffmpeg.exe"):
             print("ffmpeg.exe found")
@@ -24,16 +24,28 @@ def setup_ffmpeg():
         elif sys.platform == "win":
             wget.download("https://drive.google.com/uc?export=download&id=1hls6bh_TFux8Agk5y9VkaEJ3LlXcNTIq", out="../ffmpeg.exe")
 
+def create_config_file():
+    with open("config.ini", "w") as config:
+        config.close()
+
 
 def setup_config_file(force=False):
     data = """
 [VidFetch]
 output_path = ./
-
+default_quality = highest
+default_codec = aac
+default_mode = music
 
 
 
 """
+
+    if not os.path.isfile("../config.ini") or force:
+        create_config_file()
+
+        with open("config.ini", "w") as config:
+            config.write(data)
 
 
 class TqdmToLogger(tqdm):
