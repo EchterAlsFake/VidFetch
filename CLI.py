@@ -23,6 +23,53 @@ from ffmpeg_progress_yield import FfmpegProgress
 from hue_shift import reset, return_color
 
 
+def concat(video, audio, output):
+    setup_ffmpeg()
+
+    command = [
+        'ffmpeg',
+        '-i', f'{video}',
+        '-i', f'{audio}',
+        '-c:v', 'copy',
+        '-c:a', 'aac',
+        '-strict', 'experimental',
+        f'{output}'
+    ]
+
+    ff = FfmpegProgress(command)
+    with tqdm(total=100, desc="Processing", ncols=100) as pbar:
+        last_progress = 0
+        for progress in ff.run_command_with_progress():
+            pbar.update(progress - last_progress)
+            last_progress = progress
+
+
+def cleanup(file):
+    os.remove(f"{file}.mp4")
+    os.remove(f"{file}.mp3")
+
+
+def download_video(resolutions, y, title, random_int, output):
+    for counter, resolution in enumerate(resolutions):
+        print(f"{counter}) {resolution}")
+
+    selected_resolution = input(f"{return_color()}Enter the video resolution --=>: {reset()}")
+    print(f"{return_color()}Downloading video for: {title}{reset()}")
+    y.streams.filter(resolution=resolutions[int(selected_resolution)]).first().download(filename=random_int + ".mp4")
+    print(f"{return_color()}Downloading audio for: {title}{reset()}")
+    y.streams.filter(only_audio=True).first().download(filename=random_int + ".mp3")
+    print(f"{return_color()}Concatenating videos and audio for: {title}{reset}")
+    concat(audio=random_int + ".mp3", video=random_int + ".mp4", output=output)
+    cleanup(random_int)
+    print(f"{return_color()}Done!{reset()}")
+
+
+def download_audio(y, title, output):
+    print(f"{return_color()}Downloading audio for: {title}{reset()}")
+    y.streams.filter(only_audio=True).first().download(filename=output)
+    print(f"{return_color()}Done!{reset()}")
+
+
 class CLI:
     def __init__(self):
         setup_config_file()
@@ -30,7 +77,12 @@ class CLI:
         self.conf.read("config.ini")
         self.load_user_settings()
         self.output_path = "./"
-        self.main_menu()
+        while True:
+            try:
+                self.main_menu()
+
+            except Exception as e:
+                print(f"{return_color()}Error! --: {e}{reset()}")
 
     def main_menu(self):
         options = input(f"""
@@ -42,66 +94,85 @@ class CLI:
 
         if options == "1":
             url = input(f"{return_color()}Enter the video url --=>: {reset()}")
-            self.download_video(url)
+            self.pre_setup(url, mode=1)
 
         elif options == "2":
             url = input(f"{return_color()}Enter the video url --=>: {reset()}")
-            self.download_audio(url)
+            self.pre_setup(url, mode=2)
 
-    def download_audio(self, url):
-        get_audio_stream(url).download()
+        elif options == "3":
+            self.download_playlist()
 
-    def download_video(self, url):
+    def pre_setup(self, url, mode):
 
-        resolutions = get_available_resolutions(url)
-        for counter, resolution in enumerate(resolutions):
-            print(f"{counter}) {resolution}")
+        if type(url) == "str":
+            y = check_url(url)
 
-        selected_resolution = input(f"{return_color()}Enter the video resolution --=>: {reset()}")
-        y = YouTube(url)
+        else:
+            y = url
+
         title = strip_title(y.title)
         if not self.output_path.endswith("/") or self.output_path.endswith("\\"):
             self.output_path += os.sep
 
-        output = self.output_path + title + ".mp4"
+        resolutions = get_available_resolutions(url)
+        output_video = self.output_path + title + ".mp4"
+        output_music = self.output_path + title + ".mp3"
         random_int = str(random.randint(0, 10000))
-
         y.register_on_progress_callback(custom_progress_bar)
-        print(f"{return_color()}Downloading video for: {title}{reset()}")
-        y.streams.filter(resolution=resolutions[int(selected_resolution)]).first().download(filename=random_int + ".mp4")
-        print(f"{return_color()}Downloading audio for: {title}{reset()}")
-        y.streams.filter(only_audio=True).first().download(filename=random_int + ".mp3")
-        print(f"{return_color()}Concatenating videos and audio for: {title}{reset}")
-        self.concat(audio=random_int + ".mp3", video=random_int + ".mp4", output=output)
-        os.remove(random_int + ".mp4")
-        os.remove(random_int + "mp3")
-        print(f"{return_color()}Done!{reset()}")
 
-    def concat(self, video, audio, output):
-        setup_ffmpeg()
+        if mode == 1:
+            download_video(resolutions=resolutions, y=y, title=title, random_int=random_int, output=output_video)
 
-        command = [
-            'ffmpeg',
-            '-i', f'{video}',
-            '-i', f'{audio}',
-            '-c:v', 'copy',
-            '-c:a', 'aac',
-            '-strict', 'experimental',
-            f'{output}'
-        ]
+        elif mode == 2:
+            download_audio(y=y, title=title, output=output_music)
 
-        ff = FfmpegProgress(command)
-        with tqdm(total=100, desc="Processing", ncols=100, colour=return_color()) as pbar:
-            last_progress = 0
-            for progress in ff.run_command_with_progress():
-                pbar.update(progress - last_progress)
-                last_progress = progress
+    def download_playlist(self):
+        url = input(f"{return_color()}Enter the playlist url --=>: {reset()}")
+        p = check_playlist(url)
+        videos = p.videos
+        video_objects = []
+
+        print(f"{return_color()}Loading video objects... This can take some time!{reset()}")
+        for counter, video in enumerate(videos):
+            print(f"{counter}) {video.title}")
+            video_objects.append(video)
+
+        choices = input(f"{return_color()}Enter the number of the video you want to download (1,2,3,4,18,43) "
+                        f"(enter 'all' for all)--=>:")
+        mode = input(f"{return_color()}Enter the download mode [1] = Video [2] = Music --=>:")
+
+        if choices == "all":
+            for video in video_objects:
+                self.pre_setup(video, mode=int(mode))
+
+        else:
+            selected_videos = choices.split(",")
+            for video in selected_videos:
+                self.pre_setup(video_objects[int(video)], mode=int(mode))
 
     def load_user_settings(self):
         self.output_path = self.conf["VidFetch"]["output_path"]
 
+    def settings(self):
+        options = input(f"""
+1) Change output path
 
 
+""")
+
+        if options == "1":
+            new_path = input(f"{return_color()}Enter the new output path --=>: {reset}")
+            if os.path.exists(new_path):
+                self.conf["VidFetch"]["output_path"] = new_path
+
+            else:
+                print(f"{return_color()}Invalid path!{reset()}")
+                self.settings()
+
+        else:
+            print(f"{return_color()}Invalid option!{reset()}")
+            self.settings()
 
 
 

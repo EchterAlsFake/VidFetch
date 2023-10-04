@@ -2,7 +2,7 @@ import os
 import sys
 import wget
 
-from pytube import YouTube
+from pytube import YouTube, exceptions, Playlist
 from tqdm import tqdm
 
 resolutions = ["144p", "240p", "360p", "480p", "720p", "1080p", "1440p", "2160p", "3840p"]
@@ -70,8 +70,8 @@ def custom_progress_bar(stream, chunk, bytes_remaining):
         del custom_progress_bar._bar
 
 
-def get_available_resolutions(url):
-    streams = YouTube(url).streams.order_by("resolution")
+def get_available_resolutions(y):
+    streams = y.streams.order_by("resolution")
     available_resolutions = []
     for resolution in resolutions:
         for stream in streams:
@@ -83,15 +83,21 @@ def get_available_resolutions(url):
 
 
 def check_url(url):
-    if YouTube(url):
-        return True
+    try:
+        return YouTube(url)
+
+    except exceptions.RegexMatchError:
+        print(f"Invalid URL! : {url}")
 
 
-def get_highest_resolution(url):
-    y = YouTube(url)
+def check_playlist(url):
+    try:
+        return Playlist(url)
+
+    except exceptions.RegexMatchError:
+        print(f"Invalid URL! : {url}")
+
+
+def get_highest_resolution(y):
     resolutions = y.streams.order_by("resolution")
     return resolutions[-1].itag
-
-
-def get_audio_stream(url):
-    return YouTube(url).streams.get_audio_only()
