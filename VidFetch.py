@@ -20,7 +20,6 @@ from PySide6.QtWidgets import QApplication, QWidget, QButtonGroup, QMessageBox, 
 from PySide6.QtCore import QThread, Signal
 from shared_functions.functions import *
 from configparser import ConfigParser
-import subprocess
 from ffmpeg_progress_yield import FfmpegProgress
 # Important:
 # You need to run the following command to generate the ui_form.py file
