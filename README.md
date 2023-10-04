@@ -1,5 +1,10 @@
 # VidFetch, a simple but powerful YouTube Downloader
 
+<div style="box-shadow: 2px 2px 12px #aaa;">
+  <img src="https://github.com/EchterAlsFake/VidFetch/blob/master/graphics/VidFetch.jpg" alt="Alt text">
+</div>
+
+
 ### [Development Status v1.0](htttps://github.com/EchterAlsFake/VidFetch/blob/master/READMEs/DEVELOPMENT.md)
 
 ### Table of contents
