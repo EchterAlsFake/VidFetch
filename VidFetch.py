@@ -291,6 +291,7 @@ class VidFetch(QWidget):
         self.ui.download_select_all.clicked.connect(self.select_all_items)
         self.ui.download_unselect_all.clicked.connect(self.unselect_all_items)
         self.ui.button_settings_save.clicked.connect(self.settings)
+        self.ui.button_start_file.clicked.connect(self.download_from_file)
 
     def unselect_all_items(self):
         root = self.ui.tree_widget.invisibleRootItem()
@@ -401,6 +402,44 @@ class VidFetch(QWidget):
 
         except FileNotFoundError:
             pass
+
+    def download_from_file(self):
+        file = self.ui.lineedit_file.text()
+
+        if os.path.isfile(file):
+
+            try:
+                with open(file, 'r') as f:
+                    content = f.read().splitlines()
+
+                    valid_objects = []
+
+                    for url in content:
+                        youtube_object = check_url(url)
+                        if type(youtube_object) == YouTube:
+                            valid_objects.append(youtube_object)
+
+                    add_to_tree_widget(valid_objects, tree_widget=self.ui.tree_widget, progressbar=self.ui.progressbar_processing)
+
+            except PermissionError:
+                ui_popup("Insufficient Permissions to access the specified file...")
+
+
+
+
+
+
+
+
+
+
+
+
+
+        else:
+            ui_popup("File was not found! Please try again...")
+
+
 
     def download(self, y, output_path, mode, resolution):
         self.download_thread = DownloadThread_pytube(y=y, output_path=output_path, mode=mode, quality=resolution, random_int=self.random_int)
