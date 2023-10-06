@@ -285,6 +285,7 @@ class VidFetch(QWidget):
         self.buttons = button_group_quality, button_group_codec, button_group_mode
 
     def button_connections(self):
+        """I could write this into the __init__ method, but it looks better this way ;) """
         self.ui.button_start_video.clicked.connect(self.start_video)
         self.ui.button_start_playlist.clicked.connect(self.start_playlist)
         self.ui.button_download_tree_widget.clicked.connect(self.download_tree)
@@ -419,6 +420,7 @@ class VidFetch(QWidget):
                         if type(youtube_object) == YouTube:
                             valid_objects.append(youtube_object)
 
+                    self.ui.progressbar_processing.setMaximum(len(valid_objects))
                     add_to_tree_widget(valid_objects, tree_widget=self.ui.tree_widget, progressbar=self.ui.progressbar_processing)
 
             except PermissionError:
