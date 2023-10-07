@@ -523,7 +523,21 @@ if __name__ == "__main__":
         widget_2 = Setup()
         widget_2.show()
 
-    except Exception as e:
-        ui_popup(str(e))
+    except KeyboardInterrupt:
+        pass
+
+    except PermissionError as e:
+        ui_popup(f"Permission denied for the following resource: {e} Please give VidFetch the appropriate permissions.")
+
+    except ConnectionError:
+        ui_popup("Connection Error:  Please make sure you are connected to the internet!")
+
+    except FileNotFoundError as e:
+        ui_popup(f"A file wasn't found. Please make sure your inputs are correct. if you believe this is a misstake, "
+                 f"please report the following: {e}")
+
+    except KeyError as e:
+        ui_popup(f"Configuration file is broken... Trying to fix it automatically. If this happens again, report: {e}")
+        setup_config_file(force=True)
 
     sys.exit(app.exec())
