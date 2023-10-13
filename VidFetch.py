@@ -476,7 +476,6 @@ class VidFetch(QWidget):
                 '-c:a', f'{codec}',
                 '-strict', 'experimental',
                 f'{self.output_path + self.title + extension}']
-
         self.concat_thread = FFMPEG_thread(cmd=command)
         self.ui.progressbar_converting.setMaximum(100)
         self.concat_thread.progress_signal.connect(self.ui.progressbar_converting.setValue)

@@ -3,7 +3,9 @@
 - [x] Basic CLI Interface
 - [x] Progressbar
 - [x] Downloading Logic
-- [] GUI
+- [x] GUI
+- [x] Readme
+- [x] Better project overview
 - [] Android Development
-- [] Readme
-- [] Better project overview
+- [] More codecs
+- [] 
