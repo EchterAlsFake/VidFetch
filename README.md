@@ -1,3 +1,6 @@
+> [!IMPORTANT]
+> This project doesn't work currently and is unmaintained. I will bring this project back to life, but not yet.
+
 <img src="https://github.com/EchterAlsFake/VidFetch/blob/master/graphics/VidFetch.jpg" alt="Alt text" style="border-radius: 8px;">
 
 ### [Development Status v1.0](htttps://github.com/EchterAlsFake/VidFetch/blob/master/READMEs/DEVELOPMENT.md)
